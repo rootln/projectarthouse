@@ -1,0 +1,1625 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arthouse | Design Studio</title>
+  <meta name="description" content="Arthouse is a modern design studio for branding, websites, and digital presence." />
+  <meta name="theme-color" content="#05070d" />
+
+ <!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Icons (Lucide) -->
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+ 
+ <style>
+    :root{
+      --ease: cubic-bezier(.2,.8,.2,1);
+      --r: 22px;
+
+      /* Two-color neon only */
+      --neo1:#7a5cff; /* violet */
+      --neo2:#00f0ff; /* cyan */
+      --grad: linear-gradient(120deg,var(--neo1),var(--neo2));
+
+      /* Light theme defaults */
+      --bg:#f4f6fb;
+      --panel:rgba(255,255,255,.78);
+      --panel2:rgba(255,255,255,.60);
+      --ink:#0b0f19;
+      --muted:rgba(11,15,25,.70);
+      --line:rgba(11,15,25,.12);
+
+      --shadow: 0 18px 70px rgba(0,0,0,.10);
+      --shadow2: 0 12px 40px rgba(0,0,0,.08);
+      --glow: 0 0 0 rgba(0,0,0,0);
+    }
+
+    /* Dark mode */
+    [data-theme="dark"]{
+      --bg:#05070d;
+      --panel:rgba(12,17,27,.72);
+      --panel2:rgba(12,17,27,.56);
+      --ink:#eaf0ff;
+      --muted:rgba(234,240,255,.62);
+      --line:rgba(255,255,255,.08);
+
+      --shadow: 0 26px 90px rgba(0,0,0,.60);
+      --shadow2: 0 16px 54px rgba(0,0,0,.45);
+      --glow: 0 20px 90px rgba(0,240,255,.10);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      overflow-x:hidden;
+      transition: background 420ms var(--ease), color 420ms var(--ease);
+    }
+    a{color:inherit; text-decoration:none}
+    button,
+input,
+select,
+textarea{
+  font-family: inherit;
+  color: inherit;
+}
+    img{max-width:100%; display:block}
+
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important; scroll-behavior:auto !important}
+    }
+
+    /* Subtle grain */
+    .grain::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.10'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
+      opacity:.16;
+      z-index:2;
+    }
+
+    /* Ambient neon fog (not rainbow) */
+    .bgFX{
+      position:fixed;
+      inset:-220px;
+      z-index:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(122,92,255,.22), transparent 52%),
+        radial-gradient(circle at 78% 24%, rgba(0,240,255,.16), transparent 50%),
+        radial-gradient(circle at 55% 78%, rgba(122,92,255,.10), transparent 56%);
+      filter: blur(70px);
+      opacity:.95;
+      transform: translateZ(0);
+    }
+
+    /* Container */
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 18px;
+    }
+
+    /* Ripple */
+    .btnLike{position:relative; overflow:hidden; user-select:none; -webkit-tap-highlight-color:transparent;}
+    .btnLike::after{
+      content:"";
+      position:absolute;
+      width:10px;height:10px;border-radius:999px;
+      background: rgba(255,255,255,.18);
+      transform: translate(-50%,-50%) scale(0);
+      opacity:0;
+      pointer-events:none;
+    }
+    .btnLike.ripple::after{
+      left: var(--rx);
+      top: var(--ry);
+      opacity:1;
+      animation: ripple 520ms var(--ease);
+    }
+    @keyframes ripple{
+      0%{ transform: translate(-50%,-50%) scale(0); opacity:.40 }
+      70%{ transform: translate(-50%,-50%) scale(26); opacity:.16 }
+      100%{ transform: translate(-50%,-50%) scale(32); opacity:0 }
+    }
+
+    /* Reveal */
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+      filter: blur(2px);
+      transition: opacity 720ms var(--ease), transform 720ms var(--ease), filter 720ms var(--ease);
+      will-change: transform, opacity;
+    }
+    .reveal.in{opacity:1; transform: translateY(0); filter: blur(0);}
+    .reveal.delay1{transition-delay: 80ms}
+    .reveal.delay2{transition-delay: 160ms}
+    .reveal.delay3{transition-delay: 240ms}
+    .reveal.delay4{transition-delay: 320ms}
+
+    /* Topbar */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:60;
+      height:70px;
+      border-bottom:1px solid var(--line);
+      background: rgba(255,255,255,.32);
+      backdrop-filter: blur(16px);
+      transition: box-shadow 350ms var(--ease), background 350ms var(--ease);
+    }
+    [data-theme="dark"] .topbar{ background: rgba(5,7,13,.56); }
+    .topbar.scrolled{ box-shadow: var(--shadow2); }
+
+    .topbarInner{
+      height:70px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    /* Brand */
+    .brand{display:flex; align-items:center; gap:12px;}
+    .logoMark{
+      width:46px;height:46px;border-radius:14px;
+      background: var(--grad);
+      box-shadow: 0 18px 60px rgba(122,92,255,.18), 0 18px 60px rgba(0,240,255,.10);
+      display:grid; place-items:center;
+      font-weight:950; letter-spacing:.5px;
+      color:#070a12;
+    }
+    .brandTxt .name{font-weight:950; letter-spacing:-.02em; line-height:1;}
+    .brandTxt .tag{font-size:11px; color: var(--muted); margin-top:3px;}
+
+    /* Topbar actions */
+    .navRight{display:flex; align-items:center; gap:10px;}
+
+    .pillBtn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: var(--panel2);
+      cursor:pointer;
+      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease), background 250ms var(--ease);
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .pillBtn:hover{transform: translateY(-1px); box-shadow: var(--shadow2);}
+
+    .dotNeo{
+      width:10px;height:10px;border-radius:50%;
+      background: var(--grad);
+      box-shadow: 0 12px 40px rgba(0,240,255,.20);
+      flex:0 0 auto;
+    }
+
+    .burger{ width:18px;height:12px; position:relative; }
+    .burger span{
+      position:absolute; left:0; right:0;
+      height:2px;
+      background: color-mix(in srgb, var(--ink) 70%, transparent);
+      border-radius:2px;
+    }
+    .burger span:nth-child(1){ top:0 }
+    .burger span:nth-child(2){ top:5px; opacity:.9 }
+    .burger span:nth-child(3){ bottom:0 }
+
+    /* HERO */
+    main{position:relative; z-index:1;}
+    .hero{
+      padding: 52px 0 34px; /* less empty */
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 18px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){ .heroGrid{ grid-template-columns: 1fr; } }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:950;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: var(--panel2);
+      width: fit-content;
+    }
+
+    .title{
+      margin:18px 0 0;
+      font-size:68px;
+      line-height:.95;
+      letter-spacing:-0.06em;
+      font-weight:950;
+    }
+    @media (max-width: 980px){ .title{font-size:52px} }
+    @media (max-width: 520px){ .title{font-size:42px} }
+
+    .gradTxt{
+      background: var(--grad);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    .sub{
+      margin-top:14px;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.72;
+      font-weight:650;
+    }
+
+    .ctaRow{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+
+    .btn{
+      border-radius:16px;
+      padding: 13px 16px;
+      font-weight:950;
+      font-size: 12px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      cursor:pointer;
+      border:1px solid var(--line);
+      background: var(--panel2);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease), background 250ms var(--ease);
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); }
+    .btn:active{ transform: translateY(0px) scale(.99); box-shadow: none; }
+
+    .btn.primary{
+      border-color: transparent;
+      color: #05070d;
+      background: var(--grad);
+      box-shadow: var(--glow);
+    }
+    .btn.primary:hover{
+      box-shadow: 0 22px 90px rgba(122,92,255,.20), 0 22px 90px rgba(0,240,255,.12);
+    }
+
+    .arrow{
+      width:10px;height:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+      transform: rotate(-45deg);
+      margin-top:1px;
+      transition: transform 250ms var(--ease);
+    }
+    .btn:hover .arrow{ transform: rotate(-45deg) translateX(2px); }
+
+    /* Right card */
+    .studioCard{
+      border-radius: var(--r);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      padding: 18px;
+    }
+    .studioCard::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(122,92,255,.22), transparent 55%),
+        radial-gradient(circle at 80% 25%, rgba(0,240,255,.16), transparent 55%);
+      filter: blur(24px);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .studioInner{ position:relative; z-index:1; }
+
+    .miniHdr{display:flex; align-items:flex-start; justify-content:space-between; gap:10px;}
+    .miniHdr .label{
+      font-size:11px;
+      color: var(--muted);
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+    .miniHdr .h{
+      margin-top:6px;
+      font-size:18px;
+      font-weight:950;
+      letter-spacing:-.03em;
+    }
+    .pill{
+      font-size:11px;
+      font-weight:950;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      white-space:nowrap;
+    }
+    [data-theme="light"] .pill{ background: rgba(11,15,25,.04); }
+
+    .stack{ margin-top:14px; display:grid; gap:10px; }
+    .tile{
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      padding: 12px 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease);
+    }
+    [data-theme="light"] .tile{ background: rgba(255,255,255,.65); }
+    .tile:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); }
+    .tile strong{ font-size:13px; font-weight:950; letter-spacing:-.02em; }
+    .tile span{ font-size:12px; color: var(--muted); font-weight:650; }
+
+    .badge{
+      width:40px; height:40px; border-radius: 14px;
+      background: var(--grad);
+      opacity:.18;
+      border: 1px solid rgba(255,255,255,.10);
+    }
+.tileIcon{
+  width:42px;
+  height:42px;
+  padding:10px;
+  border-radius:14px;
+  background: var(--grad);
+  color:#05070d;
+  box-shadow:
+    0 10px 30px rgba(122,92,255,.35),
+    0 10px 30px rgba(0,240,255,.25);
+  flex:0 0 auto;
+}
+
+    .helper{
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-weight: 650;
+    }
+
+    /* Marquee */
+    .marquee{
+      position:relative;
+      z-index:1;
+      overflow:hidden;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(12px);
+    }
+    [data-theme="light"] .marquee{ background: rgba(255,255,255,.65); }
+    .marqueeTrack{
+      display:flex;
+      gap: 18px;
+      padding: 14px 0;
+      white-space: nowrap;
+      will-change: transform;
+      animation: marquee 20s linear infinite;
+    }
+    .marquee:hover .marqueeTrack{ animation-play-state: paused; }
+    @keyframes marquee{
+      from{ transform: translateX(0); }
+      to{ transform: translateX(-50%); }
+    }
+    .marqueeItem{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 950;
+      letter-spacing:-.02em;
+      color: color-mix(in srgb, var(--ink) 85%, transparent);
+      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel2);
+      box-shadow: var(--shadow2);
+    }
+    .spark{
+      width:10px;height:10px;border-radius:50%;
+      background: var(--grad);
+      box-shadow: 0 12px 34px rgba(0,240,255,.18);
+    }
+
+    /* Sections */
+    .section{
+      position:relative;
+      z-index:1;
+      padding: 54px 0; /* fuller, less empty */
+      border-top:1px solid var(--line);
+    }
+    .sectionHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    .section h2{
+      font-size:30px;
+      letter-spacing:-.03em;
+      margin:0;
+      font-weight: 950;
+    }
+    .sectionSub{
+      max-width: 800px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 10px 0 0;
+      font-weight:650;
+    }
+
+    .grid3{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .grid3{ grid-template-columns: 1fr; } }
+
+    .card{
+      border-radius: var(--r);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease);
+      position:relative;
+      overflow:hidden;
+    }
+    .card:hover{ transform: translateY(-2px); box-shadow: var(--shadow); }
+    .cardTop{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+    .card h3{ margin:0; font-size: 16px; font-weight: 950; letter-spacing:-.02em; }
+    .card p{ margin: 10px 0 0; color: var(--muted); line-height: 1.75; font-size: 13px; font-weight:650; }
+    .card ul{
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: color-mix(in srgb, var(--ink) 76%, transparent);
+      line-height: 1.9;
+      font-size: 13px;
+      font-weight: 650;
+    }
+    .cardIcon{
+      width:44px;height:44px;border-radius:16px;
+      background: var(--grad);
+      opacity:.16;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    /* Work tiles */
+    .workGrid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .workGrid{ grid-template-columns:1fr; } }
+
+/* ========= WORK CAROUSEL (infinite) ========= */
+.workRail{
+  margin-top: 18px;
+  position: relative;
+  overflow: hidden;
+  border-radius: calc(var(--r) + 6px);
+
+  /* Edge fade mask */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+}
+
+.workRail::before,
+.workRail::after{
+  content:"";
+  position:absolute;
+  top:0; bottom:0;
+  width: 90px;
+  z-index: 5;
+  pointer-events:none;
+}
+
+.workRail::before{
+  left:0;
+  background: linear-gradient(90deg, var(--bg), transparent);
+}
+.workRail::after{
+  right:0;
+  background: linear-gradient(270deg, var(--bg), transparent);
+}
+
+.workTrack{
+  display:flex;
+  gap: 14px;
+  padding: 2px;
+  width: max-content;
+  will-change: transform;
+  animation: workMarquee 28s linear infinite;
+}
+
+.workRail:hover .workTrack{
+  animation-play-state: paused;
+}
+
+@keyframes workMarquee{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-50%); }
+}
+
+/* Each card width (responsive) */
+.workTile{
+  width: 360px;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 980px){
+  .workTile{ width: 300px; }
+  .workRail::before, .workRail::after{ width: 60px; }
+}
+    
+.workTile{
+      border-radius: calc(var(--r) + 2px);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease);
+      position:relative;
+    }
+    .workTile:hover{ transform: translateY(-2px); box-shadow: var(--shadow); }
+
+    .thumb{
+      height: 170px;
+      background:
+        radial-gradient(circle at 22% 28%, rgba(122,92,255,.32), transparent 52%),
+        radial-gradient(circle at 78% 22%, rgba(0,240,255,.22), transparent 54%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    }
+    .workBody{ padding: 16px; }
+    .workMeta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight: 950;
+      color: color-mix(in srgb, var(--ink) 62%, transparent);
+    }
+    .workBody h3{ margin:10px 0 0; font-size:16px; font-weight:950; letter-spacing:-.02em; }
+    .workBody p{ margin:10px 0 0; color: var(--muted); font-size:13px; line-height:1.75; font-weight:650; }
+    .tagRow{ margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; }
+    .tag{
+      font-size:11px;
+      font-weight:950;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+    }
+    [data-theme="light"] .tag{ background: rgba(255,255,255,.65); }
+
+    /* Contact */
+    .contactGrid{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .contactGrid{ grid-template-columns: 1fr; } }
+
+    .formCard{
+      border-radius: var(--r);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease);
+    }
+    .formCard:hover{ transform: translateY(-1px); box-shadow: var(--shadow); }
+
+    label{
+      font-size:11px;
+      font-weight: 950;
+      letter-spacing:.12em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, var(--ink) 55%, transparent);
+      display:block;
+      margin-top: 12px;
+    }
+    input, select, textarea{
+      width:100%;
+      margin-top: 8px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--ink);
+      padding: 12px 12px;
+      font-size: 13px;
+      outline:none;
+      transition: border-color 250ms var(--ease), box-shadow 250ms var(--ease), background 250ms var(--ease);
+    }
+    [data-theme="light"] input,
+    [data-theme="light"] select,
+    [data-theme="light"] textarea{ background: rgba(255,255,255,.75); }
+
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(0,240,255,.45);
+      box-shadow: 0 18px 60px rgba(0,240,255,.10);
+      background: rgba(255,255,255,.08);
+    }
+    textarea{ min-height: 140px; resize: vertical; }
+
+    /* Footer */
+    .footer{
+      position:relative;
+      z-index:1;
+      border-top:1px solid var(--line);
+      padding: 22px 0;
+      color: color-mix(in srgb, var(--ink) 55%, transparent);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .footerInner{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .footer a{
+      border-bottom: 1px solid transparent;
+      transition: border-color 250ms var(--ease), opacity 250ms var(--ease);
+      opacity:.9;
+    }
+    .footer a:hover{ border-bottom-color: rgba(0,240,255,.35); opacity:1; }
+
+    /* Overlay menu (smooth: no display:none flicker) */
+    .overlay{
+      position:fixed;
+      inset:0;
+      z-index:100;
+      background: rgba(5,7,13,.72);
+      backdrop-filter: blur(18px);
+      visibility:hidden;
+      pointer-events:none;
+      opacity:0;
+      transform: translateY(14px) scale(.99);
+      transition: opacity 520ms var(--ease), transform 520ms var(--ease), visibility 0ms linear 520ms;
+      overflow:hidden;
+    }
+    [data-theme="light"] .overlay{ background: rgba(255,255,255,.82); }
+    .overlay.open{
+      visibility:visible;
+      pointer-events:auto;
+      opacity:1;
+      transform: translateY(0) scale(1);
+      transition: opacity 520ms var(--ease), transform 520ms var(--ease), visibility 0ms;
+    }
+    .overlayGlow{
+      position:absolute;
+      inset:-220px;
+      background:
+        radial-gradient(circle at 22% 18%, rgba(122,92,255,.26), transparent 52%),
+        radial-gradient(circle at 78% 22%, rgba(0,240,255,.18), transparent 52%);
+      filter: blur(70px);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .overlayWrap{
+      position:relative;
+      max-width:1200px;
+      margin:0 auto;
+      padding: 16px 18px 32px;
+      height: 100%;
+      z-index:1;
+    }
+    .overlayHeader{
+      height:70px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      border-bottom:1px solid var(--line);
+    }
+    .closeBtn{
+      font-size:11px;
+      font-weight:950;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      cursor:pointer;
+      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease), background 250ms var(--ease);
+    }
+    [data-theme="light"] .closeBtn{ background: rgba(255,255,255,.70); }
+    .closeBtn:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); }
+
+    .overlayGrid{
+      height: calc(100% - 70px);
+      display:grid;
+      grid-template-columns: 1fr 340px;
+      gap: 28px;
+      padding-top: 18px;
+    }
+    @media (max-width: 980px){ .overlayGrid{ grid-template-columns:1fr; gap:18px; } }
+
+    .menuCol, .sideInfo{
+      transform: translateY(10px);
+      opacity:0;
+      transition: transform 620ms var(--ease), opacity 620ms var(--ease);
+    }
+    .overlay.open .menuCol,
+    .overlay.open .sideInfo{
+      transform: translateY(0);
+      opacity:1;
+    }
+
+    .menuBlock{ padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .menuBlock:last-child{ border-bottom:none; }
+
+    .menuTitle{
+      margin:0;
+      font-size: 42px;
+      letter-spacing: -0.05em;
+      font-weight: 950;
+      line-height: 1.02;
+    }
+
+    .menuLinks{
+      margin-top: 10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 14px;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+    .menuLinks a{
+      padding: 6px 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 200ms var(--ease), transform 200ms var(--ease), opacity 200ms var(--ease);
+      opacity:.9;
+    }
+    .menuLinks a:hover{
+      border-bottom-color: rgba(0,240,255,.35);
+      transform: translateY(-1px);
+      opacity:1;
+    }
+
+    .sideInfo{
+      position:relative;
+      border-left:1px solid var(--line);
+      padding-left: 18px;
+    }
+    @media (max-width: 980px){
+      .sideInfo{ border-left:none; padding-left:0; border-top:1px solid var(--line); padding-top:16px; }
+    }
+    /* Neon divider glow instead of an ugly line */
+    .sideInfo::before{
+      content:"";
+      position:absolute;
+      left:-20px;
+      top:0;
+      bottom:0;
+      width:2px;
+      background: var(--grad);
+      opacity:.35;
+      filter: blur(4px);
+    }
+    @media (max-width: 980px){
+      .sideInfo::before{ display:none; }
+    }
+
+    .sideLabel{
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 950;
+      color: color-mix(in srgb, var(--ink) 55%, transparent);
+      margin: 0 0 10px;
+    }
+    .office{ margin-bottom: 14px; }
+    .office strong{
+      display:block;
+      font-size: 13px;
+      font-weight: 950;
+      margin-bottom: 6px;
+      letter-spacing: -.01em;
+    }
+    .office div{
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-weight: 650;
+    }
+
+    .socialRow{ display:flex; gap: 10px; align-items:center; margin-top: 10px; }
+    .iconBtn{
+      width:36px;height:36px;border-radius:12px;
+      border:1px solid var(--line);
+      background: var(--panel);
+      display:grid; place-items:center;
+      font-weight:900;
+      cursor:pointer;
+      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease), background 250ms var(--ease);
+    }
+    .iconBtn:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0,224,255,.18);
+      background: rgba(0,224,255,.08);
+    }
+    .iconBtn:active{ transform: scale(.96); box-shadow:none; }
+  </style>
+</head>
+
+<body class="grain">
+  <div class="bgFX" aria-hidden="true"></div>
+
+  <!-- TOP BAR -->
+  <header class="topbar" id="topbar">
+    <div class="wrap">
+      <div class="topbarInner">
+        <a class="brand" href="#home" aria-label="Arthouse Home">
+          <div class="logoMark">A</div>
+          <div class="brandTxt">
+            <div class="name">Arthouse</div>
+            <div class="tag">Branding • Web • Content Systems</div>
+          </div>
+        </a>
+
+        <div class="navRight">
+          <a class="pillBtn btnLike" href="#contact" data-ripple>
+            <span class="dotNeo"></span> Contact
+          </a>
+
+          <button class="pillBtn btnLike" id="themeToggle" type="button" data-ripple aria-label="Toggle theme">
+            <span class="dotNeo"></span> Theme
+          </button>
+
+          <button class="pillBtn btnLike" id="openMenu" type="button" data-ripple aria-haspopup="dialog" aria-controls="menuOverlay">
+            Menu
+            <span class="burger" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home">
+    <section class="hero">
+      <div class="wrap">
+        <div class="heroGrid">
+          <div>
+            <div class="kicker reveal" data-reveal>
+              <span class="dotNeo"></span> Studio-grade design. System-first execution.
+            </div>
+
+            <h1 class="title reveal delay1" data-reveal>
+              We craft <span class="gradTxt">identity</span><br/>
+              build <span class="gradTxt">web</span> experiences<br/>
+              and ship <span class="gradTxt">presence</span>.
+            </h1>
+
+            <p class="sub reveal delay2" data-reveal>
+              Arthouse turns raw ideas into a clean, high-trust online presence — sharp positioning, consistent visuals,
+              and a build that feels premium on day one.
+            </p>
+
+            <div class="ctaRow reveal delay3" data-reveal>
+              <a class="btn primary btnLike" href="#contact" data-ripple>Start a project <span class="arrow"></span></a>
+              <a class="btn btnLike" href="#work" data-ripple>See work <span class="arrow"></span></a>
+              <button class="btn btnLike" id="openMenu2" data-ripple>Explore menu <span class="arrow"></span></button>
+            </div>
+          </div>
+
+          <aside class="studioCard reveal delay2" data-reveal aria-label="Studio snapshot card">
+            <div class="studioInner">
+              <div class="miniHdr">
+                <div>
+                  <div class="label">Studio Snapshot</div>
+                  <div class="h">What you get</div>
+                </div>
+                <div class="pill">Fast + Clean</div>
+              </div>
+
+              <div class="stack">
+                <div class="tile">
+                  <div>
+                    <strong>Positioning + Messaging</strong><br/>
+                    <span>One line that makes your value obvious</span>
+                  </div>
+                <i data-lucide="target" class="tileIcon" aria-hidden="true"></i>
+                </div>
+
+                <div class="tile">
+                  <div>
+                    <strong>Identity System</strong><br/>
+                    <span>Typography, color, spacing, components</span>
+                  </div>
+                 <i data-lucide="layers" class="tileIcon" aria-hidden="true"></i>
+                </div>
+
+                <div class="tile">
+                  <div>
+                    <strong>Website + Content</strong><br/>
+                    <span>Landing, case studies, templates, assets</span>
+                  </div>
+                  <i data-lucide="layout-dashboard" class="tileIcon" aria-hidden="true"></i>
+                </div>
+              </div>
+
+              <div class="helper">
+                Attention → Trust → Conversion. But make it look effortless.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <section class="marquee">
+      <div class="marqueeTrack">
+        <div class="marqueeItem"><span class="spark"></span> Brand Systems</div>
+        <div class="marqueeItem"><span class="spark"></span> Web Experiences</div>
+        <div class="marqueeItem"><span class="spark"></span> Visual Identity</div>
+        <div class="marqueeItem"><span class="spark"></span> Content Templates</div>
+        <div class="marqueeItem"><span class="spark"></span> Pitch Deck Design</div>
+        <div class="marqueeItem"><span class="spark"></span> Conversion Copy</div>
+
+        <!-- duplicate for seamless loop -->
+        <div class="marqueeItem"><span class="spark"></span> Brand Systems</div>
+        <div class="marqueeItem"><span class="spark"></span> Web Experiences</div>
+        <div class="marqueeItem"><span class="spark"></span> Visual Identity</div>
+        <div class="marqueeItem"><span class="spark"></span> Content Templates</div>
+        <div class="marqueeItem"><span class="spark"></span> Pitch Deck Design</div>
+        <div class="marqueeItem"><span class="spark"></span> Conversion Copy</div>
+      </div>
+    </section>
+
+     <!-- WORK -->
+    <section id="work" class="section">
+      <div class="wrap">
+        <div class="sectionHead reveal" data-reveal>
+          <div>
+            <h2>Selected Work</h2>
+            <p class="sectionSub">
+              Clean, modern, high-trust outputs — built like a product. Minimal, but never empty.
+            </p>
+          </div>
+          <a class="btn btnLike" href="#contact" data-ripple>Get a quote <span class="arrow"></span></a>
+        </div>
+
+      <div class="workRail" aria-label="Selected work carousel">
+  <div class="workTrack">
+
+    <!-- Card 1 -->
+    <article class="workTile">
+      <div class="thumb"></div>
+      <div class="workBody">
+        <div class="workMeta">
+          <span>Branding</span><span>2 weeks</span>
+        </div>
+        <h3>Identity System Refresh</h3>
+        <p>A two-color neon accent system with premium spacing, typography, and component rules.</p>
+        <div class="tagRow">
+          <span class="tag">Logo</span><span class="tag">Type</span><span class="tag">Guidelines</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="workTile">
+      <div class="thumb"></div>
+      <div class="workBody">
+        <div class="workMeta">
+          <span>Web</span><span>10 days</span>
+        </div>
+        <h3>Landing Page that Converts</h3>
+        <p>A John-Wick-ish “tech noir” feel: dark glass panels, crisp hierarchy, no rainbow chaos.</p>
+        <div class="tagRow">
+          <span class="tag">Hero</span><span class="tag">Cards</span><span class="tag">CTA</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="workTile">
+      <div class="thumb"></div>
+      <div class="workBody">
+        <div class="workMeta">
+          <span>Content</span><span>Ongoing</span>
+        </div>
+        <h3>Design-led Content System</h3>
+        <p>Templates for decks, posts, and product pages — consistent style, faster publishing.</p>
+        <div class="tagRow">
+          <span class="tag">Templates</span><span class="tag">Decks</span><span class="tag">Assets</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 4 -->
+    <article class="workTile">
+      <div class="thumb"></div>
+      <div class="workBody">
+        <div class="workMeta">
+          <span>Product</span><span>3 weeks</span>
+        </div>
+        <h3>Dashboard UI Kit</h3>
+        <p>A modular component library for fast product screens — consistent, scalable, clean.</p>
+        <div class="tagRow">
+          <span class="tag">UI Kit</span><span class="tag">Tokens</span><span class="tag">Components</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 5 -->
+    <article class="workTile">
+      <div class="thumb"></div>
+      <div class="workBody">
+        <div class="workMeta">
+          <span>Brand</span><span>12 days</span>
+        </div>
+        <h3>Pitch Deck Redesign</h3>
+        <p>Sharper narrative + modern layout rhythm — built like a product, presented like a film.</p>
+        <div class="tagRow">
+          <span class="tag">Story</span><span class="tag">Slides</span><span class="tag">Motion</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 6 -->
+    <article class="workTile">
+      <div class="thumb"></div>
+      <div class="workBody">
+        <div class="workMeta">
+          <span>Web</span><span>2 weeks</span>
+        </div>
+        <h3>Studio Website V2</h3>
+        <p>Minimal but not empty — stronger density, bigger type, and a premium tech-noir glow.</p>
+        <div class="tagRow">
+          <span class="tag">Design</span><span class="tag">Build</span><span class="tag">SEO</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- DUPLICATE SET (for perfect infinite loop) -->
+    <!-- Just paste the same cards again -->
+    <article class="workTile">
+      <div class="thumb"></div>
+      <div class="workBody">
+        <div class="workMeta">
+          <span>Branding</span><span>2 weeks</span>
+        </div>
+        <h3>Identity System Refresh</h3>
+        <p>A two-color neon accent system with premium spacing, typography, and component rules.</p>
+        <div class="tagRow">
+          <span class="tag">Logo</span><span class="tag">Type</span><span class="tag">Guidelines</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="workTile">
+      <div class="thumb"></div>
+      <div class="workBody">
+        <div class="workMeta">
+          <span>Web</span><span>10 days</span>
+        </div>
+        <h3>Landing Page that Converts</h3>
+        <p>A John-Wick-ish “tech noir” feel: dark glass panels, crisp hierarchy, no rainbow chaos.</p>
+        <div class="tagRow">
+          <span class="tag">Hero</span><span class="tag">Cards</span><span class="tag">CTA</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="workTile">
+      <div class="thumb"></div>
+      <div class="workBody">
+        <div class="workMeta">
+          <span>Content</span><span>Ongoing</span>
+        </div>
+        <h3>Design-led Content System</h3>
+        <p>Templates for decks, posts, and product pages — consistent style, faster publishing.</p>
+        <div class="tagRow">
+          <span class="tag">Templates</span><span class="tag">Decks</span><span class="tag">Assets</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="workTile">
+      <div class="thumb"></div>
+      <div class="workBody">
+        <div class="workMeta">
+          <span>Product</span><span>3 weeks</span>
+        </div>
+        <h3>Dashboard UI Kit</h3>
+        <p>A modular component library for fast product screens — consistent, scalable, clean.</p>
+        <div class="tagRow">
+          <span class="tag">UI Kit</span><span class="tag">Tokens</span><span class="tag">Components</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="workTile">
+      <div class="thumb"></div>
+      <div class="workBody">
+        <div class="workMeta">
+          <span>Brand</span><span>12 days</span>
+        </div>
+        <h3>Pitch Deck Redesign</h3>
+        <p>Sharper narrative + modern layout rhythm — built like a product, presented like a film.</p>
+        <div class="tagRow">
+          <span class="tag">Story</span><span class="tag">Slides</span><span class="tag">Motion</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="workTile">
+      <div class="thumb"></div>
+      <div class="workBody">
+        <div class="workMeta">
+          <span>Web</span><span>2 weeks</span>
+        </div>
+        <h3>Studio Website V2</h3>
+        <p>Minimal but not empty — stronger density, bigger type, and a premium tech-noir glow.</p>
+        <div class="tagRow">
+          <span class="tag">Design</span><span class="tag">Build</span><span class="tag">SEO</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <div class="wrap">
+        <div class="sectionHead reveal" data-reveal>
+          <div>
+            <h2>Services</h2>
+            <p class="sectionSub">
+              Think “minimal, sharp, premium” — with two-tone neon accents for a tech-infused edge.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="card reveal delay1" data-reveal>
+            <div class="cardTop">
+              <div>
+                <h3>Brand Identity</h3>
+                <p>Logo, type scale, color tokens, layout rules — everything feels intentional.</p>
+              </div>
+              <div class="cardIcon" aria-hidden="true"></div>
+            </div>
+            <ul>
+              <li>Identity + guidelines</li>
+              <li>Typography + spacing system</li>
+              <li>Social + deck design language</li>
+            </ul>
+          </div>
+
+          <div class="card reveal delay2" data-reveal>
+            <div class="cardTop">
+              <div>
+                <h3>Web Design</h3>
+                <p>High-contrast hierarchy, glass panels, crisp components — not empty white space.</p>
+              </div>
+              <div class="cardIcon" aria-hidden="true"></div>
+            </div>
+            <ul>
+              <li>Landing pages</li>
+              <li>Portfolio / case studies</li>
+              <li>Component-based UI</li>
+            </ul>
+          </div>
+
+          <div class="card reveal delay3" data-reveal>
+            <div class="cardTop">
+              <div>
+                <h3>Content Systems</h3>
+                <p>Templates that keep quality consistent while scaling your output.</p>
+              </div>
+              <div class="cardIcon" aria-hidden="true"></div>
+            </div>
+            <ul>
+              <li>Deck templates</li>
+              <li>Social systems</li>
+              <li>Reusable layouts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="wrap">
+        <div class="sectionHead reveal" data-reveal>
+          <div>
+            <h2>FAQs</h2>
+            <p class="sectionSub">
+              Short answers, zero fluff. Like the design.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq">
+          <details class="reveal delay1" data-reveal>
+            <summary>
+              What kind of style is this?
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="faqBody">
+              Tech-noir minimal: dark glass panels, strong typography, and a controlled two-color neon gradient.
+              It feels modern without looking like a gaming RGB keyboard.
+            </div>
+          </details>
+
+          <details class="reveal delay2" data-reveal>
+            <summary>
+              Can we switch to light mode too?
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="faqBody">
+              Yep — the theme toggle flips the <code>data-theme</code> attribute and remembers it in localStorage.
+            </div>
+          </details>
+
+          <details class="reveal delay3" data-reveal>
+            <summary>
+              Can this be used as a real studio site?
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="faqBody">
+              100%. Replace placeholder text, add real case studies, and connect the form to email or a backend.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="wrap">
+        <div class="sectionHead reveal" data-reveal>
+          <div>
+            <h2>Contact</h2>
+            <p class="sectionSub">
+              Drop details. We’ll reply with a clean plan — scope, timeline, and a price that makes sense.
+            </p>
+          </div>
+        </div>
+
+        <div class="contactGrid">
+          <div class="formCard reveal delay1" data-reveal>
+            <h3 style="margin:0;font-size:16px;font-weight:950;letter-spacing:-.02em;">Start a project</h3>
+            <p style="margin:10px 0 0;color:var(--muted);line-height:1.75;font-size:13px;font-weight:650;">
+              Tell us what you’re building. Keep it short — we’ll ask smart follow-ups.
+            </p>
+
+            <form id="contactForm">
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Your name" autocomplete="name" required>
+
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@domain.com" autocomplete="email" required>
+
+              <label for="budget">Budget Range</label>
+              <select id="budget" name="budget" required>
+                <option value="" disabled selected>Select one</option>
+                <option>₹25k – ₹50k</option>
+                <option>₹50k – ₹1L</option>
+                <option>₹1L – ₹3L</option>
+                <option>₹3L+</option>
+              </select>
+
+              <label for="message">Project Details</label>
+              <textarea id="message" name="message" placeholder="What do you need? Branding, website, content systems…" required></textarea>
+
+              <div class="ctaRow" style="margin-top:14px;">
+                <button class="btn primary btnLike" type="submit" data-ripple>Send <span class="arrow"></span></button>
+                <a class="btn btnLike" href="#work" data-ripple>Back to work <span class="arrow"></span></a>
+              </div>
+
+              <div class="helper" id="formHelper" aria-live="polite"></div>
+            </form>
+          </div>
+
+          <aside class="studioCard reveal delay2" data-reveal>
+            <div class="studioInner">
+              <div class="miniHdr">
+                <div>
+                  <div class="label">Availability</div>
+                  <div class="h">Next 7–10 days</div>
+                </div>
+                <div class="pill">Remote</div>
+              </div>
+
+              <div class="stack">
+                <div class="tile">
+                  <div>
+                    <strong>Response time</strong><br/>
+                    <span>Usually within 24–48 hours</span>
+                  </div>
+                  <div class="badge" aria-hidden="true"></div>
+                </div>
+                <div class="tile">
+                  <div>
+                    <strong>Deliverables</strong><br/>
+                    <span>Figma + assets + guidelines</span>
+                  </div>
+                  <div class="badge" aria-hidden="true"></div>
+                </div>
+                <div class="tile">
+                  <div>
+                    <strong>Build options</strong><br/>
+                    <span>Static HTML / Webflow / Next.js</span>
+                  </div>
+                  <div class="badge" aria-hidden="true"></div>
+                </div>
+              </div>
+
+              <div class="helper">
+                Pro tip: the fastest projects start with clear goals + 2–3 references you love.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footerInner">
+        <div>© <span id="year"></span> Arthouse. Built with taste & two-tone neon.</div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="#services">Services</a>
+          <a href="#work">Work</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MENU OVERLAY -->
+  <div class="overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="overlayGlow" aria-hidden="true"></div>
+
+    <div class="overlayWrap">
+      <div class="overlayHeader">
+        <a class="brand" href="#home" aria-label="Arthouse Home">
+          <div class="logoMark">A</div>
+          <div class="brandTxt">
+            <div class="name">Arthouse</div>
+            <div class="tag">Design Studio</div>
+          </div>
+        </a>
+
+        <button class="closeBtn btnLike" id="closeMenu" type="button" data-ripple>Close</button>
+      </div>
+
+      <div class="overlayGrid">
+        <div class="menuCol">
+          <div class="menuBlock">
+            <h3 class="menuTitle"><span class="gradTxt">Work</span></h3>
+            <div class="menuLinks">
+              <a href="#work" data-close>Case Studies</a>
+              <a href="#work" data-close>Clients</a>
+              <a href="#work" data-close>Portfolio</a>
+            </div>
+          </div>
+
+          <div class="menuBlock">
+            <h3 class="menuTitle"><span class="gradTxt">Agency</span></h3>
+            <div class="menuLinks">
+              <a href="#services" data-close>Services</a>
+              <a href="#faq" data-close>Process</a>
+              <a href="#contact" data-close>Packages</a>
+            </div>
+          </div>
+
+          <div class="menuBlock">
+            <h3 class="menuTitle"><span class="gradTxt">Contact</span></h3>
+            <div class="menuLinks">
+              <a href="#contact" data-close>Hire Us</a>
+              <a href="#contact" data-close>Email</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="sideInfo">
+          <p class="sideLabel">Our Offices</p>
+
+          <div class="office">
+            <strong>Bengaluru</strong>
+            <div>Studio Address Line</div>
+            <div>Karnataka, India</div>
+          </div>
+
+          <div class="office">
+            <strong>Delhi</strong>
+            <div>Studio Address Line</div>
+            <div>India</div>
+          </div>
+
+          <p class="sideLabel">Follow</p>
+          <div class="socialRow">
+            <a class="iconBtn btnLike" href="#" data-ripple aria-label="Instagram">IG</a>
+            <a class="iconBtn btnLike" href="#" data-ripple aria-label="LinkedIn">IN</a>
+            <a class="iconBtn btnLike" href="#" data-ripple aria-label="Behance">Be</a>
+            <a class="iconBtn btnLike" href="#" data-ripple aria-label="X">X</a>
+          </div>
+
+          <div class="helper" style="margin-top:14px;">
+            Keep it clean. Keep it bold. Keep it shipping.
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    // ===== helpers =====
+    const $ = (q, el=document) => el.querySelector(q);
+    const $$ = (q, el=document) => Array.from(el.querySelectorAll(q));
+
+    // Year
+    $("#year").textContent = new Date().getFullYear();
+
+    // Topbar shadow on scroll
+    const topbar = $("#topbar");
+    const onScroll = () => {
+      if (window.scrollY > 6) topbar.classList.add("scrolled");
+      else topbar.classList.remove("scrolled");
+    };
+    window.addEventListener("scroll", onScroll, { passive:true });
+    onScroll();
+
+    // Ripple
+    function addRipple(e){
+      const el = e.currentTarget;
+      const r = el.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      el.style.setProperty("--rx", x + "px");
+      el.style.setProperty("--ry", y + "px");
+      el.classList.remove("ripple");
+      void el.offsetWidth;
+      el.classList.add("ripple");
+      setTimeout(() => el.classList.remove("ripple"), 560);
+    }
+    $$("[data-ripple]").forEach(el => el.addEventListener("pointerdown", addRipple));
+
+    // Reveal on scroll
+    const revealEls = $$("[data-reveal]");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if(en.isIntersecting){
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+
+    // Theme toggle (persist)
+    const root = document.documentElement;
+    const themeToggle = $("#themeToggle");
+    const savedTheme = localStorage.getItem("arthouse_theme");
+    if (savedTheme === "light" || savedTheme === "dark") root.setAttribute("data-theme", savedTheme);
+
+    function toggleTheme(){
+      const now = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", now);
+      localStorage.setItem("arthouse_theme", now);
+    }
+    themeToggle.addEventListener("click", toggleTheme);
+
+    // Overlay menu
+    const overlay = $("#menuOverlay");
+    const openMenu = $("#openMenu");
+    const openMenu2 = $("#openMenu2");
+    const closeMenu = $("#closeMenu");
+
+    function openOverlay(){
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+      closeMenu.focus();
+    }
+    function closeOverlay(){
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+      openMenu.focus();
+    }
+
+    openMenu.addEventListener("click", openOverlay);
+    if (openMenu2) openMenu2.addEventListener("click", openOverlay);
+    closeMenu.addEventListener("click", closeOverlay);
+
+    // Close when clicking outside panel
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeOverlay();
+    });
+
+    // Close via escape
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && overlay.classList.contains("open")) closeOverlay();
+    });
+
+    // Close when clicking menu links
+    $$("[data-close]").forEach(a => a.addEventListener("click", closeOverlay));
+
+    // Fake form submit
+    const form = $("#contactForm");
+    const helper = $("#formHelper");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      helper.textContent = "Sent. We’ll reply within 24–48 hours. (Hook this to your backend when ready.)";
+      form.reset();
+    });
+  </script>
+<script>
+  lucide.createIcons();
+</script>
+<i data-lucide="mail"></i>
+<i data-lucide="moon"></i>
+<i data-lucide="menu"></i>
+</body>
+</html>
