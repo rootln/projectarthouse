@@ -1,1526 +1,818 @@
-<!doctype html>
-<html lang="en" data-theme="dark">
+<!DOCTYPE html>
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARTHOUSE | Creative Intelligence Studio</title>
-  <meta name="description" content="Arthouse — premium identity, web experiences, and content systems. Built like a product. Designed like a film." />
-  <meta name="theme-color" content="#05070d" />
+  <meta name="description" content="ARTHOUSE — premium identity, cinematic web, and AI-ready content systems. Built like a product. Designed like a film." />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- JS marker for progressive reveal -->
+  <script>document.documentElement.classList.add('js');</script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Keep Inter (fast + clean). If you later want, we can swap to Plus Jakarta Sans for even closer match -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 
-  <!-- Icons -->
-<script>document.documentElement.classList.add('js');</script>
-  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#135bec",
+            "primaryGlow": "rgba(19, 91, 236, 0.45)",
+
+            "bgLight": "#f6f6f8",
+            "bgDark": "#0a0a0a",
+
+            "surfaceLight": "rgba(255,255,255,0.72)",
+            "surfaceDark": "#111722",
+
+            "borderLight": "rgba(10,10,10,0.12)",
+            "borderDark": "#232f48",
+
+            "retroPink": "#ff4fd8",
+            "retroLime": "#9dff57",
+            "retroAmber": "#ffb020"
+          },
+          fontFamily: {
+            display: ["Space Grotesk", "sans-serif"],
+            sans: ["Space Grotesk", "sans-serif"]
+          },
+          backgroundImage: {
+            "gridDark":
+              "linear-gradient(to right, rgba(35,47,72,0.65) 1px, transparent 1px), linear-gradient(to bottom, rgba(35,47,72,0.65) 1px, transparent 1px)",
+            "gridLight":
+              "linear-gradient(to right, rgba(10,10,10,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(10,10,10,0.12) 1px, transparent 1px)"
+          },
+          boxShadow: {
+            glow: "0 0 24px rgba(19,91,236,0.35)",
+            glowSoft: "0 0 18px rgba(19,91,236,0.22)"
+          }
+        }
+      }
+    }
+  </script>
 
   <style>
-    :root{
-      --ease: cubic-bezier(.2,.8,.2,1);
-      --ease2: cubic-bezier(.16,1,.3,1);
-      --r: 22px;
-
-      /* Arthouse core palette (matches your logo vibe) */
-      --ink:#0f1218;
-      --muted: rgba(15,18,24,.70);
-      --bg:#f6f3ed;           /* warm editorial off-white */
-      --panel: rgba(255,255,255,.78);
-      --panel2: rgba(255,255,255,.62);
-      --line: rgba(15,18,24,.10);
-
-      /* Accent (restrained, premium) */
-      --acc1:#8C96BE;         /* logo-ish indigo */
-      --acc2:#2E3A60;         /* deep indigo */
-      --acc3:#F1ECE2;         /* ivory */
-      --grad: linear-gradient(135deg, var(--acc1), var(--acc2));
-
-      --shadow: 0 18px 70px rgba(0,0,0,.12);
-      --shadow2: 0 12px 40px rgba(0,0,0,.10);
-
-      /* Layout */
-      --max: 1200px;
-      --pad: 18px;
-
-      /* Motion helpers */
-      --blurGlass: blur(16px);
+    :root { color-scheme: dark; }
+    html, body { height: 100%; }
+    body {
+      font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      overflow-x: hidden;
     }
 
-    /* Dark theme */
-    [data-theme="dark"]{
-      --bg:#05070d;
-      --panel: rgba(12,17,27,.72);
-      --panel2: rgba(12,17,27,.56);
-      --ink:#F4F1EA;         /* cream */
-      --muted: rgba(244,241,234,.62);
-      --line: rgba(244,241,234,.10);
-
-      --shadow: 0 26px 90px rgba(0,0,0,.62);
-      --shadow2: 0 16px 54px rgba(0,0,0,.46);
+    /* Subtle scanline */
+    .scanline {
+      width: 100%;
+      height: 110px;
+      position: absolute;
+      left: 0;
+      bottom: 100%;
+      pointer-events: none;
+      opacity: 0.12;
+      background: linear-gradient(0deg,
+        rgba(0,0,0,0) 0%,
+        rgba(19, 91, 236, 0.06) 50%,
+        rgba(0,0,0,0) 100%);
+      animation: scanline 10s linear infinite;
+    }
+    @keyframes scanline {
+      0% { bottom: 100%; }
+      100% { bottom: -110px; }
     }
 
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      overflow-x:hidden;
-      transition: background 420ms var(--ease), color 420ms var(--ease);
-    }
-    a{ color:inherit; text-decoration:none; }
-    img{ max-width:100%; display:block; }
-
-    button, input, select, textarea{
-      font-family: inherit;
-      color: inherit;
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
-    }
-
-    /* Subtle grain (premium) */
+    /* Film grain */
     .grain::before{
       content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.10'/%3E%3C/svg%3E");
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.10'/%3E%3C/svg%3E");
       mix-blend-mode: overlay;
-      opacity:.14;
-      z-index:2;
+      opacity: .18;
+      z-index: 50;
     }
 
-    /* Ambient “museum tech” fog */
-    .bgFX{
-      position:fixed;
-      inset:-220px;
-      z-index:0;
-      pointer-events:none;
-      background:
-        radial-gradient(circle at 22% 18%, rgba(140,150,190,.22), transparent 52%),
-        radial-gradient(circle at 78% 26%, rgba(46,58,96,.16), transparent 55%),
-        radial-gradient(circle at 55% 78%, rgba(140,150,190,.10), transparent 56%);
-      filter: blur(72px);
-      opacity:.95;
-      transform: translateZ(0);
+    /* Reveal animation (fallback visible if JS fails) */
+    .reveal { opacity: 1; transform: none; filter:none; }
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      filter: blur(2px);
+      transition: opacity 900ms cubic-bezier(.16,1,.3,1),
+                  transform 900ms cubic-bezier(.16,1,.3,1),
+                  filter 900ms cubic-bezier(.16,1,.3,1);
+      will-change: opacity, transform, filter;
     }
-    [data-theme="light"] .bgFX{
-      opacity:.75;
-      filter: blur(84px);
+    .js .reveal.in { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+    /* Smooth theme transitions */
+    .theme-anim * {
+      transition-property: color, background-color, border-color, box-shadow, filter, opacity, transform;
+      transition-duration: 450ms;
+      transition-timing-function: cubic-bezier(.16,1,.3,1);
     }
 
-    /* Container */
-    .wrap{
-      max-width: var(--max);
-      margin:0 auto;
-      padding:0 var(--pad);
+    /* Better icon alignment */
+    .material-symbols-outlined { line-height: 1; }
+
+    /* “Retro edge” */
+    .retro-edge {
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06) inset,
+        0 0 26px rgba(19,91,236,0.12);
+    }
+    .retro-edge:hover{
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.08) inset,
+        0 0 30px rgba(19,91,236,0.28);
+      transform: translateY(-1px);
     }
 
-    /* Progress bar (subtle, premium) */
-    .progress{
-      position:fixed;
-      top:0; left:0; right:0;
-      height:2px;
-      z-index:90;
-      background: transparent;
-      pointer-events:none;
-    }
-    .progress > span{
-      display:block;
-      height:100%;
-      width:0%;
-      background: var(--grad);
-      opacity:.75;
-      transform-origin:left;
-    }
-
-    /* Ripple */
-    .btnLike{ position:relative; overflow:hidden; user-select:none; -webkit-tap-highlight-color:transparent; }
-    .btnLike::after{
-      content:"";
-      position:absolute;
-      width:10px;height:10px;border-radius:999px;
-      background: color-mix(in srgb, var(--ink) 14%, transparent);
-      transform: translate(-50%,-50%) scale(0);
-      opacity:0;
-      pointer-events:none;
-    }
-    .btnLike.ripple::after{
-      left: var(--rx);
-      top: var(--ry);
-      opacity:1;
-      animation: ripple 520ms var(--ease);
-    }
-    @keyframes ripple{
-      0%{ transform: translate(-50%,-50%) scale(0); opacity:.40 }
-      70%{ transform: translate(-50%,-50%) scale(26); opacity:.16 }
-      100%{ transform: translate(-50%,-50%) scale(32); opacity:0 }
-    }
-
-    /* Reveal */
-    /* Reveal (safe fallback if JS fails) */
-.reveal{
-  opacity:1;
-  transform:none;
-  filter:none;
-}
-
-/* Only hide + animate when JS is running */
-.js .reveal{
-  opacity:0;
-  transform: translateY(14px);
-  filter: blur(3px);
-  transition: opacity 820ms var(--ease2), transform 820ms var(--ease2), filter 820ms var(--ease2);
-  will-change: transform, opacity;
-}
-.js .reveal.in{ opacity:1; transform: translateY(0); filter: blur(0); }
-.js .reveal.delay1{ transition-delay: 90ms }
-.js .reveal.delay2{ transition-delay: 180ms }
-.js .reveal.delay3{ transition-delay: 270ms }
-.js .reveal.delay4{ transition-delay: 360ms }
-
-    /* Topbar */
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:60;
-      height:74px;
-      border-bottom:1px solid var(--line);
-      background: color-mix(in srgb, var(--bg) 65%, transparent);
-      backdrop-filter: var(--blurGlass);
-      transition: box-shadow 350ms var(--ease), background 350ms var(--ease);
-    }
-    .topbar.scrolled{ box-shadow: var(--shadow2); }
-
-    .topbarInner{
-      height:74px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-
-    /* Brand */
-    .brand{ display:flex; align-items:center; gap:12px; min-width: 180px; }
-    .brandMark{
-      width:44px;height:44px;
-      border-radius:14px;
-      display:grid; place-items:center;
-      background: transparent;
-      border: 1px solid var(--line);
-      overflow:hidden;
-    }
-    .brandMark img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      padding:6px;
-      transform: translateZ(0);
-    }
-
-    .brandTxt .name{
-      font-weight: 900;
-      letter-spacing: .16em;      /* matches your ARTHOUSE tracking vibe */
-      text-transform: uppercase;
-      line-height:1.1;
-      font-size: 13px;
-    }
-    .brandTxt .tag{
-      font-size: 11px;
-      color: var(--muted);
-      margin-top:4px;
-      font-weight: 650;
-    }
-
-    /* Topbar actions */
-    .navRight{ display:flex; align-items:center; gap:10px; }
-
-    .pillBtn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: var(--panel2);
-      cursor:pointer;
-      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease), background 250ms var(--ease);
-      font-size:11px;
-      font-weight:900;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      white-space:nowrap;
-    }
-    .pillBtn:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); }
-    .pillBtn:active{ transform: translateY(0) scale(.99); box-shadow:none; }
-
-
-.dotCore{
-  width:10px;height:10px;border-radius:50%;
-  background: var(--grad);
-  opacity:.9;
-  box-shadow: 0 14px 40px rgba(140,150,190,.22);
-  flex:0 0 auto;
-}
-    .dotCore::after{
-      content:"";
-      width:100%; height:100%;
-      border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 60%);
-      opacity:.25;
-      display:block;
-    }
-
-    .iconBtn{
-      width:42px; height:42px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: var(--panel2);
-      display:grid; place-items:center;
-      cursor:pointer;
-      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease), background 250ms var(--ease);
-    }
-    .iconBtn:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); }
-    .iconBtn:active{ transform: translateY(0) scale(.99); box-shadow:none; }
-
-    .navLinks{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      padding: 8px 12px;
-      border-radius: 16px;
-      border:1px solid var(--line);
-      background: var(--panel2);
-      backdrop-filter: var(--blurGlass);
-    }
-    .navLinks a{
-      font-size:11px;
-      font-weight:900;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      opacity:.86;
-      transition: opacity 250ms var(--ease), transform 250ms var(--ease);
-    }
-    .navLinks a:hover{ opacity:1; transform: translateY(-1px); }
-
-    .mobileOnly{ display:none; }
-    @media (max-width: 860px){
-      .navLinks{ display:none; }
-      .brand{ min-width:auto; }
-      .mobileOnly{ display:grid; }
-    }
-
-    /* Hero */
-    .hero{
-      position:relative;
-      z-index:1;
-      padding: 70px 0 40px;
-    }
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 22px;
-      align-items:stretch;
-    }
-    @media (max-width: 980px){
-      .heroGrid{ grid-template-columns: 1fr; }
-    }
-
-    .heroCard{
-      border-radius: calc(var(--r) + 6px);
-      border: 1px solid var(--line);
-      background: var(--panel);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-      backdrop-filter: var(--blurGlass);
-    }
-    .heroCard::before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background:
-        radial-gradient(circle at 22% 20%, rgba(140,150,190,.25), transparent 46%),
-        radial-gradient(circle at 75% 35%, rgba(46,58,96,.22), transparent 56%),
-        linear-gradient(180deg, transparent, rgba(0,0,0,.06));
-      opacity:.8;
-      pointer-events:none;
-    }
-    [data-theme="light"] .heroCard::before{
-      opacity:.55;
-    }
-
-    .heroInner{
-      position:relative;
-      padding: 26px;
-      min-height: 360px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap: 18px;
-    }
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border:1px solid var(--line);
-      background: var(--panel2);
-      width: fit-content;
-      font-size:11px;
-      font-weight:900;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color: var(--muted);
-    }
-    .kicker .spark{
-      width:10px; height:10px;
-      border-radius:4px;
-      background: var(--grad);
-      transform: rotate(45deg);
-      box-shadow: 0 18px 60px rgba(140,150,190,.25);
-    }
-
-    .heroTitle{
-      font-size: 54px;
-      line-height: 1.02;
-      letter-spacing: -0.02em;
-      margin: 12px 0 0;
-      font-weight: 900;
-    }
-    @media (max-width: 520px){
-      .heroTitle{ font-size: 42px; }
-    }
-    .heroTitle .accent{
-      background: var(--grad);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color: transparent;
-    }
-    .heroDesc{
-      max-width: 58ch;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.65;
-      margin: 14px 0 0;
-      font-weight: 600;
-    }
-
-    .heroActions{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .primaryBtn{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      border:1px solid var(--line);
-      background: var(--ink);
-      color: var(--bg);
-      cursor:pointer;
-      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease), filter 250ms var(--ease);
-      font-size:11px;
-      font-weight: 950;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
-    [data-theme="dark"] .primaryBtn{ background: #f4f1ea; color:#05070d; }
-    .primaryBtn:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); filter: saturate(1.05); }
-    .primaryBtn:active{ transform: translateY(0) scale(.99); box-shadow:none; }
-
-    .ghostBtn{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      border:1px solid var(--line);
-      background: var(--panel2);
-      cursor:pointer;
-      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease);
-      font-size:11px;
-      font-weight: 950;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
-    .ghostBtn:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); }
-    .ghostBtn:active{ transform: translateY(0) scale(.99); box-shadow:none; }
-
-    /* Side card: “The Grid” */
-    .sideCard{
-      border-radius: calc(var(--r) + 6px);
-      border:1px solid var(--line);
-      background: var(--panel);
-      box-shadow: var(--shadow2);
-      backdrop-filter: var(--blurGlass);
-      overflow:hidden;
-      position:relative;
-    }
-    .sideCardInner{
-      padding: 22px;
-      display:flex;
-      flex-direction:column;
-      gap: 14px;
-      min-height: 360px;
-      justify-content:space-between;
-    }
-
-    .miniTitle{
-      font-size: 12px;
-      letter-spacing: .16em;
-      text-transform:uppercase;
-      font-weight: 950;
-      color: var(--muted);
-    }
-    .metricGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 8px;
-    }
-    .metric{
-      border-radius: 16px;
-      border:1px solid var(--line);
-      background: var(--panel2);
-      padding: 14px;
-    }
-    .metric .big{
-      font-size: 22px;
-      font-weight: 950;
-      letter-spacing: -0.02em;
-      margin-bottom: 6px;
-    }
-    .metric .small{
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 650;
-      line-height:1.4;
-    }
-
-    .sideNote{
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-      font-weight: 650;
-    }
-
-    /* Sections */
-    section{
-      position:relative;
-      z-index:1;
-      padding: 44px 0;
-    }
-    .sectionHead{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-    .sectionHead h2{
-      margin:0;
-      font-size: 22px;
-      letter-spacing: -0.01em;
-      font-weight: 950;
-    }
-    .sectionHead p{
-      margin:0;
-      color: var(--muted);
-      font-weight: 650;
-      max-width: 60ch;
-      line-height: 1.6;
-      font-size: 13px;
-    }
-
-    /* Infinite Rail */
-    .rail{
-      position:relative;
-      border-radius: calc(var(--r) + 10px);
-      border:1px solid var(--line);
-      background: var(--panel);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-    }
-    .rail::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background:
-        linear-gradient(90deg, var(--bg), transparent 12%, transparent 88%, var(--bg));
-      opacity: .95;
-      z-index:2;
-    }
-
-    .railTrack{
-      display:flex;
-      gap: 12px;
-      padding: 16px;
-      width:max-content;
-      animation: marquee 28s linear infinite;
-      will-change: transform;
-    }
-    .rail:hover .railTrack{ animation-play-state: paused; }
-    @keyframes marquee{
-      0%{ transform: translateX(0); }
-      100%{ transform: translateX(-50%); }
-    }
-
-    .tile{
-      min-width: 280px;
-      border-radius: 18px;
-      border:1px solid var(--line);
-      background: var(--panel2);
-      padding: 16px;
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-      position:relative;
-      overflow:hidden;
-    }
-    .tile::after{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(140,150,190,.18), transparent 48%),
-        radial-gradient(circle at 78% 35%, rgba(46,58,96,.14), transparent 56%);
-      opacity:.7;
-      pointer-events:none;
-    }
-    .tile .top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      position:relative;
-      z-index:1;
-    }
-    .tile .label{
-      font-size: 11px;
-      font-weight: 950;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color: var(--muted);
-    }
-    .tile .title{
-      font-size: 16px;
-      font-weight: 950;
-      letter-spacing: -0.01em;
-      margin-top:2px;
-      position:relative;
-      z-index:1;
-    }
-    .tile .desc{
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 650;
-      line-height:1.6;
-      position:relative;
-      z-index:1;
-    }
-
-    /* Features grid */
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    @media (max-width: 980px){
-      .grid3{ grid-template-columns: 1fr; }
-    }
-    .card{
-      border-radius: calc(var(--r) + 6px);
-      border:1px solid var(--line);
-      background: var(--panel);
-      box-shadow: var(--shadow2);
-      padding: 18px;
-      position:relative;
-      overflow:hidden;
-      backdrop-filter: var(--blurGlass);
-    }
-    .card .hdr{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      margin-bottom: 12px;
-    }
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 9px 10px;
-      border-radius: 999px;
-      border:1px solid var(--line);
-      background: var(--panel2);
-      font-size: 11px;
-      font-weight: 950;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color: var(--muted);
-      width: fit-content;
-    }
-    .chip .miniDot{ width:8px; height:8px; border-radius:50%; background: var(--grad); opacity:.9; }
-    .card h3{
-      margin: 6px 0 8px;
-      font-size: 18px;
-      font-weight: 950;
-      letter-spacing: -0.01em;
-    }
-    .card p{
-      margin:0;
-      color: var(--muted);
-      font-weight: 650;
-      line-height: 1.65;
-      font-size: 13px;
-    }
-
-    /* Marquee line */
-    .marqueeLine{
-      margin-top: 14px;
-      border-radius: 999px;
-      border:1px solid var(--line);
-      background: var(--panel2);
-      overflow:hidden;
-      position:relative;
-    }
-    .marqueeLine .mTrack{
-      display:flex;
-      gap: 18px;
-      padding: 12px 14px;
-      width:max-content;
-      animation: marquee2 22s linear infinite;
-    }
-    .marqueeLine:hover .mTrack{ animation-play-state: paused; }
-    @keyframes marquee2{
-      0%{ transform: translateX(0); }
-      100%{ transform: translateX(-50%); }
-    }
-    .tagPill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border:1px solid var(--line);
-      background: color-mix(in srgb, var(--bg) 65%, transparent);
-      font-size: 11px;
-      font-weight: 950;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color: var(--muted);
-      white-space:nowrap;
-    }
-    .tagPill i{ width:16px; height:16px; }
-
-    /* Footer */
-    footer{
-      padding: 44px 0 60px;
-      border-top:1px solid var(--line);
-      position:relative;
-      z-index:1;
-    }
-    .footGrid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 16px;
-      align-items:start;
-    }
-    @media (max-width: 980px){
-      .footGrid{ grid-template-columns: 1fr; }
-    }
-    .footCard{
-      border-radius: calc(var(--r) + 6px);
-      border:1px solid var(--line);
-      background: var(--panel);
-      box-shadow: var(--shadow2);
-      padding: 18px;
-      backdrop-filter: var(--blurGlass);
-    }
-    .footCard .fine{
-      margin-top:10px;
-      color: var(--muted);
-      font-weight: 650;
-      line-height: 1.6;
-      font-size: 13px;
-    }
-    .footLinks{
-      display:flex;
-      gap: 12px;
-      flex-wrap:wrap;
-      margin-top: 12px;
-    }
-    .footLinks a{
-      border:1px solid var(--line);
-      background: var(--panel2);
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 950;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color: var(--muted);
-      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease);
-    }
-    .footLinks a:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); color: var(--ink); }
-
-    /* Simple modal */
-    .modal{
-      position:fixed;
-      inset:0;
-      display:none;
-      place-items:center;
-      z-index:120;
-      background: rgba(0,0,0,.55);
-      padding: 18px;
-    }
-    .modal.open{ display:grid; }
-    .modalPanel{
-      width:min(760px, 100%);
-      border-radius: calc(var(--r) + 10px);
-      border:1px solid var(--line);
-      background: var(--panel);
-      box-shadow: var(--shadow);
-      backdrop-filter: var(--blurGlass);
-      overflow:hidden;
-    }
-    .modalTop{
-      padding: 16px 16px 12px;
-      border-bottom:1px solid var(--line);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-    }
-    .modalTop .ttl{
-      font-size: 12px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      font-weight: 950;
-      color: var(--muted);
-    }
-    .modalBody{
-      padding: 16px;
-      color: var(--muted);
-      font-weight: 650;
-      line-height: 1.7;
-      font-size: 13px;
-    }
-    .closeX{
-      width:42px;height:42px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: var(--panel2);
-      display:grid; place-items:center;
-      cursor:pointer;
-      transition: transform 250ms var(--ease), box-shadow 250ms var(--ease);
-    }
-    .closeX:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); }
-
+    a, button { -webkit-tap-highlight-color: transparent; }
   </style>
 </head>
 
-<body class="grain">
-  <div class="bgFX"></div>
+<body class="grain theme-anim bg-bgLight text-black dark:bg-bgDark dark:text-white min-h-screen flex flex-col">
 
-  <div class="progress"><span id="bar"></span></div>
-
-  <!-- Topbar -->
-  <header class="topbar" id="topbar">
-    <div class="wrap topbarInner">
-      <a class="brand btnLike" href="#top" aria-label="Arthouse home">
-        <div class="brandMark">
-          <img id="brandLogo"
-               alt="Arthouse logo"
-               src="https://raw.githubusercontent.com/rootln/projectarthouse/main/dark%20logo.png">
+  <!-- Sticky Navigation -->
+  <nav class="sticky top-0 z-40 w-full border-b border-borderLight dark:border-white/10 bg-bgLight/70 dark:bg-bgDark/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <!-- Brand -->
+      <a href="#top" class="flex items-center gap-3 group">
+        <div class="relative w-11 h-11 rounded-sm overflow-hidden border border-borderLight dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur">
+          <img id="brandLogo" class="w-full h-full object-contain p-2" alt="ARTHOUSE logo"
+               src="https://raw.githubusercontent.com/rootln/projectarthouse/main/dark%20logo.png" />
         </div>
-        <div class="brandTxt">
-          <div class="name">ARTHOUSE</div>
-          <div class="tag">Creative Intelligence Studio</div>
+        <div class="leading-tight">
+          <div class="text-base font-bold tracking-[0.22em]">ARTHOUSE</div>
+          <div class="text-[11px] font-medium tracking-wide text-black/60 dark:text-white/50">
+            Creative Intelligence Studio
+          </div>
         </div>
       </a>
 
-      <nav class="navLinks" aria-label="Primary">
-        <a href="#work">Work</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#systems">Systems</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <!-- Links -->
+      <div class="hidden md:flex items-center gap-10">
+        <a class="text-sm font-semibold text-black/60 dark:text-gray-300 hover:text-primary uppercase tracking-wider" href="#work">Work</a>
+        <a class="text-sm font-semibold text-black/60 dark:text-gray-300 hover:text-primary uppercase tracking-wider" href="#what">What We Do</a>
+        <a class="text-sm font-semibold text-black/60 dark:text-gray-300 hover:text-primary uppercase tracking-wider" href="#news">News</a>
+        <a class="text-sm font-semibold text-black/60 dark:text-gray-300 hover:text-primary uppercase tracking-wider" href="#join">Join Us</a>
+        <a class="text-sm font-semibold text-black/60 dark:text-gray-300 hover:text-primary uppercase tracking-wider" href="#contact">Contact</a>
+      </div>
 
-      <div class="navRight">
-        <button class="iconBtn btnLike" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-          <i data-lucide="sun"></i>
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <button id="themeToggle"
+          class="hidden md:inline-flex items-center justify-center h-10 w-10 border border-borderLight dark:border-white/15
+                 bg-white/70 dark:bg-white/5 text-black/70 dark:text-white/70 hover:text-primary
+                 backdrop-blur-md rounded-sm retro-edge">
+          <span id="themeIcon" class="material-symbols-outlined text-[20px]">light_mode</span>
         </button>
 
-        <button class="pillBtn btnLike" id="openDeck">
-          <span class="dotCore"></span>
-          Request a deck
-        </button>
+        <a href="#contact"
+          class="hidden md:inline-flex items-center justify-center h-10 px-6 border border-primary/40 text-primary text-xs font-bold uppercase tracking-widest
+                 hover:bg-primary hover:text-white rounded-sm retro-edge">
+          Start Project
+        </a>
 
-        <button class="iconBtn btnLike mobileOnly" id="menuBtn" aria-label="Menu" title="Menu">
-          <i data-lucide="menu"></i>
+        <button id="mobileMenuBtn" class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-sm border border-borderLight dark:border-white/15 bg-white/70 dark:bg-white/5">
+          <span class="material-symbols-outlined">menu</span>
         </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-borderLight dark:border-white/10 bg-bgLight/90 dark:bg-bgDark/90 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <button id="themeToggleMobile"
+            class="inline-flex items-center gap-2 h-10 px-4 rounded-sm border border-borderLight dark:border-white/15 bg-white/70 dark:bg-white/5">
+            <span class="material-symbols-outlined text-[20px]" id="themeIconMobile">light_mode</span>
+            <span class="text-xs font-bold uppercase tracking-widest">Toggle theme</span>
+          </button>
+          <button id="mobileCloseBtn" class="inline-flex items-center justify-center h-10 w-10 rounded-sm border border-borderLight dark:border-white/15 bg-white/70 dark:bg-white/5">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <a class="py-2 text-sm font-semibold uppercase tracking-wider text-black/70 dark:text-gray-300 hover:text-primary" href="#work">Work</a>
+        <a class="py-2 text-sm font-semibold uppercase tracking-wider text-black/70 dark:text-gray-300 hover:text-primary" href="#what">What We Do</a>
+        <a class="py-2 text-sm font-semibold uppercase tracking-wider text-black/70 dark:text-gray-300 hover:text-primary" href="#news">News</a>
+        <a class="py-2 text-sm font-semibold uppercase tracking-wider text-black/70 dark:text-gray-300 hover:text-primary" href="#join">Join Us</a>
+        <a class="py-2 text-sm font-semibold uppercase tracking-wider text-black/70 dark:text-gray-300 hover:text-primary" href="#contact">Contact</a>
+
+        <a href="#contact"
+          class="mt-2 inline-flex items-center justify-center h-11 px-6 bg-primary text-white text-xs font-bold uppercase tracking-widest rounded-sm shadow-glow">
+          Start Project
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="top" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden border-b border-black/10 dark:border-white/5">
+    <!-- Background grid -->
+    <div class="absolute inset-0 bg-[size:44px_44px] bg-gridLight dark:bg-gridDark opacity-[0.12] dark:opacity-[0.06] pointer-events-none"></div>
+
+    <!-- Retro + premium glow blobs -->
+    <div class="absolute -top-24 -left-24 w-[520px] h-[520px] rounded-full blur-[90px] bg-primary/12 pointer-events-none"></div>
+    <div class="absolute -bottom-24 -right-24 w-[560px] h-[560px] rounded-full blur-[110px] bg-retroPink/12 pointer-events-none"></div>
+    <div class="absolute top-1/3 right-1/3 w-[380px] h-[380px] rounded-full blur-[100px] bg-retroLime/10 pointer-events-none"></div>
+
+    <!-- Scanline -->
+    <div class="scanline"></div>
+
+    <!-- Overlay fade -->
+    <div class="absolute inset-0 bg-gradient-to-t from-bgLight via-transparent to-transparent dark:from-bgDark z-10 pointer-events-none"></div>
+
+    <div class="relative z-20 text-center px-6 max-w-5xl mx-auto flex flex-col items-center gap-8 reveal">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.22em]">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+        Studio Protocol v2.6
+      </div>
+
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight">
+        <span class="text-transparent bg-clip-text bg-gradient-to-b from-black to-black/60 dark:from-white dark:to-white/55">
+          PREMIUM IDENTITY.
+        </span>
+        <br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-retroPink">
+          CINEMATIC WEB.
+        </span>
+        <br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-retroAmber to-retroLime">
+          AI-READY SYSTEMS.
+        </span>
+      </h1>
+
+      <p class="text-black/70 dark:text-gray-300 text-lg md:text-xl font-medium max-w-2xl leading-relaxed">
+        We build AI-assisted brand systems — identity, websites, and content pipelines that scale with precision,
+        without losing taste.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 mt-2">
+        <a href="#what"
+          class="h-12 px-8 bg-primary text-white text-sm font-bold uppercase tracking-widest rounded-sm flex items-center gap-2
+                 hover:opacity-95 hover:-translate-y-[1px] active:translate-y-0 shadow-glow">
+          Explore Studio
+          <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+        </a>
+        <a href="#work"
+          class="h-12 px-8 border border-black/15 dark:border-white/15 text-black/80 dark:text-white text-sm font-bold uppercase tracking-widest rounded-sm
+                 bg-white/50 dark:bg-white/5 backdrop-blur hover:border-primary hover:text-primary retro-edge">
+          See Work
+        </a>
+      </div>
+
+      <!-- Micro stats -->
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-3xl">
+        <div class="p-5 rounded-lg border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur retro-edge">
+          <div class="text-xs uppercase tracking-[0.22em] text-black/50 dark:text-white/50">Cadence</div>
+          <div class="mt-2 text-2xl font-bold tracking-tight">Always-on</div>
+          <div class="mt-1 text-sm text-black/60 dark:text-gray-300">Systems that ship weekly without chaos.</div>
+        </div>
+        <div class="p-5 rounded-lg border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur retro-edge">
+          <div class="text-xs uppercase tracking-[0.22em] text-black/50 dark:text-white/50">Speed</div>
+          <div class="mt-2 text-2xl font-bold tracking-tight">Fast builds</div>
+          <div class="mt-1 text-sm text-black/60 dark:text-gray-300">Premium motion, performance-first.</div>
+        </div>
+        <div class="p-5 rounded-lg border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur retro-edge">
+          <div class="text-xs uppercase tracking-[0.22em] text-black/50 dark:text-white/50">AI Layer</div>
+          <div class="mt-2 text-2xl font-bold tracking-tight">Optional</div>
+          <div class="mt-1 text-sm text-black/60 dark:text-gray-300">Persona studio + consistent output loops.</div>
+        </div>
       </div>
     </div>
   </header>
 
-  <main id="top">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="wrap heroGrid">
-        <div class="heroCard reveal">
-          <div class="heroInner">
-            <div>
-              <div class="kicker"><span class="spark"></span> Built like a product · designed like a film</div>
+  <!-- Main -->
+  <main class="flex-grow w-full max-w-7xl mx-auto px-6 py-20 flex flex-col gap-28">
 
-              <h1 class="heroTitle">
-                Premium <span class="accent">identity</span>, web experiences & AI-ready content systems.
-              </h1>
-              <p class="heroDesc">
-                Arthouse is a creative intelligence studio crafting modern brands, cinematic web experiences,
-                and content engines designed to scale — clean, restrained, and unmistakably premium.
-              </p>
+    <!-- WORK -->
+    <section id="work" class="reveal">
+      <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-10">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">WORK</h2>
+          <p class="mt-2 text-black/60 dark:text-gray-300 max-w-xl">
+            Selected vibes — designed like film, built like product. Swap these with real screenshots whenever you’re ready.
+          </p>
+        </div>
+        <a href="#contact" class="inline-flex items-center gap-2 text-primary text-sm font-bold uppercase tracking-widest hover:opacity-90">
+          Request access <span class="material-symbols-outlined text-[18px]">arrow_outward</span>
+        </a>
+      </div>
 
-              <div class="heroActions">
-                <a class="primaryBtn btnLike" href="#contact">
-                  <i data-lucide="sparkles"></i> Start a project
-                </a>
-                <button class="ghostBtn btnLike" id="viewWork">
-                  <i data-lucide="play"></i> See the work vibe
-                </button>
-              </div>
-            </div>
-
-            <div class="marqueeLine">
-              <div class="mTrack" id="mTrack">
-                <!-- duplicated via JS for seamless loop -->
-                <span class="tagPill"><i data-lucide="layout"></i> Brand Systems</span>
-                <span class="tagPill"><i data-lucide="wand-2"></i> AI Characters</span>
-                <span class="tagPill"><i data-lucide="film"></i> Cinematic Creative</span>
-                <span class="tagPill"><i data-lucide="globe"></i> Web Experiences</span>
-                <span class="tagPill"><i data-lucide="layers"></i> Motion-ready</span>
-                <span class="tagPill"><i data-lucide="scan"></i> Premium Minimal</span>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="group rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur overflow-hidden retro-edge">
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/35 via-transparent to-retroPink/25"></div>
+            <div class="absolute inset-0 bg-[size:34px_34px] bg-gridLight dark:bg-gridDark opacity-[0.20] dark:opacity-[0.12]"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+              <div class="text-xs uppercase tracking-[0.2em] text-black/60 dark:text-white/70">Web</div>
+              <div class="text-[11px] px-3 py-1 rounded-full border border-black/10 dark:border-white/15 bg-white/60 dark:bg-black/40 backdrop-blur text-black/70 dark:text-white/70">
+                Motion-ready
               </div>
             </div>
           </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Cinematic landing system</h3>
+            <p class="mt-2 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+              Premium hero + sections + transitions — expensive feel, lightweight performance.
+            </p>
+          </div>
+        </article>
+
+        <article class="group rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur overflow-hidden retro-edge">
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-retroAmber/35 via-transparent to-primary/25"></div>
+            <div class="absolute inset-0 bg-[size:34px_34px] bg-gridLight dark:bg-gridDark opacity-[0.20] dark:opacity-[0.12]"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+              <div class="text-xs uppercase tracking-[0.2em] text-black/60 dark:text-white/70">Identity</div>
+              <div class="text-[11px] px-3 py-1 rounded-full border border-black/10 dark:border-white/15 bg-white/60 dark:bg-black/40 backdrop-blur text-black/70 dark:text-white/70">
+                System kit
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Brand system kit</h3>
+            <p class="mt-2 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+              Typography, spacing, components, and governance so the brand stays sharp at scale.
+            </p>
+          </div>
+        </article>
+
+        <article class="group rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur overflow-hidden retro-edge">
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-retroLime/20 via-transparent to-retroPink/20"></div>
+            <div class="absolute inset-0 bg-[size:34px_34px] bg-gridLight dark:bg-gridDark opacity-[0.20] dark:opacity-[0.12]"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+              <div class="text-xs uppercase tracking-[0.2em] text-black/60 dark:text-white/70">Content</div>
+              <div class="text-[11px] px-3 py-1 rounded-full border border-black/10 dark:border-white/15 bg-white/60 dark:bg-black/40 backdrop-blur text-black/70 dark:text-white/70">
+                Cadence
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Always-on content engine</h3>
+            <p class="mt-2 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+              Formats, templates, hooks, and weekly cadence designed to keep shipping.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- WHAT WE DO -->
+    <section id="what" class="reveal">
+      <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-10">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">WHAT WE DO</h2>
+          <p class="mt-2 text-black/60 dark:text-gray-300 max-w-xl">
+            A premium minimal core with a retro-funky edge. Pick one lane — or build the full system.
+          </p>
+        </div>
+        <a href="#contact" class="inline-flex items-center gap-2 text-primary text-sm font-bold uppercase tracking-widest hover:opacity-90">
+          Get a scope <span class="material-symbols-outlined text-[18px]">arrow_outward</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="group rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur p-6 retro-edge">
+          <div class="flex items-center justify-between">
+            <div class="h-11 w-11 rounded-md bg-primary/10 text-primary flex items-center justify-center">
+              <span class="material-symbols-outlined">palette</span>
+            </div>
+            <span class="text-xs uppercase tracking-[0.2em] text-black/45 dark:text-white/45">Identity</span>
+          </div>
+          <h3 class="mt-5 text-lg font-bold">Brand Systems</h3>
+          <p class="mt-2 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+            Logos, typography, grids, components, and rules. Not “pretty” — durable.
+          </p>
         </div>
 
-        <div class="sideCard reveal delay2">
-          <div class="sideCardInner">
-            <div>
-              <div class="miniTitle">THE ARTHOUSE GRID</div>
-              <div class="sideNote" style="margin-top:10px;">
-                A brand system is a framework — not a poster. We build visual language + web + content flow,
-                so your brand scales without getting messy.
-              </div>
-
-              <div class="metricGrid">
-                <div class="metric">
-                  <div class="big">01</div>
-                  <div class="small">Identity that holds under scale, pressure, and growth.</div>
-                </div>
-                <div class="metric">
-                  <div class="big">02</div>
-                  <div class="small">Web experience that feels premium, fast, and intentional.</div>
-                </div>
-                <div class="metric">
-                  <div class="big">03</div>
-                  <div class="small">Content engine: formats, cadence, and systems.</div>
-                </div>
-                <div class="metric">
-                  <div class="big">04</div>
-                  <div class="small">AI persona / character layer — if you want it.</div>
-                </div>
-              </div>
+        <div class="group rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur p-6 retro-edge">
+          <div class="flex items-center justify-between">
+            <div class="h-11 w-11 rounded-md bg-retroPink/15 text-retroPink flex items-center justify-center">
+              <span class="material-symbols-outlined">language</span>
             </div>
-
-            <a class="pillBtn btnLike" href="#capabilities" style="width:fit-content;">
-              <span class="dotCore"></span>
-              Explore capabilities
-            </a>
+            <span class="text-xs uppercase tracking-[0.2em] text-black/45 dark:text-white/45">Web</span>
           </div>
+          <h3 class="mt-5 text-lg font-bold">Cinematic Web</h3>
+          <p class="mt-2 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+            Premium motion + fast performance. Dark/light native, conversion-aware.
+          </p>
+        </div>
+
+        <div class="group rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur p-6 retro-edge">
+          <div class="flex items-center justify-between">
+            <div class="h-11 w-11 rounded-md bg-retroAmber/20 text-retroAmber flex items-center justify-center">
+              <span class="material-symbols-outlined">calendar_month</span>
+            </div>
+            <span class="text-xs uppercase tracking-[0.2em] text-black/45 dark:text-white/45">Content</span>
+          </div>
+          <h3 class="mt-5 text-lg font-bold">Content Engines</h3>
+          <p class="mt-2 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+            Formats, templates, hooks, and production loops so output becomes predictable.
+          </p>
+        </div>
+
+        <div class="group rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur p-6 retro-edge">
+          <div class="flex items-center justify-between">
+            <div class="h-11 w-11 rounded-md bg-retroLime/15 text-retroLime flex items-center justify-center">
+              <span class="material-symbols-outlined">smart_toy</span>
+            </div>
+            <span class="text-xs uppercase tracking-[0.2em] text-black/45 dark:text-white/45">AI</span>
+          </div>
+          <h3 class="mt-5 text-lg font-bold">Persona Studio</h3>
+          <p class="mt-2 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+            Character bibles, style rules, and consistent outputs — built for collabs & scale.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Work rail -->
-    <section id="work">
+    <!-- NEWS -->
+    <section id="news" class="reveal">
+      <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-10">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">NEWS</h2>
+          <p class="mt-2 text-black/60 dark:text-gray-300 max-w-xl">
+            Dispatches from the studio — experiments, releases, and creative intel.
+          </p>
+        </div>
+        <a href="#contact" class="inline-flex items-center gap-2 text-primary text-sm font-bold uppercase tracking-widest hover:opacity-90">
+          Subscribe <span class="material-symbols-outlined text-[18px]">arrow_outward</span>
+        </a>
+      </div>
 
-      <div class="wrap">
-        <div class="sectionHead reveal">
-          <div>
-            <h2>Work vibe</h2>
-            <p>
-              Not “templates”. Not “pretty”. Work that feels engineered — identity + web + content systems,
-              designed to scale and stay sharp.
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="group rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur overflow-hidden retro-edge">
+          <div class="relative aspect-[16/9] overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/35 via-transparent to-retroAmber/25"></div>
+            <div class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full border border-black/10 dark:border-white/15 bg-white/65 dark:bg-black/40 backdrop-blur">
+              Strategy
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="text-xs text-black/50 dark:text-white/45 uppercase tracking-wider">New · 5 min</div>
+            <h3 class="mt-2 text-lg font-bold">Why “systems” beat “campaigns”</h3>
+            <p class="mt-2 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+              Consistency is a growth hack. Here’s how we build repeatable creative output without dilution.
             </p>
           </div>
-          <a class="pillBtn btnLike" href="#contact">
-            <span class="dotCore"></span>
-            Build something
+        </article>
+
+        <article class="group rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur overflow-hidden retro-edge">
+          <div class="relative aspect-[16/9] overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-retroPink/30 via-transparent to-primary/25"></div>
+            <div class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full border border-black/10 dark:border-white/15 bg-white/65 dark:bg-black/40 backdrop-blur">
+              Studio
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="text-xs text-black/50 dark:text-white/45 uppercase tracking-wider">Drop · 3 min</div>
+            <h3 class="mt-2 text-lg font-bold">Retro-funk UI pack (internal)</h3>
+            <p class="mt-2 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+              Buttons, cards, grain, and glow—designed to feel modern, but with that analog wink.
+            </p>
+          </div>
+        </article>
+
+        <article class="group rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur overflow-hidden retro-edge">
+          <div class="relative aspect-[16/9] overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-retroLime/18 via-transparent to-retroAmber/22"></div>
+            <div class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full border border-black/10 dark:border-white/15 bg-white/65 dark:bg-black/40 backdrop-blur">
+              AI
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="text-xs text-black/50 dark:text-white/45 uppercase tracking-wider">Note · 4 min</div>
+            <h3 class="mt-2 text-lg font-bold">Consistency with AI characters</h3>
+            <p class="mt-2 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+              Style bibles + output loops: the boring stuff that makes the fun stuff work.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- JOIN US -->
+    <section id="join" class="reveal">
+      <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-10">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">JOIN US</h2>
+          <p class="mt-2 text-black/60 dark:text-gray-300 max-w-xl">
+            We collaborate with builders, editors, designers, and AI creators who care about taste.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur p-7 retro-edge lg:col-span-2">
+          <h3 class="text-xl font-bold">Creator collaborations</h3>
+          <p class="mt-2 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+            If you’re building AI-native creators, synthetic media, or clean premium design systems — we should talk.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-lg border border-borderLight dark:border-white/10 bg-white/50 dark:bg-white/5">
+              <div class="text-xs uppercase tracking-[0.2em] text-black/50 dark:text-white/50">Editors</div>
+              <div class="mt-2 font-semibold">Short-form & motion</div>
+            </div>
+            <div class="p-4 rounded-lg border border-borderLight dark:border-white/10 bg-white/50 dark:bg-white/5">
+              <div class="text-xs uppercase tracking-[0.2em] text-black/50 dark:text-white/50">Designers</div>
+              <div class="mt-2 font-semibold">Systems & layout</div>
+            </div>
+            <div class="p-4 rounded-lg border border-borderLight dark:border-white/10 bg-white/50 dark:bg-white/5">
+              <div class="text-xs uppercase tracking-[0.2em] text-black/50 dark:text-white/50">Creators</div>
+              <div class="mt-2 font-semibold">Characters & worlds</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur p-7 retro-edge">
+          <div class="text-xs uppercase tracking-[0.2em] text-black/50 dark:text-white/50">Open call</div>
+          <h3 class="mt-2 text-xl font-bold">Send your work</h3>
+          <p class="mt-2 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+            Drop 2–3 links and a one-liner about what you do.
+          </p>
+
+          <a href="mailto:hello@projectarthouse.com?subject=ARTHOUSE%20%E2%80%94%20Join%20Us"
+             class="mt-5 inline-flex items-center justify-center w-full h-11 px-6 bg-primary text-white text-xs font-bold uppercase tracking-widest rounded-sm shadow-glow">
+            Email hello@projectarthouse.com
           </a>
-        </div>
 
-        <div class="rail reveal delay1" aria-label="Infinite work showcase">
-          <div class="railTrack" id="workTrack">
-            <!-- Set A -->
-            <article class="tile">
-              <div class="top">
-                <div>
-                  <div class="label">Identity System</div>
-                  <div class="title">Arthouse Core</div>
-                </div>
-                <span class="chip"><span class="miniDot"></span> GRID</span>
-              </div>
-              <div class="desc">Logo + palette + typography + motion cues. Designed to survive scale.</div>
-            </article>
-
-            <article class="tile">
-              <div class="top">
-                <div>
-                  <div class="label">Web Experience</div>
-                  <div class="title">Cinematic Landing</div>
-                </div>
-                <span class="chip"><span class="miniDot"></span> FAST</span>
-              </div>
-              <div class="desc">Dark/light, transitions, premium spacing, performance-first.</div>
-            </article>
-
-            <article class="tile">
-              <div class="top">
-                <div>
-                  <div class="label">Content Engine</div>
-                  <div class="title">Always-On System</div>
-                </div>
-                <span class="chip"><span class="miniDot"></span> CADENCE</span>
-              </div>
-              <div class="desc">Formats, templates, hooks, and distribution loops — not chaos.</div>
-            </article>
-
-            <article class="tile">
-              <div class="top">
-                <div>
-                  <div class="label">AI Character Layer</div>
-                  <div class="title">Persona Studio</div>
-                </div>
-                <span class="chip"><span class="miniDot"></span> AI</span>
-              </div>
-              <div class="desc">AI-led creators built with story, style, and consistent output.</div>
-            </article>
-
-            <article class="tile">
-              <div class="top">
-                <div>
-                  <div class="label">Brand Ops</div>
-                  <div class="title">Design Governance</div>
-                </div>
-                <span class="chip"><span class="miniDot"></span> RULES</span>
-              </div>
-              <div class="desc">Guidelines + guardrails so your team doesn’t dilute the brand.</div>
-            </article>
-
-            <article class="tile">
-              <div class="top">
-                <div>
-                  <div class="label">Motion-Ready</div>
-                  <div class="title">Micro-Interactions</div>
-                </div>
-                <span class="chip"><span class="miniDot"></span> FEEL</span>
-              </div>
-              <div class="desc">Scroll reveals, tasteful hover states, and transitions that feel premium.</div>
-            </article>
-
-            <!-- Set B (duplicate for seamless loop) -->
-            <article class="tile">
-              <div class="top">
-                <div>
-                  <div class="label">Identity System</div>
-                  <div class="title">Arthouse Core</div>
-                </div>
-                <span class="chip"><span class="miniDot"></span> GRID</span>
-              </div>
-              <div class="desc">Logo + palette + typography + motion cues. Designed to survive scale.</div>
-            </article>
-
-            <article class="tile">
-              <div class="top">
-                <div>
-                  <div class="label">Web Experience</div>
-                  <div class="title">Cinematic Landing</div>
-                </div>
-                <span class="chip"><span class="miniDot"></span> FAST</span>
-              </div>
-              <div class="desc">Dark/light, transitions, premium spacing, performance-first.</div>
-            </article>
-
-            <article class="tile">
-              <div class="top">
-                <div>
-                  <div class="label">Content Engine</div>
-                  <div class="title">Always-On System</div>
-                </div>
-                <span class="chip"><span class="miniDot"></span> CADENCE</span>
-              </div>
-              <div class="desc">Formats, templates, hooks, and distribution loops — not chaos.</div>
-            </article>
-
-            <article class="tile">
-              <div class="top">
-                <div>
-                  <div class="label">AI Character Layer</div>
-                  <div class="title">Persona Studio</div>
-                </div>
-                <span class="chip"><span class="miniDot"></span> AI</span>
-              </div>
-              <div class="desc">AI-led creators built with story, style, and consistent output.</div>
-            </article>
-
-            <article class="tile">
-              <div class="top">
-                <div>
-                  <div class="label">Brand Ops</div>
-                  <div class="title">Design Governance</div>
-                </div>
-                <span class="chip"><span class="miniDot"></span> RULES</span>
-              </div>
-              <div class="desc">Guidelines + guardrails so your team doesn’t dilute the brand.</div>
-            </article>
-
-            <article class="tile">
-              <div class="top">
-                <div>
-                  <div class="label">Motion-Ready</div>
-                  <div class="title">Micro-Interactions</div>
-                </div>
-                <span class="chip"><span class="miniDot"></span> FEEL</span>
-              </div>
-              <div class="desc">Scroll reveals, tasteful hover states, and transitions that feel premium.</div>
-            </article>
+          <div class="mt-4 text-[11px] text-black/50 dark:text-white/45">
+            Subject suggestion: <span class="font-semibold">ARTHOUSE — Join Us</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Capabilities -->
-    <section id="capabilities">
-      <div class="wrap">
-        <div class="sectionHead reveal">
-          <div>
-            <h2>Capabilities</h2>
-            <p>
-              A full-stack brand studio approach — identity, web, content, and AI-native creator systems.
-              Pick one. Or build the full machine.
-            </p>
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+      <div class="rounded-2xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur overflow-hidden retro-edge">
+        <div class="relative p-8 md:p-12">
+          <div class="absolute inset-0 pointer-events-none opacity-70">
+            <div class="absolute -top-24 -left-24 w-[320px] h-[320px] rounded-full blur-[70px] bg-primary/18"></div>
+            <div class="absolute -bottom-24 -right-24 w-[360px] h-[360px] rounded-full blur-[80px] bg-retroPink/14"></div>
           </div>
-        </div>
 
-        <div class="grid3">
-          <div class="card reveal delay1">
-            <div class="hdr">
-              <span class="chip"><span class="miniDot"></span> IDENTITY</span>
-              <i data-lucide="badge-check"></i>
+          <div class="relative">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+              <div>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight">CONTACT</h2>
+                <p class="mt-2 text-black/60 dark:text-gray-300 max-w-2xl">
+                  Tell us what you’re building. We’ll reply with a clean scope and the fastest path to ship.
+                </p>
+              </div>
+              <div class="text-sm font-semibold text-black/70 dark:text-white/70">
+                Email: <a class="text-primary hover:opacity-90" href="mailto:hello@projectarthouse.com">hello@projectarthouse.com</a>
+              </div>
             </div>
-            <h3>Brand systems</h3>
-            <p>
-              Logo, typography, palette, layouts, and rules. Your brand becomes repeatable and scalable —
-              without becoming boring.
-            </p>
-          </div>
 
-          <div class="card reveal delay2">
-            <div class="hdr">
-              <span class="chip"><span class="miniDot"></span> WEB</span>
-              <i data-lucide="layout-template"></i>
-            </div>
-            <h3>Cinematic web</h3>
-            <p>
-              Premium landing pages with motion and transitions that feel expensive — but still fast,
-              responsive, and clean.
-            </p>
-          </div>
+            <div class="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div class="lg:col-span-2">
+                <form class="space-y-6" onsubmit="return false;">
+                  <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label class="block text-xs font-bold uppercase tracking-widest text-black/55 dark:text-white/45" for="name">Name</label>
+                      <input id="name" type="text"
+                        class="mt-2 w-full rounded-md border border-borderLight dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur px-4 py-3
+                               focus:outline-none focus:ring-2 focus:ring-primary/40" placeholder="Your name / organization"/>
+                    </div>
+                    <div>
+                      <label class="block text-xs font-bold uppercase tracking-widest text-black/55 dark:text-white/45" for="email">Email</label>
+                      <input id="email" type="email"
+                        class="mt-2 w-full rounded-md border border-borderLight dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur px-4 py-3
+                               focus:outline-none focus:ring-2 focus:ring-primary/40" placeholder="you@company.com"/>
+                    </div>
+                  </div>
 
-          <div class="card reveal delay3">
-            <div class="hdr">
-              <span class="chip"><span class="miniDot"></span> CONTENT</span>
-              <i data-lucide="layers"></i>
-            </div>
-            <h3>Content engines</h3>
-            <p>
-              A system that ships daily — formats, templates, hooks, and a content calendar that doesn’t
-              collapse after week two.
-            </p>
-          </div>
-        </div>
+                  <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-black/55 dark:text-white/45" for="msg">Project brief</label>
+                    <textarea id="msg" rows="4"
+                      class="mt-2 w-full rounded-md border border-borderLight dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur px-4 py-3
+                             focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none"
+                      placeholder="What do you need? Timeline? Links?"></textarea>
+                  </div>
 
-        <div class="marqueeLine reveal delay2" style="margin-top:14px;">
-          <div class="mTrack" id="capTrack">
-            <span class="tagPill"><i data-lucide="sparkles"></i> Premium minimal</span>
-            <span class="tagPill"><i data-lucide="cpu"></i> AI-native</span>
-            <span class="tagPill"><i data-lucide="zap"></i> Fast builds</span>
-            <span class="tagPill"><i data-lucide="shield"></i> Brand governance</span>
-            <span class="tagPill"><i data-lucide="wand-2"></i> Creator systems</span>
-            <span class="tagPill"><i data-lucide="film"></i> Cinematic motion</span>
+                  <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between pt-2">
+                    <div class="text-xs text-black/55 dark:text-white/45">
+                      Prefer email? Use subject: <span class="font-semibold">ARTHOUSE — Start Project</span>
+                    </div>
+                    <a href="mailto:hello@projectarthouse.com?subject=ARTHOUSE%20%E2%80%94%20Start%20Project"
+                       class="inline-flex items-center justify-center h-11 px-6 bg-primary text-white text-xs font-bold uppercase tracking-widest rounded-sm shadow-glow">
+                      Send email
+                    </a>
+                  </div>
+                </form>
+              </div>
 
-            <!-- duplicate set -->
-            <span class="tagPill"><i data-lucide="sparkles"></i> Premium minimal</span>
-            <span class="tagPill"><i data-lucide="cpu"></i> AI-native</span>
-            <span class="tagPill"><i data-lucide="zap"></i> Fast builds</span>
-            <span class="tagPill"><i data-lucide="shield"></i> Brand governance</span>
-            <span class="tagPill"><i data-lucide="wand-2"></i> Creator systems</span>
-            <span class="tagPill"><i data-lucide="film"></i> Cinematic motion</span>
-          </div>
-        </div>
-      </div>
-    </section>
+              <div class="rounded-xl border border-borderLight dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur p-6">
+                <div class="text-xs uppercase tracking-[0.2em] text-black/50 dark:text-white/45">Quick notes</div>
+                <ul class="mt-4 space-y-3 text-sm text-black/60 dark:text-gray-300">
+                  <li class="flex gap-2">
+                    <span class="material-symbols-outlined text-[18px] text-primary">check_circle</span>
+                    Dark / light mode is native, logo swaps automatically.
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="material-symbols-outlined text-[18px] text-primary">check_circle</span>
+                    Animations respect reduced motion preferences.
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="material-symbols-outlined text-[18px] text-primary">check_circle</span>
+                    Drop 3–6 screenshots anytime; we’ll plug them into Work.
+                  </li>
+                </ul>
 
-    <!-- Systems -->
-    <section id="systems">
-      <div class="wrap">
-        <div class="sectionHead reveal">
-          <div>
-            <h2>Systems, not posters</h2>
-            <p>
-              Anyone can make a pretty visual. Arthouse builds repeatable systems: the grid, the rules,
-              the pipeline — so output stays consistent as you scale.
-            </p>
-          </div>
-        </div>
+                <div class="mt-6 rounded-lg border border-borderLight dark:border-white/10 bg-white/60 dark:bg-black/20 p-4">
+                  <div class="text-xs uppercase tracking-[0.2em] text-black/50 dark:text-white/45">Response time</div>
+                  <div class="mt-2 font-semibold">Usually within 24–48 hours</div>
+                </div>
+              </div>
 
-        <div class="grid3">
-          <div class="card reveal delay1">
-            <div class="hdr">
-              <span class="chip"><span class="miniDot"></span> GRID</span>
-              <i data-lucide="grid-3x3"></i>
-            </div>
-            <h3>Design language</h3>
-            <p>
-              Consistent spacing, type scale, and components. The brand becomes recognizable without
-              screaming for attention.
-            </p>
-          </div>
-
-          <div class="card reveal delay2">
-            <div class="hdr">
-              <span class="chip"><span class="miniDot"></span> PIPELINE</span>
-              <i data-lucide="workflow"></i>
-            </div>
-            <h3>Production flow</h3>
-            <p>
-              Templates, formats, review loops, and versioning. Clean output, faster iteration, no chaos.
-            </p>
-          </div>
-
-          <div class="card reveal delay3">
-            <div class="hdr">
-              <span class="chip"><span class="miniDot"></span> SCALE</span>
-              <i data-lucide="move-up-right"></i>
-            </div>
-            <h3>Growth-ready</h3>
-            <p>
-              Built for content, teams, and partnerships. Your brand stays sharp as your distribution grows.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <div class="wrap">
-        <div class="sectionHead reveal">
-          <div>
-            <h2>Let’s build something premium</h2>
-            <p>
-              Tell us what you’re building. We’ll reply with a clean plan, suggested scope, and a deck if needed.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid3">
-          <div class="card reveal delay1">
-            <div class="hdr">
-              <span class="chip"><span class="miniDot"></span> START</span>
-              <i data-lucide="mail"></i>
-            </div>
-            <h3>Email</h3>
-            <p>
-              Send a brief: what you do, what you need, deadline. We’ll respond with next steps.
-            </p>
-            <div class="heroActions" style="margin-top:14px;">
-              <a class="primaryBtn btnLike" href="mailto:hello@projectarthouse.com">
-                <i data-lucide="send"></i> hello@projectarthouse.com
-              </a>
-            </div>
-          </div>
-
-          <div class="card reveal delay2">
-            <div class="hdr">
-              <span class="chip"><span class="miniDot"></span> DECK</span>
-              <i data-lucide="file-text"></i>
-            </div>
-            <h3>Request a deck</h3>
-            <p>
-              Want a quick overview of what we do? Ask for the Arthouse deck and we’ll share it.
-            </p>
-            <div class="heroActions" style="margin-top:14px;">
-              <button class="ghostBtn btnLike" id="openDeck2">
-                <i data-lucide="sparkles"></i> Request deck
-              </button>
-            </div>
-          </div>
-
-          <div class="card reveal delay3">
-            <div class="hdr">
-              <span class="chip"><span class="miniDot"></span> SOCIAL</span>
-              <i data-lucide="globe"></i>
-            </div>
-            <h3>Presence</h3>
-            <p>
-              The studio is currently building its public footprint. Early collaborators get priority access.
-            </p>
-            <div class="footLinks" style="margin-top:14px;">
-              <a class="btnLike" href="#" aria-label="Instagram">Instagram</a>
-              <a class="btnLike" href="#" aria-label="X">X</a>
-              <a class="btnLike" href="#" aria-label="Behance">Behance</a>
             </div>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- Footer -->
-  <footer>
-    <div class="wrap footGrid">
-      <div class="footCard reveal">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div class="brandMark" style="width:48px;height:48px;">
-            <img id="footerLogo"
-                 alt="Arthouse logo"
-                 src="https://raw.githubusercontent.com/rootln/projectarthouse/main/dark%20logo.png">
-          </div>
-          <div>
-            <div class="name" style="font-weight:950; letter-spacing:.18em; text-transform:uppercase; font-size:13px;">
-              ARTHOUSE
+  <footer class="border-t border-borderLight dark:border-white/10 bg-bgLight/50 dark:bg-bgDark pt-14 pb-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-3">
+            <div class="relative w-11 h-11 rounded-sm overflow-hidden border border-borderLight dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur">
+              <img id="footerLogo" class="w-full h-full object-contain p-2" alt="ARTHOUSE logo"
+                   src="https://raw.githubusercontent.com/rootln/projectarthouse/main/dark%20logo.png" />
             </div>
-            <div class="tag" style="color:var(--muted); font-weight:650; font-size:12px; margin-top:6px;">
-              Creative Intelligence Studio
+            <div>
+              <div class="text-base font-bold tracking-[0.22em]">ARTHOUSE</div>
+              <div class="text-[11px] font-medium tracking-wide text-black/60 dark:text-white/50">Creative Intelligence Studio</div>
             </div>
           </div>
+          <p class="mt-5 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+            Premium identity, cinematic web, and AI-ready content systems — with a retro-funky edge.
+          </p>
+          <p class="mt-4 text-sm">
+            <a class="text-primary hover:opacity-90" href="mailto:hello@projectarthouse.com">hello@projectarthouse.com</a>
+          </p>
         </div>
 
-        <div class="fine">
-          Premium identity, web experiences, and AI-ready content systems. Built with restraint. Shipped with speed.
+        <div>
+          <h3 class="text-black/80 dark:text-white font-bold uppercase tracking-widest text-xs mb-5">Sitemap</h3>
+          <ul class="space-y-3 text-sm text-black/60 dark:text-gray-300">
+            <li><a class="hover:text-primary" href="#work">Work</a></li>
+            <li><a class="hover:text-primary" href="#what">What We Do</a></li>
+            <li><a class="hover:text-primary" href="#news">News</a></li>
+            <li><a class="hover:text-primary" href="#join">Join Us</a></li>
+            <li><a class="hover:text-primary" href="#contact">Contact</a></li>
+          </ul>
         </div>
 
-        <div class="footLinks">
-          <a class="btnLike" href="#work">Work</a>
-          <a class="btnLike" href="#capabilities">Capabilities</a>
-          <a class="btnLike" href="#systems">Systems</a>
-          <a class="btnLike" href="#contact">Contact</a>
+        <div>
+          <h3 class="text-black/80 dark:text-white font-bold uppercase tracking-widest text-xs mb-5">Social</h3>
+          <ul class="space-y-3 text-sm text-black/60 dark:text-gray-300">
+            <li><a class="hover:text-primary" href="#" onclick="return false;">Instagram</a></li>
+            <li><a class="hover:text-primary" href="#" onclick="return false;">X</a></li>
+            <li><a class="hover:text-primary" href="#" onclick="return false;">Behance</a></li>
+            <li><a class="hover:text-primary" href="#" onclick="return false;">GitHub</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-black/80 dark:text-white font-bold uppercase tracking-widest text-xs mb-5">System</h3>
+          <div class="rounded-xl border border-borderLight dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur p-5">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-widest text-black/60 dark:text-white/60">
+              <span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+              All systems operational
+            </div>
+            <div class="mt-3 text-sm text-black/60 dark:text-gray-300 leading-relaxed">
+              Dark/light mode is native. Logo swaps automatically. Animations respect reduced motion.
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="footCard reveal delay2">
-        <div class="miniTitle">NOTES</div>
-        <div class="fine">
-          Dark/light mode is baked in. Logo swaps automatically. Animations respect “reduced motion”.
-          If you want, we can convert this into a multi-page site next.
-        </div>
-        <div class="fine" style="margin-top:10px;">
-          © <span id="year"></span> ARTHOUSE. All rights reserved.
-        </div>
+      <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-borderLight dark:border-white/10">
+        <p class="text-black/50 dark:text-white/45 text-xs">© <span id="year"></span> ARTHOUSE. All rights reserved.</p>
+        <p class="mt-3 md:mt-0 text-black/50 dark:text-white/45 text-xs uppercase tracking-widest">
+          Built like a product · designed like a film
+        </p>
       </div>
     </div>
   </footer>
 
-  <!-- Modals -->
-  <div class="modal" id="deckModal" aria-hidden="true" role="dialog">
-    <div class="modalPanel reveal in" style="transform:none; filter:none;">
-      <div class="modalTop">
-        <div class="ttl">Request a deck</div>
-        <button class="closeX btnLike" id="closeDeck" aria-label="Close">
-          <i data-lucide="x"></i>
-        </button>
-      </div>
-      <div class="modalBody">
-        Drop a mail to <b>hello@projectarthouse.com</b> with subject:
-        <b>“ARTHOUSE — Deck”</b>. We’ll share a clean overview.
-        <div style="margin-top:14px;">
-          <a class="primaryBtn btnLike" href="mailto:hello@projectarthouse.com?subject=ARTHOUSE%20%E2%80%94%20Deck">
-            <i data-lucide="send"></i> Email now
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" id="menuModal" aria-hidden="true" role="dialog">
-    <div class="modalPanel reveal in" style="transform:none; filter:none;">
-      <div class="modalTop">
-        <div class="ttl">Menu</div>
-        <button class="closeX btnLike" id="closeMenu" aria-label="Close">
-          <i data-lucide="x"></i>
-        </button>
-      </div>
-      <div class="modalBody">
-        <div class="footLinks" style="margin-top:0;">
-          <a class="btnLike" href="#work">Work</a>
-          <a class="btnLike" href="#capabilities">Capabilities</a>
-          <a class="btnLike" href="#systems">Systems</a>
-          <a class="btnLike" href="#contact">Contact</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script>
-    // Lucide
-   function refreshIcons(){
-  if (window.lucide) window.lucide.createIcons();
-}
-refreshIcons();
+    (function () {
+      const LOGO_DARK  = "https://raw.githubusercontent.com/rootln/projectarthouse/main/dark%20logo.png";
+      const LOGO_LIGHT = "https://raw.githubusercontent.com/rootln/projectarthouse/main/light%20logo.png";
 
-    // Constants
-    const root = document.documentElement;
-    const topbar = document.getElementById("topbar");
-    const bar = document.getElementById("bar");
+      const html = document.documentElement;
+      const brandLogo = document.getElementById("brandLogo");
+      const footerLogo = document.getElementById("footerLogo");
 
-    const LOGO_DARK = "https://raw.githubusercontent.com/rootln/projectarthouse/main/dark%20logo.png";
-    const LOGO_LIGHT = "https://raw.githubusercontent.com/rootln/projectarthouse/main/light%20logo.png";
+      const themeToggle = document.getElementById("themeToggle");
+      const themeIcon = document.getElementById("themeIcon");
+      const themeToggleMobile = document.getElementById("themeToggleMobile");
+      const themeIconMobile = document.getElementById("themeIconMobile");
 
-    const brandLogo = document.getElementById("brandLogo");
-    const footerLogo = document.getElementById("footerLogo");
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileCloseBtn = document.getElementById("mobileCloseBtn");
 
-    // Theme
-    const themeToggle = document.getElementById("themeToggle");
-    const themeIcon = themeToggle.querySelector("i");
+      const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    function setTheme(theme){
-      root.setAttribute("data-theme", theme);
-
-      // Update icon
-      themeIcon.setAttribute("data-lucide", theme === "dark" ? "sun" : "moon");
-     refreshIcons();
-
-      // Swap logos
-      const logoSrc = theme === "dark" ? LOGO_DARK : LOGO_LIGHT;
-      brandLogo.src = logoSrc;
-      footerLogo.src = logoSrc;
-
-      // Meta theme color
-      const meta = document.querySelector('meta[name="theme-color"]');
-      meta && meta.setAttribute("content", theme === "dark" ? "#05070d" : "#f6f3ed");
-
-      localStorage.setItem("arthouseTheme", theme);
-    }
-
-    // Init theme from storage OR system
-    const saved = localStorage.getItem("arthouseTheme");
-    if(saved){
-      setTheme(saved);
-    } else {
-      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setTheme(prefersDark ? "dark" : "light");
-    }
-
-    themeToggle.addEventListener("click", () => {
-      const current = root.getAttribute("data-theme") || "dark";
-      setTheme(current === "dark" ? "light" : "dark");
-    });
-
-    // Scroll progress + topbar shadow
-    function onScroll(){
-      const sc = window.scrollY || 0;
-      topbar.classList.toggle("scrolled", sc > 8);
-
-      const doc = document.documentElement;
-      const h = (doc.scrollHeight - doc.clientHeight) || 1;
-      const p = Math.min(1, sc / h);
-      bar.style.width = (p * 100).toFixed(2) + "%";
-    }
-    window.addEventListener("scroll", onScroll, {passive:true});
-    onScroll();
-
-    // Reveal on scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting) e.target.classList.add("in");
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
-
-    // Ripple
-    function attachRipple(el){
-      el.addEventListener("pointerdown", (ev)=>{
-        const r = el.getBoundingClientRect();
-        el.style.setProperty("--rx", (ev.clientX - r.left) + "px");
-        el.style.setProperty("--ry", (ev.clientY - r.top) + "px");
-        el.classList.remove("ripple");
-        void el.offsetWidth;
-        el.classList.add("ripple");
-      });
-    }
-    document.querySelectorAll(".btnLike").forEach(attachRipple);
-
-    // Modals
-    const deckModal = document.getElementById("deckModal");
-    const openDeck = document.getElementById("openDeck");
-    const openDeck2 = document.getElementById("openDeck2");
-    const closeDeck = document.getElementById("closeDeck");
-
-    function openModal(m){
-      m.classList.add("open");
-      m.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    }
-    function closeModal(m){
-      m.classList.remove("open");
-      m.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-    }
-
-    openDeck.addEventListener("click", ()=>openModal(deckModal));
-    openDeck2.addEventListener("click", ()=>openModal(deckModal));
-    closeDeck.addEventListener("click", ()=>closeModal(deckModal));
-    deckModal.addEventListener("click", (e)=>{ if(e.target === deckModal) closeModal(deckModal); });
-
-    const menuModal = document.getElementById("menuModal");
-    const menuBtn = document.getElementById("menuBtn");
-    const closeMenu = document.getElementById("closeMenu");
-
-    menuBtn.addEventListener("click", ()=>openModal(menuModal));
-    closeMenu.addEventListener("click", ()=>closeModal(menuModal));
-    menuModal.addEventListener("click", (e)=>{ if(e.target === menuModal) closeModal(menuModal); });
-
-    // Close modals with ESC
-    window.addEventListener("keydown", (e)=>{
-      if(e.key === "Escape"){
-        if(deckModal.classList.contains("open")) closeModal(deckModal);
-        if(menuModal.classList.contains("open")) closeModal(menuModal);
+      function applyTheme(isDark) {
+        if (isDark) {
+          html.classList.add("dark");
+          document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#0a0a0a");
+          if (themeIcon) themeIcon.textContent = "light_mode";
+          if (themeIconMobile) themeIconMobile.textContent = "light_mode";
+          if (brandLogo) brandLogo.src = LOGO_DARK;
+          if (footerLogo) footerLogo.src = LOGO_DARK;
+        } else {
+          html.classList.remove("dark");
+          document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f6f6f8");
+          if (themeIcon) themeIcon.textContent = "dark_mode";
+          if (themeIconMobile) themeIconMobile.textContent = "dark_mode";
+          if (brandLogo) brandLogo.src = LOGO_LIGHT;
+          if (footerLogo) footerLogo.src = LOGO_LIGHT;
+        }
       }
-    });
 
-    // CTA: View work vibe button
-    document.getElementById("viewWork").addEventListener("click", ()=>{
-      document.getElementById("work").scrollIntoView({behavior:"smooth"});
-    });
+      function getInitialTheme() {
+        const saved = localStorage.getItem("arthouseTheme");
+        if (saved === "dark") return true;
+        if (saved === "light") return false;
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        return prefersDark;
+      }
 
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
+      function toggleTheme() {
+        const isDark = html.classList.contains("dark");
+        applyTheme(!isDark);
+        localStorage.setItem("arthouseTheme", (!isDark) ? "dark" : "light");
+      }
 
-    // Optional: make the hero tag marquee seamless by duplicating once if needed
-    // (You already duplicated in HTML; leaving this here if you want dynamic control later.)
+      applyTheme(getInitialTheme());
+
+      themeToggle?.addEventListener("click", toggleTheme);
+      themeToggleMobile?.addEventListener("click", toggleTheme);
+
+      function openMobileMenu() {
+        mobileMenu.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+      function closeMobileMenu() {
+        mobileMenu.classList.add("hidden");
+        document.body.style.overflow = "";
+      }
+      mobileMenuBtn?.addEventListener("click", openMobileMenu);
+      mobileCloseBtn?.addEventListener("click", closeMobileMenu);
+
+      mobileMenu?.querySelectorAll("a[href^='#']").forEach(a => {
+        a.addEventListener("click", () => closeMobileMenu());
+      });
+
+      document.querySelectorAll("a[href^='#']").forEach(a => {
+        a.addEventListener("click", (e) => {
+          const id = a.getAttribute("href");
+          if (!id || id.length < 2) return;
+          const el = document.querySelector(id);
+          if (!el) return;
+          e.preventDefault();
+          el.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "start" });
+        });
+      });
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("in");
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMobileMenu();
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
   </script>
 </body>
 </html>
