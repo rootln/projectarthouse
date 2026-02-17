@@ -64,6 +64,10 @@
   <style>
     :root { color-scheme: dark; }
     html, body { height: 100%; }
+
+        /* iOS safe-area helpers */
+        .safe-top{ padding-top: env(safe-area-inset-top); }
+        .safe-bottom{ padding-bottom: env(safe-area-inset-bottom); }
     body {
       font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       overflow-x: hidden;
@@ -137,6 +141,7 @@
       transform: translateY(-1px);
     }
 
+    /* Optional: remove harsh tap highlight on mobile */
     a, button { -webkit-tap-highlight-color: transparent; }
   </style>
 </head>
@@ -144,8 +149,8 @@
 <body class="grain theme-anim bg-bgLight text-black dark:bg-bgDark dark:text-white min-h-screen flex flex-col">
 
   <!-- Sticky Navigation -->
-  <nav class="sticky top-0 z-40 w-full border-b border-borderLight dark:border-white/10 bg-bgLight/70 dark:bg-bgDark/80 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+  <nav class="sticky top-0 z-40 w-full border-b border-borderLight dark:border-white/10 bg-bgLight/70 dark:bg-bgDark/80 backdrop-blur-md supports-[backdrop-filter]:bg-background-dark/70">
+    <div class="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
       <!-- Brand -->
       <a href="#top" class="flex items-center gap-3 group">
         <div class="relative w-11 h-11 rounded-sm overflow-hidden border border-borderLight dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur">
@@ -174,7 +179,7 @@
         <button id="themeToggle"
           class="hidden md:inline-flex items-center justify-center h-10 w-10 border border-borderLight dark:border-white/15
                  bg-white/70 dark:bg-white/5 text-black/70 dark:text-white/70 hover:text-primary
-                 backdrop-blur-md rounded-sm retro-edge">
+                 backdrop-blur-md supports-[backdrop-filter]:bg-background-dark/70 rounded-sm retro-edge">
           <span id="themeIcon" class="material-symbols-outlined text-[20px]">light_mode</span>
         </button>
 
@@ -191,7 +196,7 @@
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobileMenu" class="md:hidden hidden border-t border-borderLight dark:border-white/10 bg-bgLight/90 dark:bg-bgDark/90 backdrop-blur-md">
+    <div id="mobileMenu" class="md:hidden hidden border-t border-borderLight dark:border-white/10 bg-bgLight/90 dark:bg-bgDark/90 backdrop-blur-md supports-[backdrop-filter]:bg-background-dark/70">
       <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3">
         <div class="flex items-center justify-between">
           <button id="themeToggleMobile"
@@ -268,7 +273,7 @@
         </a>
         <a href="#work"
           class="h-12 px-8 border border-black/15 dark:border-white/15 text-black/80 dark:text-white text-sm font-bold uppercase tracking-widest rounded-sm
-                 bg-white/50 dark:bg-white/5 backdrop-blur hover:border-primary hover:text-primary retro-edge">
+                 bg-white/50 dark:bg-white/5 backdrop-blur hover:border-primary hover:text-primary retro-edge flex items-center justify-center">
           See Work
         </a>
       </div>
@@ -312,10 +317,12 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card -->
         <article class="group rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur overflow-hidden retro-edge">
           <div class="relative aspect-[16/10] overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-primary/35 via-transparent to-retroPink/25"></div>
             <div class="absolute inset-0 bg-[size:34px_34px] bg-gridLight dark:bg-gridDark opacity-[0.20] dark:opacity-[0.12]"></div>
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-t from-black/35 via-transparent to-transparent"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
               <div class="text-xs uppercase tracking-[0.2em] text-black/60 dark:text-white/70">Web</div>
               <div class="text-[11px] px-3 py-1 rounded-full border border-black/10 dark:border-white/15 bg-white/60 dark:bg-black/40 backdrop-blur text-black/70 dark:text-white/70">
@@ -458,6 +465,7 @@
         <article class="group rounded-xl border border-borderLight dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur overflow-hidden retro-edge">
           <div class="relative aspect-[16/9] overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-primary/35 via-transparent to-retroAmber/25"></div>
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-t from-black/35 via-transparent to-transparent"></div>
             <div class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full border border-black/10 dark:border-white/15 bg-white/65 dark:bg-black/40 backdrop-blur">
               Strategy
             </div>
@@ -734,6 +742,7 @@
       const mobileMenu = document.getElementById("mobileMenu");
       const mobileCloseBtn = document.getElementById("mobileCloseBtn");
 
+      // Respect reduced motion
       const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       function applyTheme(isDark) {
@@ -768,11 +777,13 @@
         localStorage.setItem("arthouseTheme", (!isDark) ? "dark" : "light");
       }
 
+      // Init theme
       applyTheme(getInitialTheme());
 
       themeToggle?.addEventListener("click", toggleTheme);
       themeToggleMobile?.addEventListener("click", toggleTheme);
 
+      // Mobile menu
       function openMobileMenu() {
         mobileMenu.classList.remove("hidden");
         document.body.style.overflow = "hidden";
@@ -784,10 +795,12 @@
       mobileMenuBtn?.addEventListener("click", openMobileMenu);
       mobileCloseBtn?.addEventListener("click", closeMobileMenu);
 
+      // Close menu on link click
       mobileMenu?.querySelectorAll("a[href^='#']").forEach(a => {
         a.addEventListener("click", () => closeMobileMenu());
       });
 
+      // Smooth scroll for in-page anchors (nice on Safari)
       document.querySelectorAll("a[href^='#']").forEach(a => {
         a.addEventListener("click", (e) => {
           const id = a.getAttribute("href");
@@ -799,18 +812,32 @@
         });
       });
 
+      // Reveal on scroll
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("in");
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
         });
-      }, { threshold: 0.12 });
+      }, { threshold: 0.10, rootMargin: "0px 0px -10% 0px" });
 
-      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+      const revealEls = Array.from(document.querySelectorAll(".reveal"));
+      revealEls.forEach((el) => io.observe(el));
 
+      // Ensure above-the-fold elements animate in on mobile Safari too
+      const vh = window.innerHeight || 800;
+      revealEls.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < vh * 0.92) el.classList.add("in");
+      });
+
+      // ESC closes mobile menu
       window.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeMobileMenu();
       });
 
+      // Year
       document.getElementById("year").textContent = new Date().getFullYear();
     })();
   </script>
