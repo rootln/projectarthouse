@@ -143,10 +143,114 @@
 
     /* Optional: remove harsh tap highlight on mobile */
     a, button { -webkit-tap-highlight-color: transparent; }
+/* =========================
+   INTRO: Logo Zoom + Reveal
+   ========================= */
+.intro{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: var(--introBg, #0a0a0a);
+  overflow: hidden;
+}
+
+.introVignette{
+  position:absolute;
+  inset:-40px;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255,255,255,0.07), transparent 55%),
+    radial-gradient(circle at 30% 30%, rgba(19,91,236,0.12), transparent 55%),
+    radial-gradient(circle at 70% 60%, rgba(255,0,153,0.08), transparent 60%),
+    linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.75));
+  pointer-events:none;
+}
+
+.introInner{
+  position: relative;
+  width: min(72vw, 420px);
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(17,23,34,0.45);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 30px 120px rgba(0,0,0,0.55);
+  transform: scale(0.86);
+  opacity: 0;
+}
+
+.introLogo{
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 60px rgba(0,0,0,0.55));
+  transform: translateZ(0);
+}
+
+html.introLock, body.introLock{
+  overflow: hidden !important;
+  height: 100%;
+}
+
+/* Animation states */
+.intro.play .introInner{
+  animation: introIn 650ms cubic-bezier(.16,1,.3,1) forwards;
+}
+
+.intro.play .introLogo{
+  animation: introLogoPulse 650ms cubic-bezier(.16,1,.3,1) forwards;
+}
+
+/* Logo zooms to fill screen */
+.intro.zoom .introInner{
+  animation: introZoom 820ms cubic-bezier(.16,1,.3,1) forwards;
+}
+
+.intro.fade{
+  animation: introFade 520ms ease forwards;
+}
+
+@keyframes introIn{
+  from { opacity: 0; transform: scale(.86); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Tiny “breath” so it feels alive, not robotic */
+@keyframes introLogoPulse{
+  0%   { transform: scale(1); }
+  55%  { transform: scale(1.03); }
+  100% { transform: scale(1.01); }
+}
+
+@keyframes introZoom{
+  0%   { transform: scale(1); border-radius: 24px; }
+  100% { transform: scale(9); border-radius: 180px; }
+}
+
+@keyframes introFade{
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* Reduced motion: skip fancy stuff */
+@media (prefers-reduced-motion: reduce){
+  .intro, .intro * { animation: none !important; transition: none !important; }
+}
+
   </style>
 </head>
 
 <body class="grain theme-anim bg-bgLight text-black dark:bg-bgDark dark:text-white min-h-screen flex flex-col">
+<!-- Intro / Logo Reveal Overlay -->
+<div id="intro" class="intro" aria-hidden="true">
+  <div class="introInner">
+    <img id="introLogo" class="introLogo" alt="ARTHOUSE" />
+  </div>
+  <div class="introVignette"></div>
+</div>
+
 
   <!-- Sticky Navigation -->
   <nav class="sticky top-0 z-40 w-full border-b border-borderLight dark:border-white/10 bg-bgLight/70 dark:bg-bgDark/80 backdrop-blur-md supports-[backdrop-filter]:bg-background-dark/70">
@@ -247,34 +351,34 @@
 
       <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight">
         <span class="text-transparent bg-clip-text bg-gradient-to-b from-black to-black/60 dark:from-white dark:to-white/55">
-          PREMIUM IDENTITY.
+          WE BUILD,
         </span>
         <br/>
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-retroPink">
-          CINEMATIC WEB.
+          AI INFLUENCERS.
         </span>
         <br/>
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-retroAmber to-retroLime">
-          AI-READY SYSTEMS.
+          THAT PRINT ATTENTION.
         </span>
       </h1>
 
       <p class="text-black/70 dark:text-gray-300 text-lg md:text-xl font-medium max-w-2xl leading-relaxed">
-        We build AI-assisted brand systems — identity, websites, and content pipelines that scale with precision,
-        without losing taste.
+        Project Arthouse creates, manages, and scales AI-native creators across Instagram, YouTube, and emerging platforms.
+        From character design to monetization systems- we engineer influence.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 mt-2">
         <a href="#what"
           class="h-12 px-8 bg-primary text-white text-sm font-bold uppercase tracking-widest rounded-sm flex items-center gap-2
                  hover:opacity-95 hover:-translate-y-[1px] active:translate-y-0 shadow-glow">
-          Explore Studio
+          Work With Us
           <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
         </a>
         <a href="#work"
           class="h-12 px-8 border border-black/15 dark:border-white/15 text-black/80 dark:text-white text-sm font-bold uppercase tracking-widest rounded-sm
                  bg-white/50 dark:bg-white/5 backdrop-blur hover:border-primary hover:text-primary retro-edge flex items-center justify-center">
-          See Work
+          See Our Talent
         </a>
       </div>
 
@@ -728,6 +832,16 @@
     (function () {
       const LOGO_DARK  = "https://raw.githubusercontent.com/rootln/projectarthouse/main/dark%20logo.png";
       const LOGO_LIGHT = "https://raw.githubusercontent.com/rootln/projectarthouse/main/light%20logo.png";
+// Intro overlay refs
+const intro = document.getElementById("intro");
+const introLogo = document.getElementById("introLogo");
+
+// Helper: pick correct logo based on theme
+function currentLogoSrc(){
+  const t = root.getAttribute("data-theme") || "dark";
+  return (t === "dark") ? LOGO_DARK : LOGO_LIGHT;
+}
+
 
       const html = document.documentElement;
       const brandLogo = document.getElementById("brandLogo");
@@ -841,5 +955,74 @@
       document.getElementById("year").textContent = new Date().getFullYear();
     })();
   </script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const LOGO_LIGHT = "https://raw.githubusercontent.com/rootln/projectarthouse/main/light%20logo.png";
+  const LOGO_DARK = "https://raw.githubusercontent.com/rootln/projectarthouse/main/dark%20logo.png";
+
+  const html = document.documentElement;
+  const intro = document.getElementById("intro");
+  const introLogo = document.getElementById("introLogo");
+  const brandLogo = document.getElementById("brandLogo"); // if exists
+  const footerLogo = document.getElementById("footerLogo"); // if exists
+
+  /* ========== THEME SYSTEM ========== */
+
+  function setTheme(mode){
+    html.classList.remove("dark","light");
+    html.classList.add(mode);
+
+    const logoSrc = mode === "dark" ? LOGO_DARK : LOGO_LIGHT;
+
+    if(brandLogo) brandLogo.src = logoSrc;
+    if(footerLogo) footerLogo.src = logoSrc;
+    if(introLogo) introLogo.src = logoSrc;
+
+    localStorage.setItem("arthouseTheme", mode);
+  }
+
+  // Initialize theme
+  const saved = localStorage.getItem("arthouseTheme");
+  if(saved){
+    setTheme(saved);
+  } else {
+    setTheme("dark");
+  }
+
+  // Optional toggle button (if you have one)
+  const toggleBtn = document.getElementById("themeToggle");
+  if(toggleBtn){
+    toggleBtn.addEventListener("click", function(){
+      const isDark = html.classList.contains("dark");
+      setTheme(isDark ? "light" : "dark");
+    });
+  }
+
+  /* ========== INTRO ANIMATION ========== */
+
+  if(!sessionStorage.getItem("arthouseIntroSeen")){
+    sessionStorage.setItem("arthouseIntroSeen", "1");
+
+    intro.classList.add("play");
+
+    setTimeout(() => {
+      intro.classList.add("zoom");
+    }, 700);
+
+    setTimeout(() => {
+      intro.classList.add("fade");
+    }, 1700);
+
+    setTimeout(() => {
+      intro.style.display = "none";
+    }, 2200);
+  } else {
+    intro.style.display = "none";
+  }
+
+});
+</script>
+
 </body>
 </html>
