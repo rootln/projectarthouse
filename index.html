@@ -68,6 +68,10 @@
         /* iOS safe-area helpers */
         .safe-top{ padding-top: env(safe-area-inset-top); }
         .safe-bottom{ padding-bottom: env(safe-area-inset-bottom); }
+#top{
+  padding-top: calc(6rem + env(safe-area-inset-top));
+}
+
     body {
       font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       overflow-x: hidden;
@@ -328,7 +332,8 @@ html.introLock, body.introLock{
   </nav>
 
   <!-- Hero -->
-  <header id="top" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden border-b border-black/10 dark:border-white/5">
+<header id="top" class="relative min-h-[100svh] pt-24 md:pt-28 flex items-center justify-center overflow-hidden border-b border-black/10 dark:border-white/5">
+
     <!-- Background grid -->
     <div class="absolute inset-0 bg-[size:44px_44px] bg-gridLight dark:bg-gridDark opacity-[0.12] dark:opacity-[0.06] pointer-events-none"></div>
 
