@@ -332,7 +332,8 @@ html.introLock, body.introLock{
   </nav>
 
   <!-- Hero -->
-<header id="top" class="relative min-h-[100svh] pt-24 md:pt-28 flex items-center justify-center overflow-hidden border-b border-black/10 dark:border-white/5">
+<header id="top" class="relative min-h-[100svh] pt-[calc(76px+env(safe-area-inset-top)+16px)] md:pt-0 flex items-center justify-center overflow-hidden border-b border-black/10 dark:border-white/5">
+
 
     <!-- Background grid -->
     <div class="absolute inset-0 bg-[size:44px_44px] bg-gridLight dark:bg-gridDark opacity-[0.12] dark:opacity-[0.06] pointer-events-none"></div>
@@ -348,7 +349,7 @@ html.introLock, body.introLock{
     <!-- Overlay fade -->
     <div class="absolute inset-0 bg-gradient-to-t from-bgLight via-transparent to-transparent dark:from-bgDark z-10 pointer-events-none"></div>
 
-    <div class="relative z-20 text-center px-6 max-w-5xl mx-auto flex flex-col items-center gap-8 reveal">
+    <div class="relative z-20 text-center pt-2 sm:pt-0 px-6 max-w-5xl mx-auto flex flex-col items-center gap-8 reveal">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.22em]">
         <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
         Studio Protocol v2.6
