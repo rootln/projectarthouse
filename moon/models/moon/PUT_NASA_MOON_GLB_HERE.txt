@@ -1,0 +1,2 @@
+Download Moon_NASA_LRO_8k_Topo_Small.glb and place it in this folder.
+Then update src/App.jsx to use /models/moon/Moon_NASA_LRO_8k_Topo_Small.glb
