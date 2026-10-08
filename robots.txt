@@ -1,0 +1,24 @@
+# Everyone is welcome, search engines and AI assistants included.
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Named so there is no doubt: these may read and cite the site.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: Amazonbot
+User-agent: meta-externalagent
+Allow: /
+Disallow: /api/
+
+Sitemap: https://www.projectarthouse.com/sitemap.xml
