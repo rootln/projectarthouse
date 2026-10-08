@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://res.cloudinary.com https://images.unsplash.com https://media.giphy.com; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Aarya's birthday surprise, a sample | Project Arthouse</title>
+  <meta name="description" content="A sample birthday website by Project Arthouse, made for a fictional Aarya. Names, photos and plans are made up.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://www.projectarthouse.com/demo-birthday.html">
+  <meta name="theme-color" content="#FDF6FA">
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dxrqlmgcz/image/upload/e_trim/c_limit,w_96/v1791463140/3_ojtlia.png">
+  <link rel="preload" href="fonts/playfair-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/birthday.css">
+</head>
+<body>
+<noscript><p class="needs-js">This sample is interactive and needs JavaScript to play. <a href="occasion-websites.html">Back to Project Arthouse</a></p></noscript>
+<p class="sample-bar"><span><strong>Sample page</strong><span class="sample-bar__more">. The name, photos and plan are made up.</span><span class="sample-bar__short">, all made up</span></span><a href="occasion-websites.html#rates">Get one made</a><a href="occasion-websites.html">Back to Project Arthouse</a></p>
+
+<button class="home-btn" data-act="goHome" aria-label="Back to the first screen">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M4.5 11.2 12 4.8l7.5 6.4"/>
+    <path d="M6.8 10.4v8.2c0 .7.5 1.2 1.2 1.2h8c.7 0 1.2-.5 1.2-1.2v-8.2"/>
+    <path d="M9.7 19.8v-5.1c0-.4.3-.8.8-.8h3c.4 0 .8.3.8.8v5.1"/>
+  </svg>
+</button>
+
+
+<div class="ambient"></div>
+<div class="particles-layer" id="particlesLayer"></div>
+<div class="confetti-layer" id="confettiLayer"></div>
+
+<main class="app">
+
+<!-- ===== INTRO ===== -->
+<section class="screen active" id="introScreen">
+  <div class="panel">
+    <div class="panel-glow"></div>
+    <div class="intro-inner">
+      <div class="cat-frame" id="catFrame">
+        <div class="cat-aura"></div>
+        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Cute birthday cat" width="220" height="220"/>
+        <div class="heart-float x1">🌸</div>
+        <div class="heart-float x2">💕</div>
+        <div class="heart-float x3">✨</div>
+        <div class="heart-float x4">🌷</div>
+      </div>
+      <div class="kicker">✦ a birthday surprise ✦</div>
+      <div class="display x5" role="heading" aria-level="1">
+        Hey <em>Aarya</em>
+      </div>
+      <p class="subhead x6">
+        It's your birthday today. Do you want to see your gift?
+      </p>
+      <div class="btn-row x7">
+        <button class="btn btn-primary" data-go="switchScreen">✨ Yes Please</button>
+        <button class="btn btn-secondary" id="noBtn">No</button>
+      </div>
+      <div class="mini-msg" id="noMessage" role="status"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SWITCH ===== -->
+<section class="screen" id="switchScreen">
+  <div class="panel x8">
+    <button class="back-btn" data-go="introScreen">← Back</button>
+    <div class="switch-world" id="switchWorld">
+      <!-- Dark room stars -->
+      <div class="room-stars" id="roomStars"></div>
+      <!-- Lamp -->
+      <div class="lamp-wire"></div>
+      <div class="lamp-shade">
+        <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 4 L95 4 L78 50 L22 50 Z" fill="url(#lampGrad)"/>
+          <defs>
+            <linearGradient id="lampGrad" x1="50" y1="0" x2="50" y2="50" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#F8E8F0"/>
+              <stop offset="1" stop-color="#F0D0E4"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="lamp-bulb" id="lampBulb"></div>
+      <div class="light-cone" id="lightCone"></div>
+
+      <div class="switch-inner" id="switchInner">
+        <div class="switch-title" id="switchTitle" role="heading" aria-level="2">Turn the lights on</div>
+        <p class="switch-sub" id="switchSub">One tiny switch before the birthday magic begins.</p>
+        <div class="toggle-wrap">
+          <div class="toggle" id="lightToggle" data-act="turnLightsOn" role="button" tabindex="0" aria-label="Turn the lights on" aria-pressed="false">
+            <div class="toggle-ball">🌙</div>
+          </div>
+          <div class="toggle-label" id="toggleLabel">lights off</div>
+        </div>
+        <div class="reveal-btn x9" id="decorateReveal">
+          <button class="btn btn-primary" data-go="decorateScreen">Continue →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DECORATE ===== -->
+<section class="screen" id="decorateScreen">
+  <div class="panel x8">
+    <button class="back-btn" data-go="switchScreen">← Back</button>
+    <div class="decorate-world" id="decorateWorld">
+      <div class="party-banner" id="partyBanner">
+        <div class="banner-shimmer"></div>
+        <span class="banner-text">✦ Happy Birthday, Aarya ✦</span>
+      </div>
+
+      <svg class="garland-svg" id="garlandSvg" viewBox="0 0 1000 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 20 Q125 75 250 30 Q375 75 500 28 Q625 75 750 30 Q875 75 1000 20" stroke="rgba(200,80,120,0.35)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <g fill="none" stroke="var(--rose)" stroke-width="1.5" opacity="0.7">
+          <path d="M68 48 L78 68 L88 48 Z" fill="#FFD7E6"/><path d="M148 62 L158 78 L168 62 Z" fill="#EDE4F5"/>
+          <path d="M228 70 L238 82 L248 70 Z" fill="#F9B2CC"/><path d="M308 74 L318 82 L328 74 Z" fill="#FFD7E6"/>
+          <path d="M388 75 L398 82 L408 75 Z" fill="#EDE4F5"/><path d="M468 74 L478 82 L488 74 Z" fill="#F9B2CC"/>
+          <path d="M548 70 L558 82 L568 70 Z" fill="#FFD7E6"/><path d="M628 62 L638 78 L648 62 Z" fill="#EDE4F5"/>
+          <path d="M708 48 L718 68 L728 48 Z" fill="#F9B2CC"/><path d="M788 35 L798 58 L808 35 Z" fill="#FFD7E6"/>
+          <path d="M868 25 L878 50 L888 25 Z" fill="#EDE4F5"/><path d="M948 22 L958 46 L968 22 Z" fill="#F9B2CC"/>
+        </g>
+      </svg>
+
+      <!-- Balloons with SVG -->
+      <div class="balloon b1" id="b1">
+        <svg width="68" height="120" viewBox="0 0 68 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="34" cy="38" rx="32" ry="38" fill="url(#bg1)"/>
+          <ellipse cx="24" cy="26" rx="9" ry="7" fill="rgba(255,255,255,0.35)" transform="rotate(-15 24 26)"/>
+          <path d="M30 76 Q32 90 34 100 Q36 90 38 76" stroke="#C08090" stroke-width="1.8" fill="none"/>
+          <path d="M20 120 Q34 105 48 120" stroke="#C08090" stroke-width="1.8" fill="none"/>
+          <defs><radialGradient id="bg1" cx="40%" cy="35%" r="65%"><stop offset="0" stop-color="#FFB3C8"/><stop offset="1" stop-color="#E8547A"/></radialGradient></defs>
+        </svg>
+      </div>
+      <div class="balloon b2" id="b2">
+        <svg width="68" height="120" viewBox="0 0 68 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="34" cy="38" rx="32" ry="38" fill="url(#bg2)"/>
+          <ellipse cx="24" cy="26" rx="9" ry="7" fill="rgba(255,255,255,0.35)" transform="rotate(-15 24 26)"/>
+          <path d="M30 76 Q32 90 34 100 Q36 90 38 76" stroke="#9080B0" stroke-width="1.8" fill="none"/>
+          <path d="M20 120 Q34 105 48 120" stroke="#9080B0" stroke-width="1.8" fill="none"/>
+          <defs><radialGradient id="bg2" cx="40%" cy="35%" r="65%"><stop offset="0" stop-color="#D9C8F0"/><stop offset="1" stop-color="#C4A8D8"/></radialGradient></defs>
+        </svg>
+      </div>
+      <div class="balloon b3" id="b3">
+        <svg width="62" height="110" viewBox="0 0 68 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="34" cy="38" rx="32" ry="38" fill="url(#bg3)"/>
+          <ellipse cx="24" cy="26" rx="9" ry="7" fill="rgba(255,255,255,0.35)" transform="rotate(-15 24 26)"/>
+          <path d="M30 76 Q32 90 34 100 Q36 90 38 76" stroke="#C0A070" stroke-width="1.8" fill="none"/>
+          <path d="M20 120 Q34 105 48 120" stroke="#C0A070" stroke-width="1.8" fill="none"/>
+          <defs><radialGradient id="bg3" cx="40%" cy="35%" r="65%"><stop offset="0" stop-color="#FFF0C0"/><stop offset="1" stop-color="#E8C66A"/></radialGradient></defs>
+        </svg>
+      </div>
+      <div class="balloon b4" id="b4">
+        <svg width="65" height="115" viewBox="0 0 68 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="34" cy="38" rx="32" ry="38" fill="url(#bg4)"/>
+          <ellipse cx="24" cy="26" rx="9" ry="7" fill="rgba(255,255,255,0.35)" transform="rotate(-15 24 26)"/>
+          <path d="M30 76 Q32 90 34 100 Q36 90 38 76" stroke="#D080A0" stroke-width="1.8" fill="none"/>
+          <path d="M20 120 Q34 105 48 120" stroke="#D080A0" stroke-width="1.8" fill="none"/>
+          <defs><radialGradient id="bg4" cx="40%" cy="35%" r="65%"><stop offset="0" stop-color="#FFD0E2"/><stop offset="1" stop-color="#E8547A"/></radialGradient></defs>
+        </svg>
+      </div>
+      <div class="balloon b5" id="b5">
+        <svg width="58" height="105" viewBox="0 0 68 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="34" cy="38" rx="32" ry="38" fill="url(#bg5)"/>
+          <ellipse cx="24" cy="26" rx="9" ry="7" fill="rgba(255,255,255,0.35)" transform="rotate(-15 24 26)"/>
+          <path d="M30 76 Q32 90 34 100 Q36 90 38 76" stroke="#A090C0" stroke-width="1.8" fill="none"/>
+          <path d="M20 120 Q34 105 48 120" stroke="#A090C0" stroke-width="1.8" fill="none"/>
+          <defs><radialGradient id="bg5" cx="40%" cy="35%" r="65%"><stop offset="0" stop-color="#E0D8F8"/><stop offset="1" stop-color="#9080C8"/></radialGradient></defs>
+        </svg>
+      </div>
+      <div class="balloon b6" id="b6">
+        <svg width="60" height="108" viewBox="0 0 68 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="34" cy="38" rx="32" ry="38" fill="url(#bg6)"/>
+          <ellipse cx="24" cy="26" rx="9" ry="7" fill="rgba(255,255,255,0.35)" transform="rotate(-15 24 26)"/>
+          <path d="M30 76 Q32 90 34 100 Q36 90 38 76" stroke="#90B080" stroke-width="1.8" fill="none"/>
+          <path d="M20 120 Q34 105 48 120" stroke="#90B080" stroke-width="1.8" fill="none"/>
+          <defs><radialGradient id="bg6" cx="40%" cy="35%" r="65%"><stop offset="0" stop-color="#C8ECC0"/><stop offset="1" stop-color="#70B060"/></radialGradient></defs>
+        </svg>
+      </div>
+
+      <!-- Sparkles in the room -->
+      <div id="sparkleContainer"></div>
+
+      <div class="decorate-content">
+        <div class="kicker">🎈 party setup</div>
+        <div class="heading" role="heading" aria-level="2">Let's <em>decorate</em> this place</div>
+        <div class="fine-line"></div>
+        <p class="body-text subtle">Click once and let the room dress itself up properly.</p>
+        <div class="btn-row">
+          <button class="btn btn-primary" id="decorateBtn" data-act="decorateParty">🎊 Decorate</button>
+          <button class="btn btn-secondary reveal-btn" id="toCakeBtn" data-go="cakeScreen">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CAKE ===== -->
+<section class="screen" id="cakeScreen">
+  <div class="panel">
+    <button class="back-btn" data-go="decorateScreen">← Back</button>
+    <div class="cake-stage">
+      <div class="kicker">🕯️ birthday ritual</div>
+      <div class="heading" role="heading" aria-level="2"><em>Make a wish</em></div>
+      <p class="subhead x10">Light the candles first. Close your eyes and blow when you're ready.</p>
+
+      <div class="cake-scene" id="cakeScene">
+        <div class="candle-glow"></div>
+        <div class="candles-row">
+          <div class="candle-wrap"><div class="flame-wrap"><div class="flame-outer"></div><div class="flame-inner"></div><div class="flame-core"></div></div><div class="candle-body"><div class="wick"></div></div></div>
+          <div class="candle-wrap"><div class="flame-wrap"><div class="flame-outer"></div><div class="flame-inner"></div><div class="flame-core"></div></div><div class="candle-body"><div class="wick"></div></div></div>
+          <div class="candle-wrap"><div class="flame-wrap"><div class="flame-outer"></div><div class="flame-inner"></div><div class="flame-core"></div></div><div class="candle-body"><div class="wick"></div></div></div>
+          <div class="candle-wrap"><div class="flame-wrap"><div class="flame-outer"></div><div class="flame-inner"></div><div class="flame-core"></div></div><div class="candle-body"><div class="wick"></div></div></div>
+          <div class="candle-wrap"><div class="flame-wrap"><div class="flame-outer"></div><div class="flame-inner"></div><div class="flame-core"></div></div><div class="candle-body"><div class="wick"></div></div></div>
+        </div>
+
+        <!-- Detailed cake SVG -->
+        <div class="cake-svg-wrap">
+          <svg width="320" height="220" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="topTier" x1="80" y1="20" x2="240" y2="80" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#FFF0F6"/><stop offset="1" stop-color="#F9B2CC"/>
+              </linearGradient>
+              <linearGradient id="botTier" x1="40" y1="80" x2="280" y2="190" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#FFFCFE"/><stop offset="1" stop-color="#FFD0E2"/>
+              </linearGradient>
+              <linearGradient id="plate" x1="30" y1="200" x2="290" y2="220" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F0D8E8"/>
+              </linearGradient>
+              <filter id="cakeShadow"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#D94F88" flood-opacity="0.18"/></filter>
+            </defs>
+            <g filter="url(#cakeShadow)">
+              <!-- Bottom tier -->
+              <rect x="30" y="100" width="260" height="100" rx="16" fill="url(#botTier)"/>
+              <!-- Stripe pattern on bottom tier -->
+              <rect x="30" y="100" width="260" height="100" rx="16" fill="url(#stripes)" opacity="0.4"/>
+              <!-- Top tier -->
+              <rect x="80" y="40" width="160" height="72" rx="14" fill="url(#topTier)"/>
+              <!-- Icing drips top tier -->
+              <path d="M80 54 Q87 42 94 56 Q101 42 108 56 Q115 42 122 56 Q129 42 136 56 Q143 42 150 56 Q157 42 164 56 Q171 42 178 56 Q185 42 192 56 Q199 42 206 56 Q213 42 220 56 Q227 42 234 56 Q240 46 240 54" fill="white" opacity="0.9"/>
+              <!-- Icing drips bottom tier -->
+              <path d="M30 114 Q39 100 48 116 Q57 100 66 116 Q75 100 84 116 Q93 100 102 116 Q111 100 120 116 Q129 100 138 116 Q147 100 156 116 Q165 100 174 116 Q183 100 192 116 Q201 100 210 116 Q219 100 228 116 Q237 100 246 116 Q255 100 264 116 Q273 100 282 116 Q288 104 290 114" fill="white" opacity="0.85"/>
+              <!-- Decorative dots -->
+              <circle cx="96" cy="148" r="5" fill="rgba(232,84,122,0.5)"/>
+              <circle cx="120" cy="132" r="4" fill="rgba(196,168,216,0.6)"/>
+              <circle cx="148" cy="155" r="6" fill="rgba(232,198,106,0.5)"/>
+              <circle cx="176" cy="136" r="4" fill="rgba(232,84,122,0.45)"/>
+              <circle cx="200" cy="150" r="5" fill="rgba(196,168,216,0.55)"/>
+              <circle cx="224" cy="130" r="4" fill="rgba(232,198,106,0.5)"/>
+              <!-- Heart on top tier -->
+              <path d="M148 62 C148 56 155 51 160 56 C165 51 172 56 172 62 C172 70 160 78 160 78 C160 78 148 70 148 62Z" fill="rgba(232,84,122,0.6)"/>
+              <!-- "HB" text -->
+              <text x="90" y="82" fill="rgba(200,60,90,0.7)" font-size="13" font-weight="600" font-family="Playfair Display, serif" font-style="italic">Happy</text>
+              <text x="176" y="82" fill="rgba(200,60,90,0.7)" font-size="13" font-weight="600" font-family="Playfair Display, serif" font-style="italic">Bday</text>
+              <!-- Plate -->
+              <ellipse cx="160" cy="205" rx="145" ry="14" fill="url(#plate)" rx="145"/>
+            </g>
+            <!-- Smoke holes (for smoke animation reference points) -->
+            <defs>
+              <pattern id="stripes" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+                <line x1="0" y1="0" x2="0" y2="20" stroke="rgba(232,84,122,0.15)" stroke-width="8"/>
+              </pattern>
+            </defs>
+          </svg>
+        </div>
+        <!-- Smoke puffs above candles -->
+        <div class="x11" id="smokePuffs"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" id="lightCandlesBtn" data-act="lightCandles">🕯️ Light the candles</button>
+        <button class="btn btn-secondary" id="blowCandlesBtn" data-act="blowCandles" disabled>💨 Blow the candles</button>
+        <button class="btn btn-primary reveal-btn" id="toGiftBtn" data-go="giftScreen">Open gifts 🎁</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GIFTS ===== -->
+<section class="screen" id="giftScreen">
+  <div class="panel">
+    <button class="back-btn" data-go="cakeScreen">← Back</button>
+    <div class="kicker">✦ your surprise ✦</div>
+    <div class="heading" role="heading" aria-level="2">Here's your <em>gift</em></div>
+    <p class="subhead x12">Four tiny doors. Choose the one your heart wants to open first.</p>
+    <div class="gift-grid">
+      <div class="gift-card x13" data-go="pictureScreen" role="button" tabindex="0" aria-label="Open the photos">
+        <div class="gift-icon">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <rect x="8" y="10" width="40" height="36" rx="9" fill="#FFE8F2" stroke="#E8547A" stroke-width="1.5"/>
+            <rect x="13" y="15" width="30" height="26" rx="6" fill="#FFC8DC"/>
+            <circle cx="20" cy="24" r="4" fill="#E8547A" opacity="0.7"/>
+            <path d="M16 38 L24 28 L30 34 L36 26 L42 38Z" fill="white" opacity="0.8"/>
+            <path d="M16 38 L24 28 L30 34 L36 26 L42 38" stroke="#E8547A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="gift-card x14" data-go="bouquetScreen" role="button" tabindex="0" aria-label="Open the bouquet">
+        <div class="gift-icon">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <circle cx="20" cy="18" r="9" fill="#F59BBD"/>
+            <circle cx="29" cy="12" r="9" fill="#E8547A"/>
+            <circle cx="38" cy="19" r="9" fill="#EADCFF"/>
+            <path d="M17 30L28 48L39 30" fill="#FFF8FC" stroke="#E8547A" stroke-width="1.5"/>
+            <path d="M22 40C26 36 32 36 36 40" stroke="#F59BBD" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="gift-card x15" data-go="envelopeScreen" role="button" tabindex="0" aria-label="Open the letter">
+        <div class="gift-icon">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <rect x="8" y="16" width="40" height="28" rx="8" fill="#FFE8F2" stroke="#E8547A" stroke-width="1.5"/>
+            <path d="M8 20L28 34L48 20" stroke="#E8547A" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M8 40L24 29M48 40L32 29" stroke="#E8547A" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M28 12C30 8 36 9 36 14C36 18 32 20 28 24C24 20 20 18 20 14C20 9 26 8 28 12Z" fill="#F59BBD"/>
+          </svg>
+        </div>
+      </div>
+      <div class="gift-card x16" data-go="mysteryScreen" role="button" tabindex="0" aria-label="Open the secret plan">
+        <div class="gift-icon">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <rect x="12" y="24" width="32" height="24" rx="7" fill="#FFE8F2" stroke="#E8547A" stroke-width="1.5"/>
+            <path d="M28 24V19C28 13 34 10 34 16" stroke="#E8547A" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M22 24V19C22 13 28 10 28 16" stroke="#E8547A" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <circle cx="28" cy="36" r="4" fill="#F59BBD"/>
+            <path d="M28 40V44" stroke="#E8547A" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="screen" id="pictureScreen">
+  <div class="panel">
+    <button class="back-btn" data-go="giftScreen">← Back</button>
+    <div class="gallery-wrap">
+      <div>
+        <div class="photo-frame">
+          <div class="photo-window">
+            <div class="slides-track" id="slidesTrack">
+              <div class="slide"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Sample photo 1 of 4" loading="lazy"/><div class="slide-overlay"><div class="slide-caption">You have this rare way of making ordinary moments feel like they were meant to be remembered.</div></div></div>
+              <div class="slide"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Sample photo 2 of 4" loading="lazy"/><div class="slide-overlay"><div class="slide-caption">Some smiles do not just look beautiful; they quietly become someone’s favourite place.</div></div></div>
+              <div class="slide"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Sample photo 3 of 4" loading="lazy"/><div class="slide-overlay"><div class="slide-caption">There is a softness in you that makes the world feel a little less heavy.</div></div></div>
+              <div class="slide"><img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Sample photo 4 of 4" loading="lazy"/><div class="slide-overlay"><div class="slide-caption">A tiny reminder that you are admired in ways words still struggle to explain.</div></div></div>
+            </div>
+            <div class="photo-nav">
+              <button class="nav-btn" data-act="prevSlide" aria-label="Previous photo">‹</button>
+              <button class="nav-btn" data-act="nextSlide" aria-label="Next photo">›</button>
+            </div>
+          </div>
+        </div>
+        <div class="slide-dots" id="slideDots"></div>
+      </div>
+      <div class="gallery-text">
+        <div class="kicker">✦ moments that stayed</div>
+        <div class="heading" role="heading" aria-level="2">Just look at <em>you</em></div>
+        <p class="body-text x17">You are not beautiful in a loud, obvious way alone. You are beautiful in the way a moment becomes calmer when you are in it, in the way a smile can stay in someone’s mind long after the day ends.</p>
+        <div class="message-card x18">
+          <p class="body-text">This little gallery is not here because pictures are enough. It is here because every picture becomes a small proof of something I already know — that you carry warmth, grace, and a kind of magic that does not need to announce itself.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOUQUET ===== -->
+<section class="screen" id="bouquetScreen">
+  <div class="panel">
+    <button class="back-btn" data-go="giftScreen">← Back</button>
+    <div class="kicker">🌸 digital bouquet</div>
+    <div class="heading" role="heading" aria-level="2">A bouquet <em>for you</em></div>
+    <p class="subhead x19">Not just flowers — each little note is something I would choose to tell you again.</p>
+    <div class="bouquet-stage" id="bouquetStage">
+      <div class="float-card fc1"><strong>✦ One</strong><p>You make simple days feel like they were quietly planned by the universe.</p></div>
+      <div class="float-card fc2"><strong>✦ Two</strong><p>Your laugh has a way of staying in the room even after the moment passes.</p></div>
+      <div class="float-card fc3"><strong>✦ Three</strong><p>You are gentle without being ordinary, and beautiful without even trying.</p></div>
+      <div class="float-card fc4"><strong>✦ Four</strong><p>With you, even silence feels comfortable, warm, and somehow full.</p></div>
+      <div class="float-card fc5"><strong>✦ Five</strong><p>You deserve a birthday that feels as thoughtful as the way you make people feel.</p></div>
+      <div class="float-card fc6"><strong>✦ Six</strong><p>This bouquet is only digital, but every word inside it is very real.</p></div>
+
+      <!-- Lush SVG Bouquet -->
+      <svg class="bouquet-svg" viewBox="0 0 440 500" xmlns="http://www.w3.org/2000/svg" aria-label="bouquet illustration">
+        <defs>
+          <radialGradient id="rA" cx="42%" cy="36%" r="62%"><stop offset="0" stop-color="#FFF4F8"/><stop offset="0.4" stop-color="#F9B2CC"/><stop offset="1" stop-color="#E8547A"/></radialGradient>
+          <radialGradient id="rB" cx="45%" cy="38%" r="60%"><stop offset="0" stop-color="#FFF8FC"/><stop offset="0.45" stop-color="#F5C4D8"/><stop offset="1" stop-color="#D94F88"/></radialGradient>
+          <radialGradient id="rC" cx="44%" cy="36%" r="62%"><stop offset="0" stop-color="#F8F0FF"/><stop offset="0.42" stop-color="#D9C8F0"/><stop offset="1" stop-color="#B8A0D8"/></radialGradient>
+          <linearGradient id="wrapGrad" x1="70" y1="200" x2="360" y2="460"><stop offset="0" stop-color="#FFFDF8"/><stop offset="0.5" stop-color="#FFE8F0"/><stop offset="1" stop-color="#F7B3CB"/></linearGradient>
+          <linearGradient id="ribbGrad" x1="150" y1="330" x2="290" y2="400"><stop offset="0" stop-color="#FFB6CA"/><stop offset="1" stop-color="#E8547A"/></linearGradient>
+          <filter id="bqShadow" x="-15%" y="-10%" width="130%" height="140%">
+            <feDropShadow dx="0" dy="20" stdDeviation="16" flood-color="#D94F88" flood-opacity="0.22"/>
+          </filter>
+        </defs>
+        <g filter="url(#bqShadow)">
+          <!-- Leaves -->
+          <g fill="#8DC87A" opacity="0.9">
+            <ellipse cx="82" cy="172" rx="38" ry="14" transform="rotate(-38 82 172)"/>
+            <ellipse cx="138" cy="110" rx="36" ry="13" transform="rotate(22 138 110)"/>
+            <ellipse cx="300" cy="118" rx="36" ry="13" transform="rotate(-24 300 118)"/>
+            <ellipse cx="348" cy="182" rx="36" ry="13" transform="rotate(34 348 182)"/>
+            <ellipse cx="102" cy="240" rx="30" ry="11" transform="rotate(28 102 240)"/>
+            <ellipse cx="334" cy="238" rx="30" ry="11" transform="rotate(-28 334 238)"/>
+            <ellipse cx="218" cy="82" rx="28" ry="10" transform="rotate(-5 218 82)"/>
+          </g>
+          <!-- Stems -->
+          <g stroke="#7AB870" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.85">
+            <path d="M104 175 C148 240 174 305 204 390"/>
+            <path d="M158 114 C174 214 192 310 208 392"/>
+            <path d="M218 88 C216 210 212 310 216 394"/>
+            <path d="M276 116 C252 224 232 318 220 394"/>
+            <path d="M322 178 C278 250 244 325 224 394"/>
+            <path d="M138 236 C164 286 190 336 208 390"/>
+            <path d="M302 238 C274 290 246 338 224 390"/>
+          </g>
+
+          <!-- Rose 1 -->
+          <g transform="translate(110 156)">
+            <circle r="46" fill="url(#rA)"/>
+            <path d="M-33-4C-22-40 26-44 38-8C22-22-6-24-33-4Z" fill="#FFE2EE" opacity="0.85"/>
+            <path d="M-36 14C-15-6 16-3 36 14C10 40-16 38-36 14Z" fill="#E8547A" opacity="0.5"/>
+            <path d="M-14-24C12-36 36-12 22 16C9 3-10 1-24 14C-38-5-30-18-14-24Z" fill="#F9C4D8"/>
+            <path d="M-4-10C4-20 18-14 18 0C12 14-8 14-16 4C-18-4-10-6-4-10Z" fill="#FFF0F6" opacity="0.6"/>
+            <circle r="15" fill="#D94F88" opacity="0.85"/>
+            <path d="M-8-5C-2-14 12-11 12 1C7 10-6 12-14 3Z" fill="#FFF0F8" opacity="0.7"/>
+          </g>
+
+          <!-- Rose 2 (center, largest) -->
+          <g transform="translate(220 90)">
+            <circle r="52" fill="url(#rB)"/>
+            <path d="M-37-4C-25-44 28-48 41-9C23-24-7-26-37-4Z" fill="#FFF2F8" opacity="0.9"/>
+            <path d="M-40 16C-17-8 18-4 40 16C11 44-18 42-40 16Z" fill="#D94F88" opacity="0.46"/>
+            <path d="M-15-27C13-40 40-13 24 18C10 4-11 2-26 16C-42-5-32-20-15-27Z" fill="#F9C0D4"/>
+            <path d="M-5-13C4-22 20-16 20 1C13 14-9 16-17 4C-20-5-12-9-5-13Z" fill="#FFF6FA" opacity="0.65"/>
+            <circle r="18" fill="#C83B71" opacity="0.82"/>
+            <path d="M-9-6C-2-16 14-13 14 1C9 12-7 14-16 4Z" fill="white" opacity="0.7"/>
+          </g>
+
+          <!-- Rose 3 -->
+          <g transform="translate(326 158)">
+            <circle r="46" fill="url(#rA)"/>
+            <path d="M-33-4C-22-40 26-44 38-8C22-22-6-24-33-4Z" fill="#FFE2EE" opacity="0.85"/>
+            <path d="M-36 14C-15-6 16-3 36 14C10 40-16 38-36 14Z" fill="#E8547A" opacity="0.5"/>
+            <path d="M-14-24C12-36 36-12 22 16C9 3-10 1-24 14C-38-5-30-18-14-24Z" fill="#F9C4D8"/>
+            <circle r="15" fill="#D94F88" opacity="0.85"/>
+          </g>
+
+          <!-- Rose 4 (lavender) -->
+          <g transform="translate(158 222)">
+            <circle r="43" fill="url(#rC)"/>
+            <path d="M-31-3C-20-37 24-40 35-7C20-20-5-22-31-3Z" fill="#F0E8FF" opacity="0.9"/>
+            <path d="M-33 13C-13-5 14-3 33 13C9 38-15 36-33 13Z" fill="#C4A8D8" opacity="0.5"/>
+            <path d="M-12-22C10-34 33-11 20 15C8 2-9 1-22 13C-35-4-28-17-12-22Z" fill="#E0D0F4"/>
+            <circle r="14" fill="#B898D0" opacity="0.82"/>
+          </g>
+
+          <!-- Rose 5 -->
+          <g transform="translate(282 224)">
+            <circle r="44" fill="url(#rA)"/>
+            <path d="M-32-3C-21-38 25-42 37-8C21-21-6-23-32-3Z" fill="#FFE8F2" opacity="0.82"/>
+            <path d="M-35 14C-14-5 15-3 35 14C10 39-15 37-35 14Z" fill="#E8547A" opacity="0.52"/>
+            <path d="M-13-23C10-34 32-11 19 15C7 2-9 1-22 13C-35-4-28-17-13-23Z" fill="#F9C8D8"/>
+            <circle r="14" fill="#D94F88" opacity="0.84"/>
+          </g>
+
+          <!-- Small side rose -->
+          <g transform="translate(348 218)">
+            <circle r="36" fill="url(#rB)"/>
+            <path d="M-26-2C-17-28 20-32 30-5C17-15-5-17-26-2Z" fill="#FFF4F8" opacity="0.82"/>
+            <path d="M-28 10C-10-3 11-2 28 10C8 30-12 30-28 10Z" fill="#D94F88" opacity="0.46"/>
+            <circle r="12" fill="#C83B71" opacity="0.8"/>
+          </g>
+
+          <!-- Wrapper -->
+          <path d="M72 260 C116 304 156 354 194 460 C207 470 230 470 244 460 C278 354 316 304 364 260 C288 290 140 290 72 260Z" fill="url(#wrapGrad)" stroke="#E8547A" stroke-width="2.5"/>
+          <path d="M72 260 C138 328 178 374 218 460 C258 374 298 328 364 260" fill="none" stroke="#D94F88" stroke-width="2" opacity="0.5"/>
+          <!-- Ribbon horizontal -->
+          <path d="M144 360 C168 342 204 342 218 364 C236 342 270 342 294 360" fill="none" stroke="#E8547A" stroke-width="5.5" stroke-linecap="round"/>
+          <!-- Bow -->
+          <path d="M186 362 C160 348 138 360 130 392 C156 382 172 372 192 360Z" fill="#F9B2CC" stroke="#E8547A" stroke-width="1.8"/>
+          <path d="M252 362 C278 348 300 360 308 392 C280 382 264 372 246 360Z" fill="#F9B2CC" stroke="#E8547A" stroke-width="1.8"/>
+          <ellipse cx="220" cy="360" rx="18" ry="14" fill="url(#ribbGrad)"/>
+          <!-- Ribbons hanging down -->
+          <path d="M210 372 C200 400 188 424 174 448" stroke="#E8547A" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M228 372 C236 404 244 430 258 452" stroke="#E8547A" stroke-width="4.5" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ENVELOPE ===== -->
+<section class="screen" id="envelopeScreen">
+  <div class="panel">
+    <button class="back-btn" data-go="giftScreen">← Back</button>
+    <div class="kicker">💌 little letter</div>
+    <div class="heading" role="heading" aria-level="2">Open the <em>envelope</em></div>
+    <p class="subhead x20">Click on it and the note will rise out softly.</p>
+    <div class="env-stage">
+      <div class="envelope" id="envelope" data-act="toggleEnvelope" role="button" tabindex="0" aria-label="The envelope with the letter" aria-expanded="false">
+        <div class="env-body"></div>
+
+        <div class="env-pocket-mask">
+          <div class="letter-card">
+            <div class="letter-salutation">To Aarya,</div>
+            <p class="letter-body">I wanted this to feel like more than a page on a screen. I wanted it to feel like a small pause in the day — the kind where you smile a little, read slowly, and realise that someone has thought about you with care.</p>
+            <p class="letter-body x21">You have this rare way of making ordinary things feel special. A simple conversation becomes memorable, a random day becomes lighter, and even the smallest moment with you somehow finds a place in the heart. That is not something everyone can do. That is you.</p>
+            <p class="letter-body x21">On your birthday, I hope you feel deeply loved, not only through big surprises, but through every tiny detail — the music, the lights, the candles, the letter, the secret plan, and every little thought hidden in this page. You deserve softness without asking for it, happiness without conditions, and a day that reminds you how precious you are.</p>
+            <p class="letter-body x21">So here is my little wish for you: may this year be kinder to you, may your heart feel lighter, may your smile stay stubborn, and may you always remember that you are cherished in a way that is not loud, but very, very real.</p>
+            <div class="letter-sig">With love ✦</div>
+          </div>
+        </div>
+
+        <div class="env-flap"></div>
+        <div class="env-left"></div>
+        <div class="env-right"></div>
+        <div class="env-bottom"></div>
+        <div class="wax-seal">✦</div>
+      </div>
+      <button class="btn btn-primary env-open-btn" data-act="toggleEnvelope">💌 Open letter</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MYSTERY ===== -->
+<section class="screen" id="mysteryScreen">
+  <div class="panel">
+    <button class="back-btn" data-go="giftScreen">← Back</button>
+    <div class="kicker">✦ secret plan ✦</div>
+    <div class="heading" role="heading" aria-level="2">Enter the <em>password</em></div>
+    <p class="subhead x22">Only the right password opens the plan for today.</p>
+    <div class="mystery-box">
+      <span class="lock-icon" id="lockIcon">🔒</span>
+      <p class="body-text">A tiny lock for a not-so-tiny surprise.</p>
+      <input id="secretPassword" class="pw-input" type="password" placeholder="Enter password…" aria-label="Password" autocomplete="off" data-secret="aarya"/>
+      <p class="pw-hint">Sample password: <strong>aarya</strong></p>
+      <button class="btn btn-primary x23" data-act="checkPassword">Unlock ✦</button>
+      <div class="pw-error" id="passwordError" role="status"></div>
+      <div class="secret-reveal" id="secretMessage">
+        <div class="secret-title">Our date plan</div>
+        <p class="body-text"><strong>First stop:</strong> We begin slow. No rushing, no chaos. Just getting ready, looking good, and pretending we are not already excited.</p>
+        <p class="body-text x24"><strong>Then:</strong> A calm little outing where we walk, talk, and take the kind of pictures that become memories later. I want today to feel soft, not crowded.</p>
+        <p class="body-text x21"><strong>Food plan:</strong> Something warm, vegetarian, and comforting. The kind of meal where the conversation matters as much as the food.</p>
+        <p class="body-text x21"><strong>Birthday moment:</strong> A small dessert, one candle if possible, and a quiet wish. Not because the world needs to see it, but because the moment should belong to you.</p>
+        <p class="body-text x21"><strong>After that:</strong> A slow evening drive or walk, music playing, no hurry to reach anywhere. Just us stretching the day a little longer.</p>
+        <p class="body-text x21"><strong>Final rule:</strong> Today you get spoiled. You are not allowed to argue with the plan, negotiate the affection, or pretend you do not like being treated specially.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="js/birthday.js"></script>
+</body>
+</html>
