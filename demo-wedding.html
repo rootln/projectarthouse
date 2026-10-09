@@ -1,109 +1,416 @@
 <!doctype html>
-<html lang="en-IN" data-theme="dark" data-hello="first">
+<html lang="en-IN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://res.cloudinary.com https://images.unsplash.com; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Wedding invitation demo | Project Arthouse</title>
-  <meta name="description" content="A sample wedding invitation website by Project Arthouse. Names, dates and venue are made up.">
+  <title>Aarya weds Kabir, a sample wedding invitation | Project Arthouse</title>
+  <meta name="description" content="A sample wedding invitation website by Project Arthouse: Aarya weds Kabir. Names, families, dates and arrangements are made up.">
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://www.projectarthouse.com/demo-wedding.html">
-  <meta name="author" content="Project Arthouse">
-  <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#0C0D10">
-  <meta property="og:site_name" content="Project Arthouse">
-  <meta property="og:locale" content="en_IN">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Wedding invitation demo | Project Arthouse">
-  <meta property="og:description" content="A sample wedding invitation website by Project Arthouse. Names, dates and venue are made up.">
-  <meta property="og:url" content="https://www.projectarthouse.com/demo-wedding.html">
-  <meta property="og:image" content="https://www.projectarthouse.com/assets/og.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Project Arthouse: marketing studio">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Wedding invitation demo | Project Arthouse">
-  <meta name="twitter:description" content="A sample wedding invitation website by Project Arthouse. Names, dates and venue are made up.">
-  <meta name="twitter:image" content="https://www.projectarthouse.com/assets/og.jpg">
-  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dxrqlmgcz/image/upload/e_trim/c_limit,w_96/v1791463140/3_ojtlia.png" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dxrqlmgcz/image/upload/e_trim/c_limit,w_96/v1791463140/2_wvbiuf.png" media="(prefers-color-scheme: dark)">
-  <link rel="alternate" type="text/plain" title="Site summary for AI assistants" href="https://www.projectarthouse.com/llms.txt">
-  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-  <link rel="preload" href="fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/instrument-serif-latin-italic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/demo.css">
-  <script src="js/boot.js"></script>
-
+  <meta name="theme-color" content="#4A0A12">
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dxrqlmgcz/image/upload/e_trim/c_limit,w_96/v1791463140/3_ojtlia.png">
+  <link rel="preload" href="fonts/rozha-one-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/tiro-devanagari-sanskrit-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/wedding.css">
+  <script src="js/wedding.js"></script>
 </head>
-<body class="demo demo--wedding">
-<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
-  <symbol id="i-arrow-ne" viewBox="0 0 24 24"><path d="M6.5 17.5 17.5 6.5M8 6.5h9.5V16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
-  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M3.5 12h16.5M13.5 5.5 20 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
-  <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M20.5 12H4M10.5 5.5 4 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
-  <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 3.5V20M5.5 13.5 12 20l6.5-6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
-  <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 20.5V4M5.5 10.5 12 4l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
-  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
-  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
-  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
-  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.2A7.8 7.8 0 0 1 9.8 4.5a7.8 7.8 0 1 0 9.7 9.7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
-  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.2v13.6L19.2 12Z" fill="currentColor"/></symbol>
-  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></symbol>
-  <symbol id="i-quote" viewBox="0 0 48 36"><path d="M0 36V21.6C0 9.2 6.6 1.9 19 0l1.6 5.6c-6 1.6-9 5-9.4 10H20v20.4Zm27.4 0V21.6C27.4 9.2 34 1.9 46.4 0L48 5.6c-6 1.6-9 5-9.4 10h8.8v20.4Z" fill="currentColor"/></symbol>
-  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.2s-7.4-4.5-7.4-10A4.1 4.1 0 0 1 12 7.8a4.1 4.1 0 0 1 7.4 2.4c0 5.5-7.4 10-7.4 10Z" fill="currentColor"/></symbol>
-  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.4V12l3.2 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
-  <symbol id="i-image" viewBox="0 0 24 24"><path d="M3.8 5.2h16.4v13.6H3.8Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m4.4 16.4 4.6-4.6 3.4 3.4 2.6-2.6 4.6 4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="15.6" cy="9" r="1.3" fill="currentColor"/></symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24"><path d="M5.6 10.6h12.8v9H5.6Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.6 10.6V8a3.4 3.4 0 0 1 6.8 0v2.6" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
-  <symbol id="i-reel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="7.2" r="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="16.8" r="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="7.2" cy="12" r="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="16.8" cy="12" r="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
-</svg>
-  <header class="demo-bar">
-    <a class="demo-bar__back" href="occasion-websites.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-left"></use></svg><span>Project Arthouse</span></a>
-    <span class="demo-bar__tag"><b>Sample</b><span> occasion website. Names and details are made up.</span></span>
-    <span class="demo-bar__count"><button class="demo-bar__prev" type="button" data-prev hidden aria-label="Previous scene"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-left"></use></svg></button><span><b data-scene-no>01</b> / 03</span></span>
+<body>
+<p class="sample"><span><strong>Sample page</strong><span class="sample__more">. The couple, families, dates and arrangements are made up. The hotel is real and is named only as an example.</span><span class="sample__short">, all made up</span></span><a href="rates.html#plan-wedding-invitation">Get one made</a><a href="occasion-websites.html">Back<span class="sample__wide"> to Project Arthouse</span></a></p>
+
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><clipPath id="door-clip" clipPathUnits="objectBoundingBox"><path d="M0,1V0.3704A0.1354,0.1003 0 0 0 0.1111,0.2311A0.1048,0.0777 0 0 0 0.2222,0.1366A0.0876,0.0649 0 0 0 0.3333,0.0719A0.0743,0.055 0 0 0 0.4444,0.0388A0.0689,0.051 0 0 0 0.5556,0.0388A0.0743,0.055 0 0 0 0.6667,0.0719A0.0876,0.0649 0 0 0 0.7778,0.1366A0.1048,0.0777 0 0 0 0.8889,0.2311A0.1354,0.1003 0 0 0 1,0.3704V1Z"/></clipPath></defs></svg>
+
+<div class="w" data-wedding data-date="2027-02-27T19:30:00+05:30" data-bride="Aarya" data-groom="Kabir">
+  <div class="w__backdrop" aria-hidden="true"><span class="w__mandala"></span></div>
+
+  <!-- 1. The door. It opens onto the invitation. -->
+  <section class="gate" id="gate" data-gate aria-label="The door to the invitation">
+    <div class="gate__toran" aria-hidden="true"><svg class="toran" viewBox="0 0 2816 58" width="2816" height="58" aria-hidden="true" focusable="false"><defs><g id="toran-leaf"><path class="toran__leaf" d="M0,0C9,10 9,30 0,46C-9,30 -9,10 0,0Z"/><path class="toran__vein" d="M0,4V40"/><path class="toran__bloom" d="M0,-6.4A2.52,2.52 0 0 1 4.11,-4.9A2.52,2.52 0 0 1 6.3,-1.11A2.52,2.52 0 0 1 5.54,3.2A2.52,2.52 0 0 1 2.19,6.01A2.52,2.52 0 0 1 -2.19,6.01A2.52,2.52 0 0 1 -5.54,3.2A2.52,2.52 0 0 1 -6.3,-1.11A2.52,2.52 0 0 1 -4.11,-4.9A2.52,2.52 0 0 1 0,-6.4Z"/><circle class="toran__heart" cy="0" r="2.3"/></g><g id="toran-blooms"><path class="toran__thread" d="M0,0V30"/><path class="toran__bloom" d="M0,0.6A2.91,2.91 0 0 1 4.76,2.33A2.91,2.91 0 0 1 7.29,6.72A2.91,2.91 0 0 1 6.41,11.7A2.91,2.91 0 0 1 2.53,14.95A2.91,2.91 0 0 1 -2.53,14.95A2.91,2.91 0 0 1 -6.41,11.7A2.91,2.91 0 0 1 -7.29,6.72A2.91,2.91 0 0 1 -4.76,2.33A2.91,2.91 0 0 1 0,0.6Z"/><circle class="toran__heart" cy="8" r="2.66"/><path class="toran__bloom toran__bloom--deep" d="M0,13.2A2.67,2.67 0 0 1 4.37,14.79A2.67,2.67 0 0 1 6.7,18.82A2.67,2.67 0 0 1 5.89,23.4A2.67,2.67 0 0 1 2.33,26.39A2.67,2.67 0 0 1 -2.33,26.39A2.67,2.67 0 0 1 -5.89,23.4A2.67,2.67 0 0 1 -6.7,18.82A2.67,2.67 0 0 1 -4.37,14.79A2.67,2.67 0 0 1 0,13.2Z"/><circle class="toran__heart" cy="20" r="2.45"/><path class="toran__bloom" d="M0,24.8A2.44,2.44 0 0 1 3.99,26.25A2.44,2.44 0 0 1 6.11,29.92A2.44,2.44 0 0 1 5.37,34.1A2.44,2.44 0 0 1 2.12,36.83A2.44,2.44 0 0 1 -2.12,36.83A2.44,2.44 0 0 1 -5.37,34.1A2.44,2.44 0 0 1 -6.11,29.92A2.44,2.44 0 0 1 -3.99,26.25A2.44,2.44 0 0 1 0,24.8Z"/><circle class="toran__heart" cy="31" r="2.23"/><path class="toran__bell" d="M-4,38h8l-1.5,7h-5z"/></g></defs><path class="toran__string" d="M0,5q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0q22,7 44,0"/><g class="toran__drop" transform="translate(22 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(66 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(110 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(154 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(198 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(242 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(286 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(330 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(374 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(418 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(462 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(506 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(550 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(594 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(638 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(682 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(726 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(770 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(814 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(858 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(902 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(946 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(990 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(1034 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(1078 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(1122 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(1166 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(1210 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(1254 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(1298 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(1342 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(1386 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(1430 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(1474 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(1518 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(1562 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(1606 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(1650 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(1694 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(1738 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(1782 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(1826 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(1870 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(1914 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(1958 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(2002 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(2046 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(2090 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(2134 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(2178 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(2222 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(2266 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(2310 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(2354 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(2398 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(2442 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(2486 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(2530 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(2574 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(2618 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(2662 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(2706 8)"><use class="toran__sway" href="#toran-blooms"/></g><g class="toran__drop" transform="translate(2750 8)"><use class="toran__sway" href="#toran-leaf"/></g><g class="toran__drop" transform="translate(2794 8)"><use class="toran__sway" href="#toran-blooms"/></g></svg></div>
+    <div class="gate__in">
+      <p class="gate__om" lang="sa">॥ श्री गणेशाय नमः ॥</p>
+      <div class="gate__door">
+        <div class="door" data-door>
+          <div class="door__light" aria-hidden="true"><span class="door__rays"></span></div>
+          <div class="door__leaf door__leaf--l" aria-hidden="true"><img src="assets/wedding/door.svg" alt="" width="180" height="444"></div>
+          <div class="door__leaf door__leaf--r" aria-hidden="true"><img src="assets/wedding/door.svg" alt="" width="180" height="444"></div>
+          <svg class="door__arch" viewBox="0 0 300 405" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path class="door__edge" d="M0,405V150A40.63,40.63 0 0 0 33.33,93.58A31.45,31.45 0 0 0 66.67,55.34A26.29,26.29 0 0 0 100,29.13A22.28,22.28 0 0 0 133.33,15.7A20.67,20.67 0 0 0 166.67,15.7A22.28,22.28 0 0 0 200,29.13A26.29,26.29 0 0 0 233.33,55.34A31.45,31.45 0 0 0 266.67,93.58A40.63,40.63 0 0 0 300,150V405"/>
+          </svg>
+          <span class="door__seal" aria-hidden="true"><span>A</span><i>&amp;</i><span>K</span></span>
+        </div>
+        <div class="plinth" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 13.5h16c0 3.2-3.6 5.5-8 5.5s-8-2.3-8-5.5z"/><path class="flame" d="M12 4.5c1.8 2 2.6 3.3 2.6 4.6a2.6 2.6 0 0 1-5.2 0c0-1.3.8-2.6 2.6-4.6z"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 13.5h16c0 3.2-3.6 5.5-8 5.5s-8-2.3-8-5.5z"/><path class="flame" d="M12 4.5c1.8 2 2.6 3.3 2.6 4.6a2.6 2.6 0 0 1-5.2 0c0-1.3.8-2.6 2.6-4.6z"/></svg></div>
+      </div>
+      <p class="gate__names"><span>Aarya</span> <em>weds</em> <span>Kabir</span></p>
+      <p class="gate__date">Saturday, 27 February 2027, Gurugram</p>
+      <p class="gate__open">
+        <button class="btn" type="button" data-open="music"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z"/><path class="wave" d="M15.5 9.2a4 4 0 0 1 0 5.6"/><path class="wave" d="M18 6.8a7.5 7.5 0 0 1 0 10.4"/><path class="mute" d="m16 9.5 5 5m0-5-5 5"/></svg><span>Open with music</span></button>
+        <button class="btn btn--line" type="button" data-open="quiet"><span>Open quietly</span></button>
+      </p>
+    </div>
+  </section>
+
+  <header class="top" data-chrome>
+    <a class="top__mark" href="#invitation" data-go="invitation" aria-label="Aarya and Kabir, back to the invitation"><span>A</span><i>&amp;</i><span>K</span></a>
+    <button class="top__sound" type="button" data-sound aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z"/><path class="wave" d="M15.5 9.2a4 4 0 0 1 0 5.6"/><path class="wave" d="M18 6.8a7.5 7.5 0 0 1 0 10.4"/><path class="mute" d="m16 9.5 5 5m0-5-5 5"/></svg><span data-sound-label>Music is off</span></button>
   </header>
-  <main id="main" class="scenes" data-scenes>
-    <section class="scene is-on" data-scene>
-      <div class="scene__bg skel"><img src="https://images.unsplash.com/photo-1621801306185-8c0ccf9c8eb8?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=72&amp;w=1600&amp;h=1000" srcset="https://images.unsplash.com/photo-1621801306185-8c0ccf9c8eb8?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=72&amp;w=800&amp;h=500 800w, https://images.unsplash.com/photo-1621801306185-8c0ccf9c8eb8?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=72&amp;w=1600&amp;h=1000 1600w, https://images.unsplash.com/photo-1621801306185-8c0ccf9c8eb8?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=72&amp;w=2560&amp;h=1600 2560w" sizes="100vw" alt="" width="1600" height="1000" fetchpriority="high" decoding="async"></div>
-      <div class="scene__in">
-        <p class="scene__kicker">With open hearts and the people we love</p>
-        <h1 class="scene__title">Aarya<br><em>&amp; Kabir</em></h1>
-        <p class="scene__text">invite you to celebrate a new beginning.</p>
-        <button class="btn" type="button" data-next><span>View the invitation</span><span class="arr arr--arrow-right" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></span></button>
-      </div>
-    </section>
-    <section class="scene" data-scene hidden>
-      <div class="scene__bg skel"><img src="https://images.unsplash.com/photo-1632610992723-82d7c212f6d7?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=72&amp;w=1600&amp;h=1000" srcset="https://images.unsplash.com/photo-1632610992723-82d7c212f6d7?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=72&amp;w=800&amp;h=500 800w, https://images.unsplash.com/photo-1632610992723-82d7c212f6d7?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=72&amp;w=1600&amp;h=1000 1600w, https://images.unsplash.com/photo-1632610992723-82d7c212f6d7?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=72&amp;w=2560&amp;h=1600 2560w" sizes="100vw" alt="" width="1600" height="1000" loading="lazy" decoding="async"></div>
-      <div class="scene__in">
-        <p class="scene__kicker">A celebration to remember</p>
-        <h2 class="scene__title">Save the <em>date.</em></h2>
-        <dl class="details">
-          <div><dt>When</dt><dd>12 December 2026, 6:00 pm onwards</dd></div>
-          <div><dt>Where</dt><dd>The Courtyard (sample venue)</dd></div>
-          <div><dt>Dress</dt><dd>Festive</dd></div>
-        </dl>
-        <button class="btn" type="button" data-next><span>Let us know</span><span class="arr arr--arrow-right" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></span></button>
-      </div>
-    </section>
-    <section class="scene" data-scene hidden>
-      <div class="scene__in">
-        <p class="scene__kicker">A little space for your reply</p>
-        <h2 class="scene__title">R<em>SVP.</em></h2>
-        <form class="rsvp" data-rsvp novalidate>
-          <label for="rsvp-name">Your name</label>
-          <input id="rsvp-name" name="guest" type="text" maxlength="60" autocomplete="off">
-          <div class="rsvp__choices">
-            <label class="tick"><input type="radio" name="reply" value="yes" checked><span>Joyfully accepts</span></label>
-            <label class="tick"><input type="radio" name="reply" value="no"><span>Regretfully declines</span></label>
+
+  <main class="screens" id="main">
+
+    <!-- 2. The invitation itself -->
+    <section class="screen" id="invitation" data-screen aria-labelledby="invitation-title">
+      <div class="screen__in">
+        <article class="patra">
+          <svg class="patra__crown" viewBox="0 0 400 96" aria-hidden="true" focusable="false">
+          <path class="crown__fill" d="M0,92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96H0Z"/>
+          <path class="crown__line" d="M0,96V92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96"/>
+          <path class="crown__bud" d="M200,2c5,5 5,10 0,14c-5,-4 -5,-9 0,-14z"/>
+        </svg>
+          <div class="patra__body">
+            <p class="patra__om" lang="sa" aria-hidden="true">ॐ</p>
+            <div class="shloka shloka--lead">
+            <p class="shloka__dev" lang="sa">वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।<br>निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥</p>
+            <p class="shloka__roman" lang="sa-Latn">vakratuṇḍa mahākāya sūryakoṭi samaprabha, nirvighnaṃ kuru me deva sarvakāryeṣu sarvadā</p>
+            <p class="shloka__means">Ganesha of the curved trunk and mighty form, bright as ten million suns: clear every obstacle from all that we begin, always.</p>
           </div>
-          <button class="btn" type="submit"><span>Preview my reply</span><span class="arr arr--arrow-right" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></span></button>
-          <p class="rsvp__out" role="status" aria-live="polite"></p>
-        </form>
-        <p class="scene__fine">Demonstration only. Your reply is not sent, saved or collected.</p>
-        <p class="scene__actions"><button class="btn btn--ghost" type="button" data-restart><span>Start again</span></button><a class="btn" href="occasion-websites.html#brief"><span>Plan your invitation</span><span class="arr arr--arrow-ne" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-ne"></use></svg><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-ne"></use></svg></span></a></p>
+            <svg class="lotus" viewBox="0 0 120 26" aria-hidden="true" focusable="false">
+            <g class="lotus__petals"><path transform="translate(60 22) rotate(-64)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/><path transform="translate(60 22) rotate(-32)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/><path transform="translate(60 22) rotate(0)" d="M0,0C5.2,-6.65 5.2,-13.3 0,-19C-5.2,-13.3 -5.2,-6.65 0,0Z"/><path transform="translate(60 22) rotate(32)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/><path transform="translate(60 22) rotate(64)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/></g>
+            <path class="lotus__line" d="M2,22H40M80,22H118"/>
+            <path class="lotus__dot" d="M44,22l3,-3l3,3l-3,3zM70,22l3,-3l3,3l-3,3z"/>
+          </svg>
+            <p class="patra__line">With the blessings of<br><strong>Smt. Savitri Devi and the late Shri Hari Prasad Sharma</strong></p>
+            <p class="patra__line"><strong>Smt. Sunita and Shri Rajeev Sharma</strong><br>request the honour of your presence<br>at the wedding of their daughter</p>
+            <h1 class="patra__names" id="invitation-title" tabindex="-1"><span>Aarya</span><em>weds</em><span>Kabir</span></h1>
+            <p class="patra__line">son of <strong>Smt. Meenakshi and Shri Anil Malhotra</strong></p>
+            <svg class="lotus" viewBox="0 0 120 26" aria-hidden="true" focusable="false">
+            <g class="lotus__petals"><path transform="translate(60 22) rotate(-64)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/><path transform="translate(60 22) rotate(-32)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/><path transform="translate(60 22) rotate(0)" d="M0,0C5.2,-6.65 5.2,-13.3 0,-19C-5.2,-13.3 -5.2,-6.65 0,0Z"/><path transform="translate(60 22) rotate(32)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/><path transform="translate(60 22) rotate(64)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/></g>
+            <path class="lotus__line" d="M2,22H40M80,22H118"/>
+            <path class="lotus__dot" d="M44,22l3,-3l3,3l-3,3zM70,22l3,-3l3,3l-3,3z"/>
+          </svg>
+            <p class="patra__when"><strong>Saturday, 27 February 2027</strong><br>Varmala at 7:30 pm. Pheras at the muhurat, 10:30 pm.<br><a href="#venue" data-go="venue">The Leela Ambience Gurugram</a></p>
+
+            <div class="count" data-count>
+              <p class="count__label" data-count-label>Until the wedding</p>
+              <div class="count__row" role="timer" aria-label="Time until the wedding" data-count-row>
+                <p class="count__cell"><span class="count__num" data-count-days>0</span><span class="count__unit">days</span></p>
+                <p class="count__cell"><span class="count__num" data-count-hours>0</span><span class="count__unit">hours</span></p>
+                <p class="count__cell"><span class="count__num" data-count-mins>0</span><span class="count__unit">minutes</span></p>
+                <p class="count__cell"><span class="count__num" data-count-secs>0</span><span class="count__unit">seconds</span></p>
+              </div>
+              <p class="count__done" data-count-done hidden><span lang="hi">शुभ विवाह सम्पन्न हुआ</span>Aarya and Kabir are married. Thank you for your blessings.</p>
+              <noscript><p class="count__done">The wedding is on Saturday, 27 February 2027.</p></noscript>
+            </div>
+
+            <div class="shloka">
+            <p class="shloka__dev" lang="sa">मङ्गलं भगवान् विष्णुः मङ्गलं गरुडध्वजः ।<br>मङ्गलं पुण्डरीकाक्षः मङ्गलायतनो हरिः ॥</p>
+            <p class="shloka__roman" lang="sa-Latn">maṅgalaṃ bhagavān viṣṇuḥ maṅgalaṃ garuḍadhvajaḥ, maṅgalaṃ puṇḍarīkākṣaḥ maṅgalāyatano hariḥ</p>
+            <p class="shloka__means">Auspicious is Lord Vishnu, auspicious is he whose banner bears Garuda, auspicious is the lotus-eyed one. Hari is the home of all that is auspicious.</p>
+          </div>
+            <p class="patra__next"><a class="btn btn--ink" href="#couple" data-go="couple"><span>Meet the couple</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></svg></a></p>
+          </div>
+        </article>
       </div>
     </section>
+
+    <!-- 3. The couple at the mandap: garlands, then the seven steps -->
+    <section class="screen screen--couple" id="couple" data-screen aria-labelledby="couple-title" hidden>
+      <div class="screen__in screen__in--wide">
+        <div class="stage" data-stage>
+          <img class="stage__still" src="assets/wedding/mandap.png" width="900" height="804" alt="Aarya and Kabir as painted wooden dolls under a red canopy hung with marigolds, the sacred fire between them." decoding="async">
+          <canvas class="stage__canvas" data-canvas aria-hidden="true"></canvas>
+          <p class="stage__turn" data-turn hidden>
+            <button type="button" data-turn-by="-1" aria-label="Turn the mandap to the left"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12a7 7 0 1 1 2.6 5.4"/><path d="M5 7.5V12h4.5"/></svg></button>
+            <span>Drag to look around</span>
+            <button type="button" data-turn-by="1" aria-label="Turn the mandap to the right"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12a7 7 0 1 0-2.6 5.4"/><path d="M19 7.5V12h-4.5"/></svg></button>
+          </p>
+        </div>
+        <div class="rite" data-rite>
+          <h2 class="rite__title" id="couple-title" tabindex="-1">At the mandap</h2>
+          <div class="rite__card" aria-live="polite" data-rite-card>
+            <ol class="rite__lamps" aria-hidden="true"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 13.5h16c0 3.2-3.6 5.5-8 5.5s-8-2.3-8-5.5z"/><path class="flame" d="M12 4.5c1.8 2 2.6 3.3 2.6 4.6a2.6 2.6 0 0 1-5.2 0c0-1.3.8-2.6 2.6-4.6z"/></svg></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 13.5h16c0 3.2-3.6 5.5-8 5.5s-8-2.3-8-5.5z"/><path class="flame" d="M12 4.5c1.8 2 2.6 3.3 2.6 4.6a2.6 2.6 0 0 1-5.2 0c0-1.3.8-2.6 2.6-4.6z"/></svg></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 13.5h16c0 3.2-3.6 5.5-8 5.5s-8-2.3-8-5.5z"/><path class="flame" d="M12 4.5c1.8 2 2.6 3.3 2.6 4.6a2.6 2.6 0 0 1-5.2 0c0-1.3.8-2.6 2.6-4.6z"/></svg></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 13.5h16c0 3.2-3.6 5.5-8 5.5s-8-2.3-8-5.5z"/><path class="flame" d="M12 4.5c1.8 2 2.6 3.3 2.6 4.6a2.6 2.6 0 0 1-5.2 0c0-1.3.8-2.6 2.6-4.6z"/></svg></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 13.5h16c0 3.2-3.6 5.5-8 5.5s-8-2.3-8-5.5z"/><path class="flame" d="M12 4.5c1.8 2 2.6 3.3 2.6 4.6a2.6 2.6 0 0 1-5.2 0c0-1.3.8-2.6 2.6-4.6z"/></svg></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 13.5h16c0 3.2-3.6 5.5-8 5.5s-8-2.3-8-5.5z"/><path class="flame" d="M12 4.5c1.8 2 2.6 3.3 2.6 4.6a2.6 2.6 0 0 1-5.2 0c0-1.3.8-2.6 2.6-4.6z"/></svg></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 13.5h16c0 3.2-3.6 5.5-8 5.5s-8-2.3-8-5.5z"/><path class="flame" d="M12 4.5c1.8 2 2.6 3.3 2.6 4.6a2.6 2.6 0 0 1-5.2 0c0-1.3.8-2.6 2.6-4.6z"/></svg></li></ol>
+            <p class="rite__step" data-rite-step>Varmala</p>
+            <p class="rite__dev" lang="sa" data-rite-dev hidden></p>
+            <p class="rite__roman" lang="sa-Latn" data-rite-roman hidden></p>
+            <p class="rite__text" data-rite-text>Aarya and Kabir face each other, each holding a garland of marigold and tuberose.</p>
+          </div>
+          <p class="rite__go">
+            <button class="btn" type="button" data-rite-go><span data-rite-label>Exchange the garlands</span></button>
+            <a class="btn" href="#celebrations" data-go="celebrations" data-rite-next hidden><span>See the celebrations</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></svg></a>
+            <button class="btn btn--line" type="button" data-rite-again hidden><span>Watch again</span></button>
+          </p>
+          <ol class="rite__all" data-rite-all>
+            <li><span lang="sa">इष एकपदी भव</span><i lang="sa-Latn">iṣa ekapadī bhava</i>One step for nourishment. May our home never lack food.</li>
+            <li><span lang="sa">ऊर्जे द्विपदी भव</span><i lang="sa-Latn">ūrje dvipadī bhava</i>Two for strength, of body and of spirit.</li>
+            <li><span lang="sa">रायस्पोषाय त्रिपदी भव</span><i lang="sa-Latn">rāyaspoṣāya tripadī bhava</i>Three for prosperity, earned well and shared.</li>
+            <li><span lang="sa">मायोभव्याय चतुष्पदी भव</span><i lang="sa-Latn">māyobhavyāya catuṣpadī bhava</i>Four for happiness and comfort at home.</li>
+            <li><span lang="sa">प्रजाभ्यः पञ्चपदी भव</span><i lang="sa-Latn">prajābhyaḥ pañcapadī bhava</i>Five for family, and the children we may raise.</li>
+            <li><span lang="sa">ऋतुभ्यः षट्पदी भव</span><i lang="sa-Latn">ṛtubhyaḥ ṣaṭpadī bhava</i>Six for every season we will see through together.</li>
+            <li><span lang="sa">सखा सप्तपदी भव</span><i lang="sa-Latn">sakhā saptapadī bhava</i>Seven for friendship. With this step, be my friend for life.</li>
+          </ol>
+        </div>
+      </div>
+      <p class="rite__note">The seven lines are the saptapadi, the seven steps, as given in the Āśvalāyana Gṛhyasūtra (1.7.19). In most North Indian families they are taken as seven pheras round the fire. A family’s own pandit may use other words, and those can be set here in their place.</p>
+    </section>
+
+    <!-- 4. The ceremonies, one card each -->
+    <section class="screen screen--events" id="celebrations" data-screen aria-labelledby="celebrations-title" hidden>
+      <div class="screen__in screen__in--wide">
+        <h2 class="screen__title" id="celebrations-title" tabindex="-1">Four days of celebration</h2>
+        <p class="days" data-days>
+          <button type="button" data-day="-2"><span>Thu</span><b>25</b></button>
+          <button type="button" data-day="-1"><span>Fri</span><b>26</b></button>
+          <button type="button" data-day="0"><span>Sat</span><b>27</b></button>
+          <button type="button" data-day="1"><span>Sun</span><b>28</b></button>
+        </p>
+        <div class="reel" data-reel tabindex="0" role="group" aria-label="The ceremonies, in order. Scroll sideways or use the arrow buttons.">
+          <article class="rasm rasm--mehendi" id="rasm-mehendi" data-rasm data-day="-2" data-tone="mehendi">
+            <svg class="rasm__crown" viewBox="0 0 400 96" aria-hidden="true" focusable="false">
+          <path class="crown__fill" d="M0,92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96H0Z"/>
+          <path class="crown__line" d="M0,96V92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96"/>
+          <path class="crown__bud" d="M200,2c5,5 5,10 0,14c-5,-4 -5,-9 0,-14z"/>
+        </svg>
+            <div class="rasm__body">
+            <p class="rasm__count">1 of 6</p>
+            <svg class="motif" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M14.5 26V11a2 2 0 0 1 4 0v12V7a2 2 0 0 1 4 0v16V6a2 2 0 0 1 4 0v17V9a2 2 0 0 1 4 0v18l4.2-5.6a2.1 2.1 0 0 1 3.5 2.3L32.5 34c-1.8 5.2-5 8-9.5 8-5.5 0-8.5-4-8.5-10z"/><path d="M23,28.4A1.58,1.58 0 0 1 25.55,29.45A1.58,1.58 0 0 1 26.6,32A1.58,1.58 0 0 1 25.55,34.55A1.58,1.58 0 0 1 23,35.6A1.58,1.58 0 0 1 20.45,34.55A1.58,1.58 0 0 1 19.4,32A1.58,1.58 0 0 1 20.45,29.45A1.58,1.58 0 0 1 23,28.4Z"/><circle cx="23" cy="32" r="1.1"/><path d="M16.5 16h0M20.5 13h0M24.5 12.5h0M28.5 15h0" stroke-linecap="round" stroke-width="2.4"/></svg>
+            <h3 class="rasm__name"><span lang="hi">मेहंदी</span>Mehendi</h3>
+            <dl class="rasm__facts">
+              <div><dt>When</dt><dd><time datetime="2027-02-25T16:00:00+05:30">Thursday, 25 February<br>4:00 pm onwards</time></dd></div>
+              <div><dt>Where</dt><dd>The poolside lawn</dd></div>
+              <div><dt>Wear</dt><dd>Greens and yellows</dd></div>
+            </dl>
+            <p class="rasm__note">Henna for the bride, and for every guest who holds out a hand. Folk songs, chaat and chai till late.</p>
+            </div>
+          </article>
+          <article class="rasm rasm--haldi" id="rasm-haldi" data-rasm data-day="-1" data-tone="haldi">
+            <svg class="rasm__crown" viewBox="0 0 400 96" aria-hidden="true" focusable="false">
+          <path class="crown__fill" d="M0,92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96H0Z"/>
+          <path class="crown__line" d="M0,96V92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96"/>
+          <path class="crown__bud" d="M200,2c5,5 5,10 0,14c-5,-4 -5,-9 0,-14z"/>
+        </svg>
+            <div class="rasm__body">
+            <p class="rasm__count">2 of 6</p>
+            <svg class="motif" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M8 27h32c0 7.5-7 12-16 12S8 34.5 8 27z"/><path d="M18 41.5h12"/><path d="M12 27c1.5-4.5 6.5-7 12-7s10.5 2.5 12 7"/><path d="M24,5.9A1.81,1.81 0 0 1 26.96,6.98A1.81,1.81 0 0 1 28.53,9.7A1.81,1.81 0 0 1 27.98,12.8A1.81,1.81 0 0 1 25.57,14.82A1.81,1.81 0 0 1 22.43,14.82A1.81,1.81 0 0 1 20.02,12.8A1.81,1.81 0 0 1 19.47,9.7A1.81,1.81 0 0 1 21.04,6.98A1.81,1.81 0 0 1 24,5.9Z"/><circle cx="24" cy="10.5" r="1.6"/><path d="M34 13.5c2.5.5 4 2 4.5 4.5-2.5-.3-4-1.800-4.5-4.5zM14 13.5c-2.5.5-4 2-4.5 4.5 2.5-.3 4-1.800 4.5-4.5z"/></svg>
+            <h3 class="rasm__name"><span lang="hi">हल्‍दी</span>Haldi</h3>
+            <dl class="rasm__facts">
+              <div><dt>When</dt><dd><time datetime="2027-02-26T10:00:00+05:30">Friday, 26 February<br>10:00 am</time></dd></div>
+              <div><dt>Where</dt><dd>The garden courtyard</dd></div>
+              <div><dt>Wear</dt><dd>Yellow, and nothing you would mind staining</dd></div>
+            </dl>
+            <p class="rasm__note">Turmeric from both families for the bride and the groom. It gets everywhere, which is the idea.</p>
+            </div>
+          </article>
+          <article class="rasm rasm--sangeet" id="rasm-sangeet" data-rasm data-day="-1" data-tone="sangeet">
+            <svg class="rasm__crown" viewBox="0 0 400 96" aria-hidden="true" focusable="false">
+          <path class="crown__fill" d="M0,92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96H0Z"/>
+          <path class="crown__line" d="M0,96V92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96"/>
+          <path class="crown__bud" d="M200,2c5,5 5,10 0,14c-5,-4 -5,-9 0,-14z"/>
+        </svg>
+            <div class="rasm__body">
+            <p class="rasm__count">3 of 6</p>
+            <svg class="motif" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><ellipse cx="11.5" cy="24" rx="4" ry="9.5"/><ellipse cx="36.5" cy="24" rx="4" ry="9.5"/><path d="M11.5 14.5c8-2 17-2 25 0M11.5 33.5c8 2 17 2 25 0"/><path d="m15.5 16 4.200 16.5L24 14l4.300 18.5L32.5 16"/><path d="M40 9.5c2 .5 3.5 2 4 4M41.5 6c3 .8 5.200 3 6 6" stroke-linecap="round"/></svg>
+            <h3 class="rasm__name"><span lang="hi">संगीत</span>Sangeet</h3>
+            <dl class="rasm__facts">
+              <div><dt>When</dt><dd><time datetime="2027-02-26T19:30:00+05:30">Friday, 26 February<br>7:30 pm</time></dd></div>
+              <div><dt>Where</dt><dd>The grand ballroom</dd></div>
+              <div><dt>Wear</dt><dd>Indo-western, shoes you can dance in</dd></div>
+            </dl>
+            <p class="rasm__note">Both families have been rehearsing for weeks. Dinner follows the performances, and the dance floor stays open.</p>
+            </div>
+          </article>
+          <article class="rasm rasm--baraat" id="rasm-baraat" data-rasm data-day="0" data-tone="baraat">
+            <svg class="rasm__crown" viewBox="0 0 400 96" aria-hidden="true" focusable="false">
+          <path class="crown__fill" d="M0,92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96H0Z"/>
+          <path class="crown__line" d="M0,96V92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96"/>
+          <path class="crown__bud" d="M200,2c5,5 5,10 0,14c-5,-4 -5,-9 0,-14z"/>
+        </svg>
+            <div class="rasm__body">
+            <p class="rasm__count">4 of 6</p>
+            <svg class="motif" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M9 31c0-10.5 6.5-18 15-18s15 7.5 15 18"/><path d="M8 31h32v4.5H8z"/><path d="M10.5 26.5c8.5-5 18.5-5 27 0M13 21c7-3.800 15-3.800 22 0M17.5 16.5c4.200-1.800 8.800-1.800 13 0"/><path d="M24 13c-1.200-5 .8-9 4-11 .2 5-1 8.5-4 11z"/><circle cx="24" cy="14.5" r="1.900"/><path d="M39.5 34c2.800 3 3 7.5 1 11.5"/></svg>
+            <h3 class="rasm__name"><span lang="hi">बारात</span>Baraat</h3>
+            <dl class="rasm__facts">
+              <div><dt>When</dt><dd><time datetime="2027-02-27T17:30:00+05:30">Saturday, 27 February<br>5:30 pm</time></dd></div>
+              <div><dt>Where</dt><dd>From the hotel porch to the lawns</dd></div>
+              <div><dt>Wear</dt><dd>Festive. Safas for the groom’s side</dd></div>
+            </dl>
+            <p class="rasm__note">Kabir arrives on a mare with the band. Dance him to the gate, where Aarya’s family will be waiting to welcome him.</p>
+            </div>
+          </article>
+          <article class="rasm rasm--vivah" id="rasm-vivah" data-rasm data-day="0" data-tone="vivah">
+            <svg class="rasm__crown" viewBox="0 0 400 96" aria-hidden="true" focusable="false">
+          <path class="crown__fill" d="M0,92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96H0Z"/>
+          <path class="crown__line" d="M0,96V92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96"/>
+          <path class="crown__bud" d="M200,2c5,5 5,10 0,14c-5,-4 -5,-9 0,-14z"/>
+        </svg>
+            <div class="rasm__body">
+            <p class="rasm__count">5 of 6</p>
+            <svg class="motif" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M9.5 42h29l-3-6.5h-23z"/><path d="M14 35.5h20l-2.200-5.5H16.200z"/><path d="M24 5c5 6 8 10.5 8 15.5a8 8 0 0 1-16 0c0-3 1.5-5.800 3.600-7.800 0 3 1 4.700 2.5 5.200 0-5 .4-8.400 1.900-12.900z"/><path d="M24 21.5c1.5 1.800 2.200 3 2.200 4.200a2.200 2.200 0 0 1-4.400 0c0-1.200.7-2.400 2.200-4.200z"/></svg>
+            <h3 class="rasm__name"><span lang="hi">विवाह</span>Varmala and Pheras</h3>
+            <dl class="rasm__facts">
+              <div><dt>When</dt><dd><time datetime="2027-02-27T19:30:00+05:30">Saturday, 27 February<br>7:30 pm, pheras at 10:30 pm</time></dd></div>
+              <div><dt>Where</dt><dd>The stage and mandap on the lawns</dd></div>
+              <div><dt>Wear</dt><dd>Traditional</dd></div>
+            </dl>
+            <p class="rasm__note">Garlands at 7:30 pm, dinner from 8. The pheras, seven steps round the fire, are at the muhurat.</p>
+            </div>
+          </article>
+          <article class="rasm rasm--reception" id="rasm-reception" data-rasm data-day="1" data-tone="reception">
+            <svg class="rasm__crown" viewBox="0 0 400 96" aria-hidden="true" focusable="false">
+          <path class="crown__fill" d="M0,92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96H0Z"/>
+          <path class="crown__line" d="M0,96V92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96"/>
+          <path class="crown__bud" d="M200,2c5,5 5,10 0,14c-5,-4 -5,-9 0,-14z"/>
+        </svg>
+            <div class="rasm__body">
+            <p class="rasm__count">6 of 6</p>
+            <svg class="motif" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 3.5v6.5"/><path d="M13.5 16c0-5 21-5 21 0"/><path d="M11.5 16h25l-3.200 8.5H14.700z"/><path d="M17 24.5v5.5M24 24.5V34M31 24.5v5.5"/><circle cx="17" cy="32" r="1.900"/><circle cx="24" cy="36.5" r="2.400"/><circle cx="31" cy="32" r="1.900"/><path d="M7 9.5l1.200 2.800L11 13.5l-2.800 1.200L7 17.5l-1.200-2.800L3 13.5l2.800-1.200zM41 28l.9 2.100L44 31l-2.100.9L41 34l-.9-2.100L38 31l2.100-.9z"/></svg>
+            <h3 class="rasm__name"><span lang="hi">प्रीतिभोज</span>Reception</h3>
+            <dl class="rasm__facts">
+              <div><dt>When</dt><dd><time datetime="2027-02-28T19:30:00+05:30">Sunday, 28 February<br>7:30 pm</time></dd></div>
+              <div><dt>Where</dt><dd>The grand ballroom</dd></div>
+              <div><dt>Wear</dt><dd>Formal</dd></div>
+            </dl>
+            <p class="rasm__note">Dinner with the newlyweds. Come and give them your blessings in person.</p>
+            </div>
+          </article>
+        </div>
+        <p class="reel__nav" data-reel-nav hidden>
+          <button type="button" data-reel-by="-1" aria-label="Previous ceremony"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button>
+          <span data-reel-now aria-live="polite">Mehendi</span>
+          <button type="button" data-reel-by="1" aria-label="Next ceremony"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></svg></button>
+        </p>
+        <p class="screen__next"><a class="btn btn--line" href="#venue" data-go="venue"><span>How to get there</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></svg></a></p>
+      </div>
+    </section>
+
+    <!-- 5. The venue -->
+    <section class="screen" id="venue" data-screen aria-labelledby="venue-title" hidden>
+      <div class="screen__in">
+        <article class="patra patra--plain">
+          <svg class="patra__crown" viewBox="0 0 400 96" aria-hidden="true" focusable="false">
+          <path class="crown__fill" d="M0,92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96H0Z"/>
+          <path class="crown__line" d="M0,96V92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96"/>
+          <path class="crown__bud" d="M200,2c5,5 5,10 0,14c-5,-4 -5,-9 0,-14z"/>
+        </svg>
+          <div class="patra__body">
+            <h2 class="patra__title" id="venue-title" tabindex="-1"><span lang="hi">विवाह स्थल</span>The venue</h2>
+            <p class="venue__name">The Leela Ambience Gurugram Hotel &amp; Residences</p>
+            <p class="venue__addr">Ambience Island, National Highway 8, Gurugram, Haryana 122002</p>
+            <div class="map">
+              <svg class="map__art" viewBox="0 0 360 200" role="img" aria-label="A drawn map. The Leela Ambience Gurugram is marked beside NH 48, between Delhi and the airport and Gurugram and Jaipur.">
+              <path class="map__land" d="M0,0H360V200H0Z"/>
+              <path class="map__park" d="M0,0H150C132,34 84,52 0,56Z"/>
+              <path class="map__park" d="M360,200H250C262,172 300,156 360,158Z"/>
+              <path class="map__lane" d="M96,0C104,40 128,74 160,102M284,52C300,96 318,150 322,200M0,92C40,96 70,104 96,118"/>
+              <path class="map__lane" d="M196,90C204,104 214,114 228,122"/>
+              <path class="map__road" d="M-10,146C80,134 160,106 222,76C272,52 320,36 370,24"/>
+              <path class="map__dash" d="M-10,146C80,134 160,106 222,76C272,52 320,36 370,24"/>
+              <text class="map__label" x="92" y="112" transform="rotate(-13 92 112)">NH 48</text>
+              <text class="map__way" x="12" y="182">to Gurugram and Jaipur</text>
+              <text class="map__way" x="350" y="15" text-anchor="end">to Delhi and the airport</text>
+              <path class="map__island" d="M206,112c12,-16 44,-20 62,-6c16,12 16,34 0,46c-18,14 -50,10 -62,-6c-8,-11 -8,-23 0,-34z"/>
+              <text class="map__place" x="238" y="182">Ambience Island</text>
+              <g class="map__pin" transform="translate(238 140)">
+                <circle class="map__pulse" r="12"/>
+                <path d="M0,0C-9,-11 -13,-17 -13,-24a13,13 0 0 1 26,0c0,7 -4,13 -13,24z"/>
+                <circle class="map__eye" cy="-24" r="4.6"/>
+              </g>
+              <g class="map__north" transform="translate(30 36)"><circle r="15"/><path d="M0,-11L4.5,6L0,3L-4.5,6Z"/><text y="-19" text-anchor="middle">N</text></g>
+            </svg>
+              <p class="map__note">A drawing, not to scale.</p>
+            </div>
+            <p class="venue__go">
+              <a class="btn btn--ink" href="https://www.google.com/maps/search/?api=1&amp;query=The+Leela+Ambience+Gurugram+Hotel+%26+Residences%2C+Ambience+Island%2C+Gurugram" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg><span>Open in Google Maps</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6h9v9"/><path d="M18 6 6.5 17.5"/></svg></a>
+              <a class="btn btn--inkline" href="assets/wedding/aarya-weds-kabir.ics" type="text/calendar"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 6.5h15v13h-15z"/><path d="M4.5 10.5h15M8.5 4v4M15.5 4v4"/></svg><span>Add to my calendar</span></a>
+            </p>
+            <svg class="lotus" viewBox="0 0 120 26" aria-hidden="true" focusable="false">
+            <g class="lotus__petals"><path transform="translate(60 22) rotate(-64)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/><path transform="translate(60 22) rotate(-32)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/><path transform="translate(60 22) rotate(0)" d="M0,0C5.2,-6.65 5.2,-13.3 0,-19C-5.2,-13.3 -5.2,-6.65 0,0Z"/><path transform="translate(60 22) rotate(32)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/><path transform="translate(60 22) rotate(64)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/></g>
+            <path class="lotus__line" d="M2,22H40M80,22H118"/>
+            <path class="lotus__dot" d="M44,22l3,-3l3,3l-3,3zM70,22l3,-3l3,3l-3,3z"/>
+          </svg>
+            <ul class="venue__notes">
+              <li>The hotel stands on Ambience Island, beside NH 48 (the old NH 8) at the Delhi and Gurugram border.</li>
+              <li>The baraat gathers at the hotel porch at 5:30 pm on the wedding day. Safas will be tied there.</li>
+              <li>Rooms are held from Thursday 25 February to Monday 1 March for family travelling in. Tell us when you land and a car will meet you.</li>
+            </ul>
+            <p class="venue__fine">This is a sample. The hotel is real and is named only to show how a venue appears on an invitation. The halls, timings, rooms and cars are made up, and the hotel has not agreed to anything.</p>
+            <p class="patra__next"><a class="btn btn--inkline" href="#blessings" data-go="blessings"><span>Send your reply</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></svg></a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 6. Reply and blessings -->
+    <section class="screen" id="blessings" data-screen aria-labelledby="blessings-title" hidden>
+      <div class="screen__in">
+        <article class="patra patra--plain">
+          <svg class="patra__crown" viewBox="0 0 400 96" aria-hidden="true" focusable="false">
+          <path class="crown__fill" d="M0,92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96H0Z"/>
+          <path class="crown__line" d="M0,96V92A32.92,32.92 0 0 1 44.44,62.96A30.14,30.14 0 0 1 88.89,43.28A28.8,28.8 0 0 1 133.33,29.79A27.89,27.89 0 0 1 177.78,22.87A27.56,27.56 0 0 1 222.22,22.87A27.89,27.89 0 0 1 266.67,29.79A28.8,28.8 0 0 1 311.11,43.28A30.14,30.14 0 0 1 355.56,62.96A32.92,32.92 0 0 1 400,92V96"/>
+          <path class="crown__bud" d="M200,2c5,5 5,10 0,14c-5,-4 -5,-9 0,-14z"/>
+        </svg>
+          <div class="patra__body">
+            <h2 class="patra__title" id="blessings-title" tabindex="-1"><span lang="hi">आशीर्वाद</span>Your blessings</h2>
+            <div class="shloka">
+            <p class="shloka__dev" lang="sa">समानी व आकूतिः समाना हृदयानि वः ।<br>समानमस्तु वो मनो यथा वः सुसहासति ॥</p>
+            <p class="shloka__roman" lang="sa-Latn">samānī va ākūtiḥ samānā hṛdayāni vaḥ, samānam astu vo mano yathā vaḥ susahāsati</p>
+            <p class="shloka__means">May your purpose be one and your hearts be one. May your minds be one, so that you live well together. <span class="shloka__from">Ṛgveda 10.191.4</span></p>
+          </div>
+            <p class="patra__line">Your presence and your blessings are the only gifts we ask for.</p>
+
+            <form class="rsvp" data-rsvp novalidate>
+              <h3 class="rsvp__title">Will you join us?</h3>
+              <p class="rsvp__field"><label for="rsvp-name">Your name</label><input id="rsvp-name" name="guest" type="text" maxlength="60" autocomplete="off" autocapitalize="words"></p>
+              <fieldset class="rsvp__set">
+                <legend>Your reply</legend>
+                <label class="pick"><input type="radio" name="reply" value="yes" checked><span>Joyfully, yes</span></label>
+                <label class="pick"><input type="radio" name="reply" value="no"><span>Sadly, no</span></label>
+              </fieldset>
+              <fieldset class="rsvp__set" data-rsvp-more>
+                <legend>How many of you</legend>
+                <p class="stepper"><button type="button" data-less aria-label="One fewer">&minus;</button><output data-guests aria-live="polite">2</output><button type="button" data-more aria-label="One more">+</button></p>
+              </fieldset>
+              <fieldset class="rsvp__set" data-rsvp-more>
+                <legend>Which ceremonies</legend>
+                <label class="pick pick--small"><input type="checkbox" name="events" value="Mehendi" checked><span>Mehendi</span></label>
+                <label class="pick pick--small"><input type="checkbox" name="events" value="Haldi" checked><span>Haldi</span></label>
+                <label class="pick pick--small"><input type="checkbox" name="events" value="Sangeet" checked><span>Sangeet</span></label>
+                <label class="pick pick--small"><input type="checkbox" name="events" value="Baraat" checked><span>Baraat</span></label>
+                <label class="pick pick--small"><input type="checkbox" name="events" value="Varmala and Pheras" checked><span>Varmala and Pheras</span></label>
+                <label class="pick pick--small"><input type="checkbox" name="events" value="Reception" checked><span>Reception</span></label>
+              </fieldset>
+              <p class="rsvp__send"><button class="btn btn--ink" type="submit"><span>Preview my reply</span></button></p>
+              <p class="rsvp__out" role="status" aria-live="polite" data-rsvp-out></p>
+              <p class="rsvp__fine">This is a sample. Your reply is not sent, saved or collected. On a real invitation it goes to the family on WhatsApp.</p>
+            </form>
+
+            <svg class="lotus" viewBox="0 0 120 26" aria-hidden="true" focusable="false">
+            <g class="lotus__petals"><path transform="translate(60 22) rotate(-64)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/><path transform="translate(60 22) rotate(-32)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/><path transform="translate(60 22) rotate(0)" d="M0,0C5.2,-6.65 5.2,-13.3 0,-19C-5.2,-13.3 -5.2,-6.65 0,0Z"/><path transform="translate(60 22) rotate(32)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/><path transform="translate(60 22) rotate(64)" d="M0,0C5.2,-5.25 5.2,-10.5 0,-15C-5.2,-10.5 -5.2,-5.25 0,0Z"/></g>
+            <path class="lotus__line" d="M2,22H40M80,22H118"/>
+            <path class="lotus__dot" d="M44,22l3,-3l3,3l-3,3zM70,22l3,-3l3,3l-3,3z"/>
+          </svg>
+            <p class="shower"><button class="btn btn--inkline" type="button" data-shower><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5c2.3 2.8 2.3 7.2 0 10-2.3-2.8-2.3-7.2 0-10z"/><path d="M4 9.5c3.6.2 6.4 2.5 8 5.5-3.5.8-7-1-8-5.5z"/><path d="M20 9.5c-3.6.2-6.4 2.5-8 5.5 3.5.8 7-1 8-5.5z"/><path d="M5.5 18.5h13"/></svg><span>Shower them with petals</span></button><span class="shower__out" role="status" aria-live="polite" data-shower-out></span></p>
+            <p class="kids"><span lang="hi">मेली बुआ की छादी में जलूल जलूल आना</span><i>Please, please come to our bua’s wedding.</i>Anvi and Vihaan</p>
+            <p class="patra__sign">With love,<br><strong>The Sharma and Malhotra families</strong></p>
+          </div>
+        </article>
+        <p class="made">A sample invitation by <a href="index.html">Project Arthouse</a>. <a href="rates.html#plan-wedding-invitation">See the Wedding Invitation plan</a></p>
+      </div>
+    </section>
+
+    <div class="veil" data-veil aria-hidden="true"><span class="veil__mandala"></span></div>
   </main>
-  <script src="js/demo.js"></script>
+
+  <nav class="nav" aria-label="Parts of the invitation" data-chrome>
+    <a href="#invitation" data-go="invitation"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 6.5h17v12h-17z"/><path d="M3.5 7.5 12 13.5l8.5-6"/></svg><span>Invitation</span></a>
+    <a href="#couple" data-go="couple"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="12" r="5.2"/><circle cx="15" cy="12" r="5.2"/></svg><span>Couple</span></a>
+    <a href="#celebrations" data-go="celebrations"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 13.5h16c0 3.2-3.6 5.5-8 5.5s-8-2.3-8-5.5z"/><path d="M12 4.5c1.8 2 2.6 3.3 2.6 4.6a2.6 2.6 0 0 1-5.2 0c0-1.3.8-2.6 2.6-4.6z"/></svg><span>Celebrations</span></a>
+    <a href="#venue" data-go="venue"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg><span>Venue</span></a>
+    <a href="#blessings" data-go="blessings"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5c2.3 2.8 2.3 7.2 0 10-2.3-2.8-2.3-7.2 0-10z"/><path d="M4 9.5c3.6.2 6.4 2.5 8 5.5-3.5.8-7-1-8-5.5z"/><path d="M20 9.5c-3.6.2-6.4 2.5-8 5.5 3.5.8 7-1 8-5.5z"/><path d="M5.5 18.5h13"/></svg><span>Reply</span></a>
+  </nav>
+
+  <canvas class="w__petals" data-petals aria-hidden="true"></canvas>
+</div>
+
+<noscript><p class="nojs">This invitation has moving parts that need JavaScript: the opening door, the 3D mandap and the countdown. Everything else is on this page to read.</p></noscript>
+<script src="js/wedding-scene.js" defer></script>
 </body>
 </html>

@@ -159,4 +159,4 @@ By the number of platforms and how much goes out each month. We discuss it first
 ## Samples
 
 - [Birthday surprise sample](https://www.projectarthouse.com/demo-birthday.html): a sample occasion website made for a fictional Aarya
-- [Wedding invitation sample](https://www.projectarthouse.com/demo-wedding.html): a sample invitation site with made-up names
+- [Wedding invitation sample](https://www.projectarthouse.com/demo-wedding.html): a sample traditional Hindu wedding invitation for a fictional Aarya and Kabir, with ceremonies, a countdown, a venue map link and a 3D mandap
