@@ -1,0 +1,78 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Project Arthouse//Wedding invitation//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Aarya weds Kabir
+BEGIN:VEVENT
+UID:mehendi-2027-02-27@www.projectarthouse.com
+DTSTAMP:20261008T000000Z
+DTSTART:20270225T103000Z
+DTEND:20270225T143000Z
+SUMMARY:Mehendi: Aarya weds Kabir
+LOCATION:The poolside lawn\, The Leela Ambience Gurugram Hotel & Residence
+ s\, Ambience Island\, National Highway 8\, Gurugram\, Haryana 122002
+DESCRIPTION:Henna for the bride\, and for every guest who holds out a hand
+ . Folk songs\, chaat and chai till late. Wear: Greens and yellows.
+END:VEVENT
+BEGIN:VEVENT
+UID:haldi-2027-02-27@www.projectarthouse.com
+DTSTAMP:20261008T000000Z
+DTSTART:20270226T043000Z
+DTEND:20270226T063000Z
+SUMMARY:Haldi: Aarya weds Kabir
+LOCATION:The garden courtyard\, The Leela Ambience Gurugram Hotel & Reside
+ nces\, Ambience Island\, National Highway 8\, Gurugram\, Haryana 122002
+DESCRIPTION:Turmeric from both families for the bride and the groom. It ge
+ ts everywhere\, which is the idea. Wear: Yellow\, and nothing you would m
+ ind staining.
+END:VEVENT
+BEGIN:VEVENT
+UID:sangeet-2027-02-27@www.projectarthouse.com
+DTSTAMP:20261008T000000Z
+DTSTART:20270226T140000Z
+DTEND:20270226T180000Z
+SUMMARY:Sangeet: Aarya weds Kabir
+LOCATION:The grand ballroom\, The Leela Ambience Gurugram Hotel & Residenc
+ es\, Ambience Island\, National Highway 8\, Gurugram\, Haryana 122002
+DESCRIPTION:Both families have been rehearsing for weeks. Dinner follows t
+ he performances\, and the dance floor stays open. Wear: Indo-western\, sh
+ oes you can dance in.
+END:VEVENT
+BEGIN:VEVENT
+UID:baraat-2027-02-27@www.projectarthouse.com
+DTSTAMP:20261008T000000Z
+DTSTART:20270227T120000Z
+DTEND:20270227T140000Z
+SUMMARY:Baraat: Aarya weds Kabir
+LOCATION:From the hotel porch to the lawns\, The Leela Ambience Gurugram H
+ otel & Residences\, Ambience Island\, National Highway 8\, Gurugram\, Har
+ yana 122002
+DESCRIPTION:Kabir arrives on a mare with the band. Dance him to the gate\,
+  where Aarya’s family will be waiting to welcome him. Wear: Festive. Sa
+ fas for the groom’s side.
+END:VEVENT
+BEGIN:VEVENT
+UID:vivah-2027-02-27@www.projectarthouse.com
+DTSTAMP:20261008T000000Z
+DTSTART:20270227T140000Z
+DTEND:20270227T200000Z
+SUMMARY:Varmala and Pheras: Aarya weds Kabir
+LOCATION:The stage and mandap on the lawns\, The Leela Ambience Gurugram H
+ otel & Residences\, Ambience Island\, National Highway 8\, Gurugram\, Har
+ yana 122002
+DESCRIPTION:Garlands at 7:30 pm\, dinner from 8. The pheras\, seven steps 
+ round the fire\, are at the muhurat. Wear: Traditional.
+END:VEVENT
+BEGIN:VEVENT
+UID:reception-2027-02-27@www.projectarthouse.com
+DTSTAMP:20261008T000000Z
+DTSTART:20270228T140000Z
+DTEND:20270228T180000Z
+SUMMARY:Reception: Aarya weds Kabir
+LOCATION:The grand ballroom\, The Leela Ambience Gurugram Hotel & Residenc
+ es\, Ambience Island\, National Highway 8\, Gurugram\, Haryana 122002
+DESCRIPTION:Dinner with the newlyweds. Come and give them your blessings i
+ n person. Wear: Formal.
+END:VEVENT
+END:VCALENDAR
