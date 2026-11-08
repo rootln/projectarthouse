@@ -89,6 +89,23 @@
   });
   $$("[data-year]").forEach(function (node) { node.textContent = new Date().getFullYear(); });
 
+  /* The film line in the footer: a different one each time a page loads,
+     never the one shown last. Written as text, never as markup. */
+  (function () {
+    var lines = Array.isArray(C.dialogues) ? C.dialogues : [];
+    var spots = $$("[data-dialogue]");
+    if (lines.length < 2 || !spots.length) { return; }
+    var last = -1, pick;
+    try { last = parseInt(window.localStorage.getItem("pa-line"), 10); } catch (e) { /* no memory, any line will do */ }
+    do { pick = Math.floor(Math.random() * lines.length); } while (pick === last);
+    try { window.localStorage.setItem("pa-line", String(pick)); } catch (e) { /* not stored */ }
+    spots.forEach(function (spot) {
+      var q = $("q", spot), cite = $("cite", spot);
+      if (q) { q.textContent = lines[pick][0]; }
+      if (cite) { cite.textContent = lines[pick][1]; }
+    });
+  }());
+
   /* 3. Images and logos ---------------------------------------------------- */
 
   function watchImage(img) {
@@ -137,12 +154,13 @@
     root.setAttribute("data-theme", theme);
     try { window.localStorage.setItem("pa-theme", theme); } catch (e) { /* not stored, still switched */ }
     if (themeMeta) { themeMeta.setAttribute("content", theme === "light" ? "#EFEBE3" : "#0C0D10"); }
-    if (themeBtn) { themeBtn.setAttribute("aria-label", theme === "light" ? "Switch to dark mode" : "Switch to light mode"); }
+    if (themeBtn) { themeBtn.setAttribute("aria-label", theme === "light" ? "Switch to dark mode" : "Switch to light mode"); themeBtn.title = theme === "light" ? "Come to the dark side" : "Lumos"; }
     fields.forEach(function (f) { f.setTheme(theme); });
   }
 
   if (themeBtn) {
     themeBtn.setAttribute("aria-label", currentTheme() === "light" ? "Switch to dark mode" : "Switch to light mode");
+    themeBtn.title = currentTheme() === "light" ? "Come to the dark side" : "Lumos";
     if (themeMeta && currentTheme() === "light") { themeMeta.setAttribute("content", "#EFEBE3"); }
 
     themeBtn.addEventListener("click", function () {
@@ -541,6 +559,16 @@
     var nextBtn = $("[data-reel-next]", reel);
     var prevBtn = $("[data-reel-prev]", reel);
     if (nextBtn) { nextBtn.addEventListener("click", function () { showTake(at + 1); }); }
+    /* A different line opens the reel on each visit. Set straight away, with no animation. */
+    if (takes.length > 1) {
+      var first = Math.floor(Math.random() * takes.length);
+      if (first !== at) {
+        takes[at].classList.remove("is-on"); takes[at].setAttribute("aria-hidden", "true");
+        takes[first].classList.add("is-on"); takes[first].removeAttribute("aria-hidden");
+        at = first;
+        if (reelNo) { reelNo.textContent = pad(at + 1); }
+      }
+    }
     if (prevBtn) { prevBtn.addEventListener("click", function () { showTake(at - 1); }); }
     reel.addEventListener("keydown", function (ev) {
       if (ev.key === "ArrowRight") { showTake(at + 1); }
@@ -872,7 +900,7 @@
     };
 
     var showReceipt = function (id, receipt) {
-      note.textContent = "Brief received. ";
+      note.textContent = "Brief received. Lights, camera, action. ";
       var a = el("a", "", "Keep this private link to view what you sent.");
       a.href = "brief.html#" + encodeURIComponent(id) + "." + encodeURIComponent(receipt);
       note.appendChild(a);

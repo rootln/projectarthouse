@@ -106,7 +106,10 @@
     marigold: hex("#F5A20C"), saffron: hex("#E9740B"), rose: hex("#C4172C"), leaf: hex("#3E6B2B"), leafDark: hex("#2C5220"),
     marble: hex("#F1E6D0"), stone: hex("#D9C4A0"), brick: hex("#A4502C"), soot: hex("#2A1512"), pearl: hex("#FBF3E4"),
     emerald: hex("#0E6B4E"), brass: hex("#C99A3A"), coconut: hex("#6B4A2B"), pink: hex("#E26A7C"),
-    flameLow: hex("#F2470E"), flameMid: hex("#FF9A1F"), flameTip: hex("#FFE28A")
+    flameLow: hex("#F2470E"), flameMid: hex("#FF9A1F"), flameTip: hex("#FFE28A"),
+    /* the mandap and the groom's safa in the site's ink and amber; only the bride keeps her red */
+    canopy: hex("#EFA62C"), canopyDeep: hex("#C98216"), rug: hex("#2A2219"), rugEdge: hex("#17130E"),
+    safa: hex("#E8941A"), walnut: hex("#5A3B0A")
   };
   var MATTE = 0, METAL = 1, GLOW = 2;
 
@@ -419,14 +422,14 @@
 
     /* safa: a turned shape with the folds wound over it */
     b.push(mulAll(translate(0, 1.79, 0), rotX(-0.1), rotZ(0.05), translate(0, -1.79, 0)));
-    b.lathe([[0.236, 1.885], [0.286, 1.9], [0.318, 1.98], [0.3, 2.08], [0.23, 2.155], [0.11, 2.2], [0, 2.205]], C.rani, 0.4, MATTE, { smooth: true, segs: 36 });
+    b.lathe([[0.236, 1.885], [0.286, 1.9], [0.318, 1.98], [0.3, 2.08], [0.23, 2.155], [0.11, 2.2], [0, 2.205]], C.safa, 0.4, MATTE, { smooth: true, segs: 36 });
     var folds = [[1.915, 0.29, 0.13, 0], [1.955, 0.308, -0.14, 1.3], [1.995, 0.308, 0.18, 2.5], [2.04, 0.295, -0.18, 3.9], [2.082, 0.268, 0.2, 5.2], [2.122, 0.222, -0.18, 0.8], [2.156, 0.165, 0.16, 2.2]];
     for (i = 0; i < folds.length; i++) {
       b.push(mulAll(translate(0, folds[i][0], 0), rotY(folds[i][3]), rotX(folds[i][2])));
-      b.torus(folds[i][1], 0.03, i % 3 === 1 ? C.gold : (i % 2 ? C.rani : C.red), i % 3 === 1 ? 0.7 : 0.4, i % 3 === 1 ? METAL : MATTE, 36, 8, 0.036);
+      b.torus(folds[i][1], 0.03, i % 3 === 1 ? C.gold : (i % 2 ? C.safa : C.saffron), i % 3 === 1 ? 0.7 : 0.4, i % 3 === 1 ? METAL : MATTE, 36, 8, 0.036);
       b.pop();
     }
-    b.ball([0, 2.205, 0], [0.07, 0.03, 0.07], C.red, 0.4, MATTE, 10, 6);
+    b.ball([0, 2.205, 0], [0.07, 0.03, 0.07], C.saffron, 0.4, MATTE, 10, 6);
     /* kalgi: a jewel and a plume */
     b.ball([0, 2.0, 0.325], [0.04, 0.05, 0.022], C.gold, 0.95, METAL, 10, 8);
     b.ball([0, 2.0, 0.343], 0.017, C.emerald, 0.95, MATTE, 8, 6);
@@ -434,7 +437,7 @@
     b.lathe([[0.012, 0], [0.05, 0.1], [0.04, 0.2], [0, 0.3]], C.white, 0.3, MATTE, { smooth: true, segs: 10 });
     b.pop();
     /* the tail of the safa down the back */
-    b.band(path([[0.06, 1.9, -0.3], [0.09, 1.7, -0.33], [0.1, 1.4, -0.36], [0.1, 1.05, -0.37]], 5), 0.15, function () { return [0, 0, -1]; }, C.rani, 0.4, C.gold);
+    b.band(path([[0.06, 1.9, -0.3], [0.09, 1.7, -0.33], [0.1, 1.4, -0.36], [0.1, 1.05, -0.37]], 5), 0.15, function () { return [0, 0, -1]; }, C.safa, 0.4, C.gold);
     b.pop();
 
     /* pearls, three strands */
@@ -454,7 +457,7 @@
 
     /* a maroon stole over the left shoulder */
     var stole = path([[0.2, 0.52, 0.335], [0.215, 0.95, 0.24], [0.235, 1.3, 0.2], [0.24, 1.49, 0.02], [0.225, 1.3, -0.2], [0.2, 0.9, -0.265], [0.19, 0.6, -0.31]], 6);
-    b.band(stole, 0.17, function (p) { return norm([p[0] * 0.25, p[1] > 1.4 ? 1 : 0.1, p[2]]); }, C.maroon, 0.4, C.gold);
+    b.band(stole, 0.17, function (p) { return norm([p[0] * 0.25, p[1] > 1.4 ? 1 : 0.1, p[2]]); }, C.walnut, 0.4, C.gold);
     return { top: 2.26, hand: [0, 1.25, 0.37], tieBack: [0.22, 0.86, 0.3], tieSide: [0.33, 0.86, 0.1], wornR: 0.37, wornTilt: 1.02, wornAt: [0, 1.37, 0.13], shadow: 0.62 };
   }
 
@@ -485,18 +488,18 @@
       var r = DAIS * (1 - v), tt = TAU * u, petal, d;
       if (r > DAIS - 0.2) { return C.marble; }
       if (r > DAIS - 0.27) { return C.gold; }
-      if (r > DAIS - 0.6) { petal = Math.abs(Math.sin(tt * 18)); d = (r - DAIS + 0.6) / 0.33; return petal > 0.2 + d * 0.8 ? C.maroon : (petal > 0.08 + d * 0.5 ? C.marigold : C.gold); }
+      if (r > DAIS - 0.6) { petal = Math.abs(Math.sin(tt * 18)); d = (r - DAIS + 0.6) / 0.33; return petal > 0.2 + d * 0.8 ? C.rugEdge : (petal > 0.08 + d * 0.5 ? C.marigold : C.gold); }
       if (r > DAIS - 0.66) { return C.gold; }
-      if (r > 0.98) { return C.red; }
+      if (r > 0.98) { return C.rug; }
       if (r > 0.93) { return C.gold; }
       d = Math.abs(Math.sin(tt * 8));
-      if (r > 0.58) { return d > 0.62 - (r - 0.58) * 0.9 ? C.marigold : (d > 0.3 ? C.white : C.rose); }
+      if (r > 0.58) { return d > 0.62 - (r - 0.58) * 0.9 ? C.marigold : (d > 0.3 ? C.white : C.saffron); }
       return C.ivory;
     }, 0.3, MATTE);
 
     /* havan kund: three courses of brick, stepped in */
     b.box([0, 0.07, 0], 0.86, 0.14, 0.86, C.brick, 0.2, MATTE);
-    b.box([0, 0.2, 0], 0.7, 0.12, 0.7, mix3(C.brick, C.rose, 0.25), 0.2, MATTE);
+    b.box([0, 0.2, 0], 0.7, 0.12, 0.7, mix3(C.brick, C.saffron, 0.25), 0.2, MATTE);
     b.box([0, 0.31, 0], 0.54, 0.1, 0.54, C.brick, 0.2, MATTE);
     b.box([0, 0.362, 0], 0.4, 0.004, 0.4, C.soot, 0.1, MATTE);
     for (i = 0; i < 4; i++) { b.push(rotY(i * Math.PI / 2)); b.box([0, 0.145, 0.432], 0.86, 0.012, 0.012, C.gold, 0.8, METAL); b.box([0, 0.262, 0.352], 0.7, 0.012, 0.012, C.gold, 0.8, METAL); b.pop(); }
@@ -543,9 +546,9 @@
     b.surf(192, 4, function (u, v) {
       var tt = TAU * u, drop = 0.16 + 0.15 * Math.abs(Math.sin(tt * 12)), r = RING + 0.21;
       return [r * Math.sin(tt), TOP + 0.02 - drop * v, r * Math.cos(tt)];
-    }, function (u, v) { return v > 0.72 ? C.gold : (v > 0.5 ? C.maroon : C.red); }, 0.4, MATTE);
+    }, function (u, v) { return v > 0.72 ? C.gold : (v > 0.5 ? C.walnut : C.canopy); }, 0.4, MATTE);
 
-    /* canopy: a red shamiana in sixteen gores, gold piping, a kalash on top */
+    /* canopy: a shamiana in sixteen amber and ivory gores, gold piping, a kalash on top */
     var roof = profile([[EAVE, TOP + 0.17], [EAVE - 0.05, TOP + 0.22], [2.5, TOP + 0.33], [1.8, TOP + 0.5], [1.1, TOP + 0.72], [0.55, TOP + 0.98], [0.22, TOP + 1.22], [0.11, TOP + 1.32]], true);
     b.surf(256, 20, function (u, v) {
       var tt = TAU * u, p = roof(v), r = p[0] * (1 + 0.02 * Math.cos(tt * 16) * (1 - v));
@@ -554,9 +557,9 @@
       var g = (u * 16) % 1, e = Math.min(g, 1 - g);
       if (v < 0.03) { return C.gold; }
       if (e < 0.022) { return C.gold; }
-      return Math.floor(u * 16) % 2 ? C.red : mix3(C.red, C.deep, 0.55);
+      return Math.floor(u * 16) % 2 ? C.canopy : mix3(C.canopy, C.ivory, 0.62);
     }, 0.2, MATTE);
-    b.surf(64, 4, function (u, v) { var tt = TAU * u, r = EAVE - 0.07 - (EAVE - RING - 0.27) * v; return [r * Math.sin(tt), TOP + 0.1 + 0.04 * v, r * Math.cos(tt)]; }, C.maroon, 0.2, MATTE);
+    b.surf(64, 4, function (u, v) { var tt = TAU * u, r = EAVE - 0.07 - (EAVE - RING - 0.27) * v; return [r * Math.sin(tt), TOP + 0.1 + 0.04 * v, r * Math.cos(tt)]; }, C.walnut, 0.2, MATTE);
     b.push(mul(translate(0, TOP + 1.3, 0), scale(0.82)));
     b.lathe([[0.12, 0], [0.2, 0.04], [0.1, 0.1], [0.19, 0.2], [0.23, 0.31], [0.17, 0.42], [0.08, 0.47], [0.11, 0.52], [0.04, 0.58], [0, 0.72]], C.gold, 0.95, METAL, { smooth: true, segs: 24 });
     b.pop();
