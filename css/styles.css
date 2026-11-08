@@ -93,7 +93,7 @@
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* The one accent. Change it here and the whole site follows. */
-  --accent: #F2A65A;
+  --accent: #F5B23C;
   --on-accent: #17120B;
 }
 
@@ -109,13 +109,15 @@
   --fg: #F0EDE7;
   --fg-soft: #CBC7BE;
   --muted: #9B978F;
-  --accent-text: #F2A65A;
+  --accent-text: #F5B23C;
   --show-on-dark: block;
   --show-on-light: none;
   --poster-hero: url("../assets/hero-dark.jpg");
   --poster-ribbon: url("../assets/ribbon-dark.jpg");
+  /* Pictures in the panes rest in black and white and turn to colour on hover. */
   --photo-rest: grayscale(1) contrast(1.06) brightness(0.78);
-  --glow-1: #F2A65A;
+  
+  --glow-1: #F5B23C;
   --glow-2: #7F90AB;
   --glow-3: #F0EDE7;
   --glow-4: #262830;
@@ -133,14 +135,15 @@ html:not([data-theme="light"]) .inverse,
   --fg: #15161B;
   --fg-soft: #3A3B42;
   --muted: #5E5C55;
-  --accent-text: #8F4C0C;
+  --accent-text: #875800;
   --show-on-dark: none;
   --show-on-light: block;
   --poster-hero: url("../assets/hero-light.jpg");
   --poster-ribbon: url("../assets/ribbon-light.jpg");
   --photo-rest: grayscale(1) contrast(1.04) brightness(0.98);
-  --glow-1: #F2A65A;
-  --glow-2: #8F4C0C;
+  
+  --glow-1: #F5B23C;
+  --glow-2: #875800;
   --glow-3: #15161B;
   --glow-4: #D6D0C4;
 }
@@ -686,7 +689,7 @@ button:hover > span > .arr > .icon + .icon {
   width: 38px;
   height: 38px;
   margin: -19px 0 0 -19px;
-  background: rgba(242, 166, 90, 0.22);
+  background: rgba(245, 178, 60, 0.22);
 }
 
 .cursor.is-label {
@@ -1297,11 +1300,11 @@ html[data-day="6"] .loader__quote[data-day="6"] {
 }
 
 .peek__page {
-  --rose: #C63B61;
-  --plum: #4A1D36;
+  --rose: #875800;
+  --plum: #15161B;
   padding: clamp(20px, 2.2vw, 30px) clamp(16px, 2vw, 28px) clamp(16px, 1.8vw, 24px);
   border-radius: 14px;
-  background: linear-gradient(180deg, #FBE6EE 0%, #FDF5EF 100%);
+  background: linear-gradient(180deg, #F3E3C2 0%, #EFEBE3 100%);
   color: var(--plum);
   text-align: center;
 }
@@ -1338,7 +1341,7 @@ html[data-day="6"] .loader__quote[data-day="6"] {
 .peek__sub {
   max-width: 24em;
   margin: 14px auto 0;
-  color: #7A4A63;
+  color: #5E5C55;
   font-size: 0.9375rem;
   line-height: 1.4;
 }
@@ -1350,8 +1353,8 @@ html[data-day="6"] .loader__quote[data-day="6"] {
   margin-top: 22px;
   padding: 13px 22px;
   border-radius: 999px;
-  background: var(--rose);
-  color: #FFF6F9;
+  background: var(--accent);
+  color: var(--on-accent);
   font-size: 0.9375rem;
   font-weight: 600;
   text-decoration: none;
@@ -1359,7 +1362,7 @@ html[data-day="6"] .loader__quote[data-day="6"] {
 }
 
 .peek__btn:hover {
-  background: #A82C4F;
+  background: #E09A1E;
   transform: translateY(-2px);
 }
 
@@ -1376,9 +1379,9 @@ html[data-day="6"] .loader__quote[data-day="6"] {
 
 .peek__chips li {
   padding: 10px 12px;
-  border: 1px solid rgba(198, 59, 97, 0.24);
+  border: 1px solid rgba(135, 88, 0, 0.24);
   border-radius: 10px;
-  background: #FFFAF7;
+  background: #F7F3EB;
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1.25;
@@ -3460,6 +3463,77 @@ html[data-currency="USD"] .cur__btn[data-currency-set="USD"] {
   .phero__photo > img,
   .gallery__item > img {
     filter: grayscale(0.25) brightness(0.9);
+  }
+}
+
+/* 15b. Liquid glass -------------------------------------------------------------
+   In the manner of Apple's Liquid Glass: a clear pane that blurs and slightly
+   brightens what is behind it, a bright rim along the top edge, a faint glow
+   inside, and a soft lift off the page. A highlight follows the light from
+   the top left. Used on a few surfaces that sit over moving pictures: the
+   header once the page scrolls, the open menu, the notes around the hero
+   window, the round buttons on the pictures and the quote reel's arrows.
+   Browsers that cannot blur behind an element keep the solid look. */
+
+:root,
+.scheme-dark {
+  --lg-tint: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 42%, rgba(255, 255, 255, 0.09) 100%), rgba(16, 17, 21, 0.38);
+  --lg-rim: rgba(255, 255, 255, 0.24);
+  --lg-shine: inset 0 1px 0 rgba(255, 255, 255, 0.42), inset 0 -1px 0 rgba(255, 255, 255, 0.1), inset 0 0 18px rgba(255, 255, 255, 0.06), 0 10px 30px rgba(0, 0, 0, 0.32);
+  --lg-blur: blur(16px) saturate(1.8) brightness(1.08);
+}
+
+[data-theme="light"],
+.scheme-light {
+  --lg-tint: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.34) 45%, rgba(255, 255, 255, 0.5) 100%), rgba(239, 235, 227, 0.32);
+  --lg-rim: rgba(255, 255, 255, 0.8);
+  --lg-shine: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(21, 22, 27, 0.06), inset 0 0 18px rgba(255, 255, 255, 0.4), 0 10px 30px rgba(60, 50, 30, 0.14);
+  --lg-blur: blur(16px) saturate(1.6) brightness(1.04);
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .site-header.is-solid {
+    background: var(--lg-tint);
+    border-bottom-color: var(--lg-rim);
+    box-shadow: inset 0 -1px 0 var(--lg-rim), 0 8px 28px rgba(0, 0, 0, 0.18);
+    -webkit-backdrop-filter: blur(22px) saturate(1.8);
+    backdrop-filter: blur(22px) saturate(1.8);
+  }
+
+  .menu {
+    background: var(--lg-tint);
+    -webkit-backdrop-filter: blur(34px) saturate(1.7);
+    backdrop-filter: blur(34px) saturate(1.7);
+  }
+
+  .peek__tag {
+    border: 1px solid var(--lg-rim);
+    border-radius: 999px;
+    background: var(--lg-tint);
+    box-shadow: var(--lg-shine);
+    -webkit-backdrop-filter: var(--lg-blur);
+    backdrop-filter: var(--lg-blur);
+  }
+
+  /* the round buttons over pictures: amber glass */
+  .card__go,
+  .demo-tile__play {
+    background: linear-gradient(160deg, rgba(255, 214, 140, 0.78) 0%, rgba(245, 178, 60, 0.62) 55%, rgba(214, 140, 24, 0.7) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), inset 0 -2px 6px rgba(120, 70, 0, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 8px 22px rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(12px) saturate(1.8);
+    backdrop-filter: blur(12px) saturate(1.8);
+  }
+
+  .reel .round__disc {
+    border-color: var(--lg-rim);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04)), rgba(12, 13, 16, 0.28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 0 14px rgba(255, 255, 255, 0.07), 0 8px 22px rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(14px) saturate(1.8) brightness(1.1);
+    backdrop-filter: blur(14px) saturate(1.8) brightness(1.1);
+  }
+
+  .reel .round:hover .round__disc {
+    background: linear-gradient(135deg, rgba(255, 214, 140, 0.5), rgba(245, 178, 60, 0.3)), rgba(12, 13, 16, 0.2);
   }
 }
 

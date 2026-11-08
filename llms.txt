@@ -2,7 +2,7 @@
 
 > Project Arthouse is a marketing studio from India. It makes occasion websites for birthdays, weddings and celebrations, brand identities and business websites, and manages social media pages.
 
-Last updated: 2026-10-08. Prices are listed in Indian rupees (INR) and US dollars (USD); each is a price in its own right, not a conversion. Occasion websites have fixed prices. Websites, branding and social media are quoted in writing after a conversation.
+Last updated: 2026-11-08. Prices are listed in Indian rupees (INR) and US dollars (USD); each is a price in its own right, not a conversion. Occasion websites have fixed prices. Websites, branding and social media are quoted in writing after a conversation.
 
 ## Services
 
@@ -17,14 +17,14 @@ Includes:
 - Father's Day and Valentine's: Tributes and love notes, from a single page to an eight-day Valentine's Week.
 
 Plans and prices:
-- 1 Day Birthday: INR 799 or USD 39.99. A personal one-day birthday website with photos, wishes, a heartfelt note, and a soft reveal experience. Includes: 1 custom birthday page; Photos + birthday message; Mobile-friendly design; Soft reveal animation; Private shareable link.
-- 3 Day Curated Reveal: INR 999 or USD 59.99. Three connected reveal moments that unfold like a tiny emotional journey, perfect when one page feels too small. Includes: 3 reveal chapters; Countdown-style flow; Photo + letter sections; Interactive final reveal; Private shareable link.
-- 7 Day Unfolding Experience: INR 1299 or USD 69.99. A week-long digital experience with memories, clues, photos, notes, and a final emotional reveal. Includes: 7-day unlock flow; Daily memories + notes; Mini interaction option; Premium animations; Final cinematic reveal.
-- Wedding Invitation: INR 899 or USD 49.99. A polished wedding invitation website with couple names, programme details, celebration notes, and a private shareable link. Includes: Digital wedding invite; Couple story section; Programme details; Mobile-friendly design; Private shareable link.
-- Grihapravesh: INR 899 or USD 49.99. A graceful digital invitation for Grihapravesh, housewarming, puja, family gathering, or a new home celebration. Includes: Custom invitation page; Date, venue + timing; Family message section; Mobile-friendly design; Private shareable link.
-- Father's Day: INR 899 or USD 49.99. A warm digital tribute for Dad with photos, messages, memories, lessons, and one beautiful thank-you reveal. Includes: Father's Day tribute page; Photos + heartfelt message; Hero moments section; Soft reveal animation; Private shareable link.
-- Valentine's Day (1 Day): INR 799 or USD 39.99. A personal Valentine's Day website with photos, a love note, sweet memories, and a private reveal moment. Includes: 1 romantic reveal page; Photos + love message; Cute interactive flow; Mobile-friendly design; Private shareable link.
-- Valentine's Week (8 Days): INR 1699 or USD 79.99. An 8-day Valentine's Week experience with daily reveals, memories, notes, romantic prompts, and a final surprise. Includes: 8-day unlock journey; Daily love notes; Photos + memories; Premium animations; Final romantic reveal.
+- 1 Day Birthday: INR 1199 or USD 39.99. A personal one-day birthday website with photos, wishes, a heartfelt note, and a soft reveal experience. Includes: 1 custom birthday page; Photos + birthday message; Mobile-friendly design; Soft reveal animation; Private shareable link.
+- 3 Day Curated Reveal: INR 1399 or USD 59.99. Three connected reveal moments that unfold like a tiny emotional journey, perfect when one page feels too small. Includes: 3 reveal chapters; Countdown-style flow; Photo + letter sections; Interactive final reveal; Private shareable link.
+- 7 Day Unfolding Experience: INR 1699 or USD 69.99. A week-long digital experience with memories, clues, photos, notes, and a final emotional reveal. Includes: 7-day unlock flow; Daily memories + notes; Mini interaction option; Premium animations; Final cinematic reveal.
+- Wedding Invitation: INR 1299 or USD 49.99. A polished wedding invitation website with couple names, programme details, celebration notes, and a private shareable link. Includes: Digital wedding invite; Couple story section; Programme details; Mobile-friendly design; Private shareable link.
+- Grihapravesh: INR 1299 or USD 49.99. A graceful digital invitation for Grihapravesh, housewarming, puja, family gathering, or a new home celebration. Includes: Custom invitation page; Date, venue + timing; Family message section; Mobile-friendly design; Private shareable link.
+- Father's Day: INR 1299 or USD 49.99. A warm digital tribute for Dad with photos, messages, memories, lessons, and one beautiful thank-you reveal. Includes: Father's Day tribute page; Photos + heartfelt message; Hero moments section; Soft reveal animation; Private shareable link.
+- Valentine's Day (1 Day): INR 1199 or USD 39.99. A personal Valentine's Day website with photos, a love note, sweet memories, and a private reveal moment. Includes: 1 romantic reveal page; Photos + love message; Cute interactive flow; Mobile-friendly design; Private shareable link.
+- Valentine's Week (8 Days): INR 2099 or USD 79.99. An 8-day Valentine's Week experience with daily reveals, memories, notes, romantic prompts, and a final surprise. Includes: 8-day unlock journey; Daily love notes; Photos + memories; Premium animations; Final romantic reveal.
 
 ### [Branding](https://www.projectarthouse.com/branding.html)
 
@@ -83,7 +83,7 @@ An occasion website is a small personal website made for one event or one person
 
 ### How much does an occasion website cost?
 
-Occasion websites have fixed prices, from ₹799 to ₹1,699, or $39.99 to $79.99 in US dollars: 1 Day Birthday ₹799 ($39.99), 3 Day Curated Reveal ₹999 ($59.99), 7 Day Unfolding Experience ₹1,299 ($69.99), Wedding Invitation ₹899 ($49.99), Grihapravesh ₹899 ($49.99), Father's Day ₹899 ($49.99), Valentine's Day (1 Day) ₹799 ($39.99) and Valentine's Week (8 Days) ₹1,699 ($79.99).
+Occasion websites have fixed prices, from ₹1,199 to ₹2,099, or $39.99 to $79.99 in US dollars: 1 Day Birthday ₹1,199 ($39.99), 3 Day Curated Reveal ₹1,399 ($59.99), 7 Day Unfolding Experience ₹1,699 ($69.99), Wedding Invitation ₹1,299 ($49.99), Grihapravesh ₹1,299 ($49.99), Father's Day ₹1,299 ($49.99), Valentine's Day (1 Day) ₹1,199 ($39.99) and Valentine's Week (8 Days) ₹2,099 ($79.99).
 
 ### How much do websites, branding and social media cost?
 
@@ -159,4 +159,4 @@ By the number of platforms and how much goes out each month. We discuss it first
 ## Samples
 
 - [Birthday surprise sample](https://www.projectarthouse.com/demo-birthday.html): a sample occasion website made for a fictional Aarya
-- [Wedding invitation sample](https://www.projectarthouse.com/demo-wedding.html): a sample traditional Hindu wedding invitation for a fictional Aarya and Kabir, with ceremonies, a countdown, a venue map link and a 3D mandap
+- [Wedding invitation sample](https://www.projectarthouse.com/demo-wedding.html): a sample traditional Hindu wedding invitation for a fictional Somya and Prateek, with ceremonies, a countdown, a venue map link and a 3D mandap

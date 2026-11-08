@@ -19,7 +19,7 @@ const TOTAL_SLIDES=4;
 // ---- AMBIENT PARTICLES ----
 (function initParticles(){
   const layer=document.getElementById('particlesLayer');
-  const colors=['rgba(232,84,122,VAR)','rgba(196,168,216,VAR)','rgba(232,198,106,VAR)','rgba(255,180,200,VAR)'];
+  const colors=['rgba(232,178,84,VAR)','rgba(200,194,184,VAR)','rgba(232,198,106,VAR)','rgba(249,226,186,VAR)'];
   for(let i=0;i<28;i++){
     const el=document.createElement('div');
     el.className='particle';
@@ -339,7 +339,7 @@ function initPetals(){
     const p=document.createElement('div');
     p.className='petal';
     const size=10+Math.random()*14;
-    const colors=['rgba(249,178,204,0.7)','rgba(232,84,122,0.55)','rgba(255,210,230,0.65)','rgba(196,168,216,0.6)'];
+    const colors=['rgba(249,223,178,0.7)','rgba(232,178,84,0.55)','rgba(252,238,213,0.65)','rgba(200,194,184,0.6)'];
     p.style.cssText=`
       width:${size}px;height:${size*1.5}px;
       border-radius:60% 20% 60% 20%;
@@ -356,7 +356,7 @@ function initPetals(){
 // ---- CONFETTI ----
 function launchConfetti(count=100){
   const container=document.getElementById('confettiLayer');
-  const colors=['#E8547A','#D94F88','#EDE4F5','#FFD6E0','#F9B2CC','#E8C66A','#C4A8D8','#ffffff','#F7DCEC'];
+  const colors=['#E8B254','#D9A64F','#EFEDEA','#FCEFD9','#F9DFB2','#E8C66A','#C8C2B8','#ffffff','#F7EDDC'];
   const shapes=[2,4,6,50];
   for(let i=0;i<count;i++){
     const el=document.createElement('div');
