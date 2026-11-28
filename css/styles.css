@@ -3556,3 +3556,2074 @@ html[data-currency="USD"] .cur__btn[data-currency-set="USD"] {
     navigation: none;
   }
 }
+
+/* 17. Marketing studio (v11) -----------------------------------------------
+   The pieces added when the site became a marketing studio: the hero board,
+   the services index, the journey diagram, the invitations section, the
+   sample CRM pipeline, and a few small adjustments. Same tokens, same type. */
+
+/* Hero app window: a sample marketing workspace for a made-up brand. It is
+   a picture of a working screen, so it keeps its own light paper colours
+   in both themes, the way a real app window would. */
+
+.hero__art--app {
+  width: min(100%, 560px);
+  container-type: inline-size;
+}
+
+.app {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #3D404A;
+  border-radius: 10px;
+  background: #F4F1EB;
+  color: #15161B;
+  box-shadow: 0 0 0 7px rgba(240, 237, 231, 0.05);
+}
+
+.app__bar {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 56px;
+  align-items: center;
+  height: 42px;
+  padding: 0 14px;
+  border-bottom: 1px solid #DDD7CC;
+  background: #EAE6DE;
+}
+
+.app__dots {
+  width: 44px;
+  height: 12px;
+  fill: #CFC8BB;
+}
+
+.app__title {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.app__title b {
+  font-weight: 600;
+}
+
+.app__title span {
+  color: #6B6962;
+}
+
+.app__title span::before {
+  content: "/";
+  margin-right: 8px;
+  color: #B3AC9E;
+}
+
+.app__live {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  gap: 6px;
+  color: #5E5C55;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.app__live i {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.app__live i::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+@keyframes live-ping {
+  0% { transform: scale(0.4); opacity: 0.9; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.motion .app__live i::after {
+  animation: live-ping 1.8s ease-out infinite;
+}
+
+.app__body {
+  display: grid;
+  grid-template-columns: 118px minmax(0, 1fr);
+}
+
+.app__side {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 8px;
+  border-right: 1px solid #DDD7CC;
+  background: #EFEBE3;
+}
+
+/* The highlight slides behind the chosen screen. */
+.app__side::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 12px;
+  height: 40px;
+  border: 1px solid #DDD7CC;
+  border-radius: 6px;
+  background: #FBFAF7;
+  transform: translateY(calc(var(--at, 0) * 44px));
+  transition: transform 0.55s var(--ease);
+}
+
+.app__tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 40px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: #5E5C55;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.app__tab .icon {
+  font-size: 1.05rem;
+  color: #8A8578;
+  transition: color 0.3s ease;
+}
+
+.app__tab:hover,
+.app__tab.is-on {
+  color: #15161B;
+}
+
+.app__tab.is-on .icon {
+  color: #875800;
+}
+
+.app__tab:focus-visible {
+  outline: 2px solid #875800;
+  outline-offset: -2px;
+}
+
+.app__main {
+  display: grid;
+  min-width: 0;
+  padding: 16px 18px 18px;
+}
+
+.app__pane {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.js .app__pane:not(.is-on) {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+html:not(.js) .app__main {
+  display: block;
+}
+
+html:not(.js) .app__pane + .app__pane {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #DDD7CC;
+}
+
+html:not(.js) .app__progress {
+  visibility: hidden;
+}
+
+.app__h {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 0.8125rem;
+}
+
+.app__h b {
+  font-weight: 600;
+}
+
+.app__h span {
+  color: #6B6962;
+  font-size: 0.75rem;
+}
+
+@keyframes app-up {
+  from { opacity: 0; transform: translateY(12px); }
+}
+
+@keyframes app-in-x {
+  from { opacity: 0; transform: translateX(14px); }
+}
+
+@keyframes app-pop {
+  from { opacity: 0; transform: scale(0.7); }
+}
+
+@keyframes app-draw {
+  from { stroke-dashoffset: 1; }
+}
+
+.motion .app__pane.is-on .app__h {
+  animation: app-up 0.5s var(--ease) both;
+}
+
+/* Social: a post and the week's calendar */
+
+.soc {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 128px;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.soc__post {
+  overflow: hidden;
+  border: 1px solid #DDD7CC;
+  border-radius: 6px;
+  background: #FBFAF7;
+}
+
+.soc__img {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  aspect-ratio: 5 / 4;
+  padding: 14px;
+  background: #2E3B2F;
+  color: #EDE3D1;
+}
+
+.bb-mark {
+  width: 26px;
+  height: 26px;
+  color: #C8873A;
+}
+
+.soc__img p {
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 2.6vw, 2.1rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+}
+
+.soc__img em,
+.site__title em {
+  font-style: italic;
+  color: #C8873A;
+}
+
+.soc__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  color: #3A3B42;
+  font-size: 0.75rem;
+}
+
+.soc__meta > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.soc__meta .icon {
+  font-size: 0.95rem;
+  color: #875800;
+}
+
+.soc__meta b {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.soc__meta .soc__type {
+  margin-left: auto;
+  padding: 2px 7px;
+  border: 1px solid #DDD7CC;
+}
+
+.soc__week {
+  display: grid;
+  align-content: start;
+}
+
+.soc__week li {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-items: center;
+  height: 31px;
+  border-bottom: 1px solid #E2DDD3;
+  font-size: 0.71875rem;
+}
+
+.soc__week b {
+  color: #6B6962;
+  font-weight: 500;
+}
+
+.chip {
+  justify-self: start;
+  padding: 2px 7px;
+  background: #15161B;
+  color: #F4F1EB;
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.chip--m {
+  border: 1px solid #CFC8BB;
+  background: transparent;
+  color: #3A3B42;
+}
+
+.chip--empty {
+  background: none;
+  color: #A49E92;
+  font-weight: 500;
+}
+
+.motion .app__pane.is-on .soc__post {
+  animation: app-up 0.7s var(--ease) 0.08s both;
+}
+
+.motion .app__pane.is-on .soc__week li {
+  animation: app-in-x 0.55s var(--ease) both;
+}
+
+.motion .app__pane.is-on .soc__week li:nth-child(2) { animation-delay: 0.05s; }
+.motion .app__pane.is-on .soc__week li:nth-child(3) { animation-delay: 0.1s; }
+.motion .app__pane.is-on .soc__week li:nth-child(4) { animation-delay: 0.15s; }
+.motion .app__pane.is-on .soc__week li:nth-child(5) { animation-delay: 0.2s; }
+.motion .app__pane.is-on .soc__week li:nth-child(6) { animation-delay: 0.25s; }
+.motion .app__pane.is-on .soc__week li:nth-child(7) { animation-delay: 0.3s; }
+
+/* Ads: three numbers and a week of results */
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 12px 0 0;
+  border: 1px solid #DDD7CC;
+  border-radius: 6px;
+  background: #FBFAF7;
+}
+
+.kpis > div {
+  padding: 10px 12px;
+}
+
+.kpis > div + div {
+  border-left: 1px solid #E2DDD3;
+}
+
+.kpis dt {
+  color: #6B6962;
+  font-size: 0.6875rem;
+}
+
+.kpis dd {
+  margin: 3px 0 0;
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.kpis > div:last-child dd {
+  color: #875800;
+}
+
+.chart {
+  display: block;
+  width: 100%;
+  height: 158px;
+  margin-top: 16px;
+  overflow: visible;
+}
+
+.chart__grid {
+  fill: none;
+  stroke: #E2DDD3;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.chart__area {
+  fill: rgba(245, 178, 60, 0.18);
+}
+
+.chart__line {
+  fill: none;
+  stroke: #875800;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+@keyframes chart-wipe {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+.chart__x {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  color: #8A8578;
+  font-size: 0.65625rem;
+}
+
+.motion .app__pane.is-on .kpis {
+  animation: app-up 0.6s var(--ease) 0.05s both;
+}
+
+.motion .app__pane.is-on .chart {
+  animation: chart-wipe 1.6s var(--ease) 0.2s both;
+}
+
+/* Website: the brand's landing page, a cursor and an order */
+
+.site {
+  position: relative;
+  margin-top: 12px;
+  padding: 14px 16px 22px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #2E3B2F;
+  color: #EDE3D1;
+}
+
+.site__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.site__nav .bb-mark {
+  width: 20px;
+  height: 20px;
+}
+
+.site__nav i {
+  width: 18px;
+  height: 2px;
+  background: rgba(237, 227, 209, 0.45);
+}
+
+.site__nav i:first-of-type {
+  margin-left: auto;
+}
+
+.site__title {
+  margin-top: 30px;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.4vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.site__sub {
+  margin-top: 8px;
+  color: rgba(237, 227, 209, 0.78);
+  font-size: 0.78125rem;
+}
+
+.site__btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 9px 15px;
+  background: #C8873A;
+  color: #15161B;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.app__cursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  transform: translate(76px, 168px);
+}
+
+@keyframes cursor-go {
+  0% { transform: translate(300px, 210px); opacity: 0; }
+  12% { opacity: 1; }
+  48% { transform: translate(76px, 168px); }
+  56% { transform: translate(76px, 168px) scale(0.82); }
+  64%, 100% { transform: translate(76px, 168px) scale(1); }
+}
+
+@keyframes btn-press {
+  0%, 52% { background: #C8873A; }
+  58% { background: #E0A55A; }
+  70%, 100% { background: #C8873A; }
+}
+
+.motion .app__pane.is-on .app__cursor {
+  animation: cursor-go 2s var(--ease) 0.3s both;
+}
+
+.motion .app__pane.is-on .site__btn {
+  animation: btn-press 2s linear 0.3s both;
+}
+
+.app__toast {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 9px 12px;
+  border: 1px solid #DDD7CC;
+  border-radius: 6px;
+  background: #FBFAF7;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.app__toast .icon {
+  font-size: 1rem;
+  color: #875800;
+}
+
+.motion .app__pane.is-on .app__toast {
+  animation: app-up 0.6s var(--ease) 1.6s both;
+}
+
+/* CRM: today's enquiries, newest first */
+
+.enqs {
+  margin-top: 12px;
+  border: 1px solid #DDD7CC;
+  border-radius: 6px;
+  background: #FBFAF7;
+}
+
+.enq {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  font-size: 0.75rem;
+}
+
+.enq + .enq {
+  border-top: 1px solid #E2DDD3;
+}
+
+.enq__av {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #E6E1D7;
+  color: #3A3B42;
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.enq--new .enq__av {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.enq__who {
+  min-width: 0;
+}
+
+.enq__who b {
+  display: block;
+  font-size: 0.78125rem;
+  font-weight: 600;
+}
+
+.enq__who span {
+  color: #6B6962;
+  font-size: 0.71875rem;
+}
+
+.enq__st {
+  padding: 3px 7px;
+  border: 1px solid #DDD7CC;
+  color: #3A3B42;
+  font-size: 0.6875rem;
+  white-space: nowrap;
+}
+
+.enq--new .enq__st {
+  border-color: #15161B;
+  background: #15161B;
+  color: #F4F1EB;
+}
+
+.app__auto {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: #5E5C55;
+  font-size: 0.75rem;
+}
+
+.app__auto .icon {
+  font-size: 1rem;
+  color: #875800;
+}
+
+@keyframes enq-new {
+  0% { opacity: 0; transform: translateY(-14px); background: rgba(245, 178, 60, 0.28); }
+  40% { opacity: 1; transform: none; background: rgba(245, 178, 60, 0.28); }
+  100% { background: rgba(245, 178, 60, 0); }
+}
+
+.motion .app__pane.is-on .enq {
+  animation: app-up 0.55s var(--ease) both;
+}
+
+.motion .app__pane.is-on .enq--new {
+  animation: enq-new 1.6s var(--ease) 0.5s both;
+}
+
+.motion .app__pane.is-on .enq:nth-child(2) { animation-delay: 0.05s; }
+.motion .app__pane.is-on .enq:nth-child(3) { animation-delay: 0.1s; }
+.motion .app__pane.is-on .enq:nth-child(4) { animation-delay: 0.15s; }
+
+.motion .app__pane.is-on .app__auto {
+  animation: app-up 0.6s var(--ease) 0.9s both;
+}
+
+/* Status bar, with the clock that turns the screens */
+
+.app__status {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  height: 30px;
+  padding: 0 14px;
+  border-top: 1px solid #DDD7CC;
+  background: #EAE6DE;
+  color: #6B6962;
+  font-size: 0.6875rem;
+}
+
+.app__progress {
+  height: 2px;
+  overflow: hidden;
+  background: #DDD7CC;
+}
+
+.app__progress i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* Notes pinned around the window */
+
+.hero__art--app .peek__tag--a {
+  top: -44px;
+  right: 18px;
+}
+
+.hero__art--app .peek__tag--b {
+  top: 236px;
+  left: -86px;
+}
+
+.hero__art--app .badge {
+  right: -48px;
+  bottom: -96px;
+}
+
+.hero__art--app .peek__tag--c {
+  bottom: -42px;
+  left: 12%;
+}
+
+/* The window arrives tilted back, then settles. */
+.motion .hero__art--app[data-reveal] {
+  opacity: 0;
+  transform: perspective(1400px) rotateX(16deg) translateY(48px) scale(0.96);
+  transform-origin: 50% 100%;
+  transition: opacity 1s var(--ease), transform 1.5s var(--ease);
+}
+
+.motion .hero__art--app[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@container (max-width: 470px) {
+  .app__body {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .app__side {
+    padding: 10px 6px;
+  }
+
+  .app__side::before {
+    left: 6px;
+    right: 6px;
+    top: 10px;
+  }
+
+  .app__tab {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .app__tab span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .app__main {
+    padding: 12px;
+  }
+
+  .app__title span {
+    display: none;
+  }
+
+  .soc {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .soc__week {
+    display: none;
+  }
+
+  .kpis dd {
+    font-size: 1.05rem;
+  }
+
+  .chart {
+    height: 120px;
+  }
+}
+
+/* The changing word sits mid-line now, so it keeps the line's baseline. */
+
+.hero__title .mask > span > .roll {
+  display: inline-grid;
+  vertical-align: bottom;
+}
+
+/* Services index: a sticky picture beside a list grouped Plan, Build, Grow */
+
+.svc {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 40px clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+
+.svc__media {
+  position: sticky;
+  top: calc(var(--header-h) + 32px);
+  perspective: 1200px;
+}
+
+.svc__frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #14161B;
+  color: #F0EDE7;
+}
+
+.svc__pic {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.7s ease, transform 1.4s var(--ease);
+}
+
+.svc__pic.skel {
+  background-color: #14161B;
+}
+
+.svc__pic.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.svc__pic > img {
+  filter: var(--photo-rest);
+}
+
+.svc.is-hover .svc__pic > img,
+.svc__frame.is-hover .svc__pic > img {
+  filter: none;
+}
+
+.svc__pic .pblur {
+  opacity: 1;
+}
+
+.svc__cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: grid;
+  gap: 8px;
+  padding: clamp(18px, 2vw, 28px);
+}
+
+.svc__capn {
+  color: var(--accent);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.svc__capname {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(2rem, 3vw, 2.9rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.svc__capinc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 4px;
+  color: #CBC7BE;
+  font-size: 0.875rem;
+}
+
+.svc__group + .svc__group {
+  margin-top: clamp(44px, 7vh, 76px);
+}
+
+.svc__ghead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 24px;
+  padding-bottom: 14px;
+}
+
+.svc__pillar {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.7rem, 2.5vw, 2.3rem);
+  line-height: 1;
+  color: var(--accent-text);
+}
+
+.svc__ghead p {
+  max-width: 24em;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  text-align: right;
+}
+
+.svc__rows {
+  border-top: 1px solid var(--line-strong);
+}
+
+.svc__row {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  grid-template-areas: "n name go" ". note note";
+  gap: 6px 16px;
+  padding: clamp(20px, 3.2vh, 28px) 0;
+  border-bottom: 1px solid var(--line-strong);
+  text-decoration: none;
+  transition: padding 0.6s var(--ease), color 0.3s ease;
+}
+
+.svc__n {
+  grid-area: n;
+  padding-top: 0.7em;
+  color: var(--muted);
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.svc__name {
+  grid-area: name;
+  font-weight: 500;
+  font-size: clamp(1.7rem, 2.7vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  transition: color 0.3s ease;
+}
+
+.svc__note {
+  grid-area: note;
+  max-width: 36em;
+  color: var(--muted);
+}
+
+.svc__inc {
+  display: block;
+  margin-top: 6px;
+  color: var(--fg-soft);
+  font-size: 0.8125rem;
+}
+
+.svc__row > .arr {
+  grid-area: go;
+  align-self: center;
+  font-size: 1.45rem;
+}
+
+.svc__thumb {
+  display: none;
+}
+
+.svc__row.is-on,
+.svc__row:hover,
+.svc__row:focus-visible {
+  padding-left: 16px;
+}
+
+.svc__row.is-on .svc__name,
+.svc__row.is-on .svc__n,
+.svc__row:hover .svc__name {
+  color: var(--accent-text);
+}
+
+/* How it works: a crowd walks past, the studio spots who is ready, writes,
+   and the reply comes back. People are drawn on the canvas in the
+   section's own ink; the notes above their heads are page elements. */
+
+.how {
+  overflow: hidden;
+}
+
+.how__head {
+  display: grid;
+  justify-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.how__title {
+  font-size: clamp(2.8rem, 6.6vw, 6.2rem);
+}
+
+.how__title .mask > span {
+  display: inline-block;
+}
+
+@media (min-width: 761px) {
+  .how__title .mask {
+    white-space: nowrap;
+  }
+}
+
+.how__lead {
+  max-width: 40em;
+}
+
+.crowd {
+  position: relative;
+  height: clamp(540px, 50vw, 760px);
+  margin-top: clamp(12px, 3vh, 36px);
+}
+
+.crowd__fx {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.crowd__beacon {
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-left: -32px;
+  border-radius: 50%;
+  background: var(--fg);
+  outline: 1px solid var(--line-strong);
+  outline-offset: 7px;
+}
+
+.crowd__beacon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* The beacon is dark on a light page and light on a dark one, so it wears
+   the symbol made for the opposite surface. */
+.crowd__beacon .for-dark {
+  display: var(--show-on-light);
+}
+
+.crowd__beacon .for-light {
+  display: var(--show-on-dark);
+}
+
+.crowd__beacon::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 1px solid var(--accent-text);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+@keyframes beacon-ring {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+.motion .crowd__beacon::after {
+  animation: beacon-ring 2.6s ease-out infinite;
+}
+
+.crowd__compose {
+  position: absolute;
+  left: 50%;
+  top: 104px;
+  z-index: 6;
+}
+
+.crowd__cen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: max-content;
+  transform: translateX(-50%);
+}
+
+/* The automation card: the real message, as it goes out. */
+
+.acard {
+  width: 352px;
+  max-width: calc(100vw - 32px);
+  padding: 12px 14px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: #FBFAF7;
+  color: #15161B;
+  font-size: 0.8125rem;
+  text-align: left;
+  opacity: 0;
+  transform-origin: 50% 0;
+}
+
+.acard__rule {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #E2DDD3;
+  color: #3A3B42;
+  font-size: 0.71875rem;
+}
+
+.acard__k {
+  padding: 1px 6px;
+  background: #15161B;
+  color: #F4F1EB;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.acard__v + .acard__k {
+  margin-left: 4px;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.acard__v {
+  font-weight: 500;
+}
+
+.acard__head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+  color: #6B6962;
+  font-size: 0.75rem;
+}
+
+.acard__head b {
+  color: #15161B;
+  font-weight: 600;
+}
+
+.acard__head span {
+  margin-left: auto;
+}
+
+.acard__ico {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: #875800;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.acard__body {
+  margin-top: 8px;
+}
+
+.acard__from {
+  color: #6B6962;
+  font-size: 0.71875rem;
+}
+
+.acard__subj {
+  margin-top: 3px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+.acard__label {
+  margin-right: 6px;
+  color: #8A8578;
+  font-weight: 500;
+  font-size: 0.71875rem;
+}
+
+.acard__prev {
+  margin-top: 4px;
+  overflow: hidden;
+  color: #5E5C55;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.acard__bubble {
+  display: inline-block;
+  max-width: 100%;
+  padding: 8px 11px;
+  border-radius: 8px 8px 8px 2px;
+  background: #E6E1D7;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
+
+.acard__att {
+  display: inline-block;
+  margin-top: 7px;
+  padding: 3px 8px;
+  border: 1px solid #DDD7CC;
+  color: #3A3B42;
+  font-size: 0.71875rem;
+  font-weight: 500;
+}
+
+.acard--ad .acard__body {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+}
+
+.acard__art {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  aspect-ratio: 1 / 1;
+  padding: 9px;
+  background: #2E3B2F;
+  color: #EDE3D1;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  line-height: 0.95;
+}
+
+.acard__art em {
+  font-style: italic;
+  color: #C8873A;
+}
+
+.acard__spons {
+  color: #8A8578;
+  font-size: 0.6875rem;
+}
+
+.acard__adhead {
+  margin-top: 2px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25;
+}
+
+.acard__url {
+  margin-top: 2px;
+  color: #6B6962;
+  font-size: 0.71875rem;
+}
+
+.acard__url b {
+  margin-right: 6px;
+  color: #15161B;
+  font-weight: 700;
+}
+
+.acard__cta {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 10px;
+  background: #15161B;
+  color: #F4F1EB;
+  font-size: 0.71875rem;
+  font-weight: 600;
+}
+
+.acard__title {
+  margin-top: 3px;
+  color: #53648D;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.25;
+}
+
+.acard__caret {
+  display: inline-block;
+  width: 1.5px;
+  height: 1em;
+  margin-left: 1px;
+  vertical-align: -2px;
+  background: var(--accent-text);
+}
+
+@keyframes caret-blink {
+  50% { opacity: 0; }
+}
+
+.motion .acard__caret {
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+.crowd__tip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 7;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.crowd__tip .crowd__cen {
+  top: auto;
+  bottom: 0;
+}
+
+.crowd__tbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 38px;
+  padding: 0 13px 0 6px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transform: scale(0);
+  transform-origin: calc(50% + var(--tail, 0px)) 100%;
+}
+
+.crowd__tbox::after {
+  content: "";
+  position: absolute;
+  left: calc(50% + var(--tail, 0px));
+  bottom: -6px;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  background: var(--bg);
+  transform: rotate(45deg);
+}
+
+.crowd__tbox.is-reply {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+.crowd__tag {
+  flex: none;
+  height: 24px;
+  padding: 0 8px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.crowd__tag.is-reply {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+
+/* The people: hand-drawn busts that walk, bob and turn. */
+
+.crowd {
+  overflow: hidden;
+}
+
+.crowd__people {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 160px;
+  z-index: 2;
+  height: 70%;
+  pointer-events: none;
+}
+
+/* The crowd fades into the paper at the bottom edge. */
+.crowd__floor {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  height: 38%;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+  pointer-events: none;
+}
+
+/* The scene is always on paper, like the drawings. In the light theme the
+   paper is a shade warmer, so it still reads as its own section. */
+[data-theme="light"] .how {
+  --bg: #E6E1D7;
+  --line-strong: #B3AC9E;
+}
+
+.crowd__fx {
+  z-index: 4;
+  pointer-events: none;
+}
+
+.crowd__pw {
+  position: absolute;
+  left: 0;
+}
+
+.crowd__pe {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 88%;
+  will-change: transform;
+}
+
+.crowd__hp {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.crowd__pw img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+
+.crowd__ok {
+  position: absolute;
+  left: 62%;
+  top: 6%;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--bg);
+  transform: scale(0);
+  transition: transform 0.45s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.crowd__ok svg {
+  width: 14px;
+  height: 14px;
+}
+
+.crowd__ok path {
+  fill: none;
+  stroke: var(--on-accent);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.crowd__pw.is-done .crowd__ok {
+  transform: scale(1);
+}
+
+/* The journey under the scene: the step that is happening now is lit. */
+
+.journey {
+  position: relative;
+  margin-top: clamp(20px, 4vh, 44px);
+}
+
+.journey__track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.journey__track i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 3px;
+  background: var(--accent-text);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.9s var(--ease);
+}
+
+.journey__steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px clamp(16px, 2.4vw, 36px);
+}
+
+.journey__step {
+  padding-top: 24px;
+}
+
+.journey__n {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--accent-text);
+}
+
+.journey__name {
+  margin-top: 6px;
+  font-weight: 500;
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+  transition: color 0.4s ease;
+}
+
+.journey__step p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.42;
+}
+
+.journey__step .journey__by {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.journey__by a {
+  padding: 4px 9px;
+  border: 1px solid var(--line-strong);
+  color: var(--fg);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.journey__by a:hover,
+.journey__step.is-on .journey__by a {
+  border-color: var(--accent-text);
+}
+
+.journey__by a:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.journey__step.is-on .journey__name {
+  color: var(--accent-text);
+}
+
+@media (max-width: 1020px) {
+  .journey__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .crowd {
+    height: 560px;
+  }
+
+  .crowd__tbox {
+    height: 34px;
+    font-size: 0.75rem;
+  }
+
+  .crowd__tbox.is-reply {
+    font-size: 0.95rem;
+  }
+
+  .journey__steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 1020px) {
+  .journey__track {
+    display: none;
+  }
+
+  .journey__step {
+    border-top: 1px solid var(--line-strong);
+    transition: border-color 0.4s ease;
+  }
+
+  .journey__step.is-on {
+    border-top-color: var(--accent-text);
+  }
+}
+
+/* Where it started: invitations, kept close at hand but out of the hero */
+
+.invite__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: 44px clamp(32px, 5vw, 80px);
+  align-items: end;
+}
+
+.invite__copy .lead {
+  margin-top: 24px;
+}
+
+.invite__price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin-top: 28px;
+  color: var(--muted);
+}
+
+.invite__price b {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  line-height: 1;
+  color: var(--accent-text);
+}
+
+.invite__acts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 24px;
+  margin-top: 26px;
+}
+
+.invite__demos .demo-tile__title {
+  font-size: clamp(1.7rem, 2.8vw, 2.8rem);
+}
+
+.invite__demos .demo-tile__play {
+  width: 50px;
+  height: 50px;
+}
+
+/* Sample CRM pipeline on the CRM page */
+
+.pipe {
+  border: 1px solid var(--line-strong);
+  background: var(--bg-2);
+}
+
+.pipe__bar,
+.pipe__cap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 20px;
+  padding: 14px 18px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.pipe__bar {
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.pipe__bar b {
+  margin-right: 8px;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+.pipe__cap {
+  border-top: 1px solid var(--line-strong);
+  font-size: 0.9375rem;
+}
+
+.pipe__cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.pipe__col {
+  min-height: 330px;
+  padding: 14px;
+}
+
+.pipe__col + .pipe__col {
+  border-left: 1px solid var(--line);
+}
+
+.pipe__h {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 500;
+  font-size: 0.9375rem;
+}
+
+.pipe__h span {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.pipe__list {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.pipe__card {
+  display: grid;
+  justify-items: start;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+}
+
+.pipe__card.is-won {
+  border-color: var(--accent-text);
+}
+
+.pipe__name {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.pipe__src {
+  padding: 2px 6px;
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.pipe__step {
+  color: var(--accent-text);
+}
+
+.motion .pipe__card.is-new {
+  animation: pane-in 0.6s var(--ease) both;
+}
+
+/* Small pieces */
+
+.also__origin {
+  margin-top: 30px;
+  color: var(--muted);
+}
+
+.menu__links a > span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.menu__links small {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.menu__sep {
+  margin-top: 18px;
+}
+
+.footer__cols {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.9fr) minmax(0, 1.1fr) minmax(0, 1.35fr) minmax(0, 1fr);
+}
+
+.talks--first {
+  margin-top: 0;
+  margin-bottom: clamp(64px, 11vh, 120px);
+}
+
+.talks__lead {
+  max-width: 40em;
+  margin: -8px 0 24px;
+  color: var(--muted);
+}
+
+.talks__more {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+
+.talks__title--next {
+  margin-bottom: 22px;
+}
+
+@media (max-width: 1080px) {
+  .footer__cols {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1020px) {
+
+  .pipe__cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pipe__col:nth-child(3) {
+    border-left: 0;
+  }
+
+  .pipe__col:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+
+  .pipe__col {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .svc {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .svc__media {
+    display: none;
+  }
+
+  .svc__row {
+    grid-template-columns: 34px minmax(0, 1fr) 96px;
+    grid-template-areas: "n name thumb" ". note thumb";
+  }
+
+  .svc__row > .arr {
+    display: none;
+  }
+
+  .svc__thumb {
+    display: block;
+    grid-area: thumb;
+    align-self: start;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .svc__thumb > img {
+    filter: grayscale(0.25) brightness(0.9);
+  }
+
+  .invite__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .footer__cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .svc__ghead {
+    display: block;
+  }
+
+  .svc__inc {
+    display: none;
+  }
+
+  .svc__ghead p {
+    margin-top: 8px;
+    text-align: left;
+  }
+
+  .svc__row.is-on,
+  .svc__row:hover {
+    padding-left: 0;
+  }
+
+  .invite__demos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* 18. Motion: page changes, pictures, buttons -------------------------------
+   One page hands over to the next like a curtain: the old page eases back,
+   the new one rises from the bottom edge. The header stays where it is.
+   Pictures open from a frame as they arrive, and buttons fill from the
+   left on hover. All of it is off for visitors who ask for less motion. */
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-header {
+    view-transition-name: site-header;
+  }
+
+  ::view-transition-old(root) {
+    animation: vt-leave 0.5s cubic-bezier(0.7, 0, 0.84, 0) both;
+  }
+
+  ::view-transition-new(root) {
+    animation: vt-rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+  }
+
+  ::view-transition-group(site-header) {
+    animation-duration: 0.4s;
+  }
+
+  .theme-switch::view-transition-old(site-header),
+  .theme-switch::view-transition-new(site-header) {
+    animation: none;
+  }
+}
+
+@keyframes vt-leave {
+  to {
+    opacity: 0.2;
+    transform: scale(0.96) translateY(-24px);
+  }
+}
+
+@keyframes vt-rise {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(60px);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+
+/* Pictures open from a frame, and settle from a slight zoom. */
+
+.motion .phero__photo[data-reveal],
+.motion .gallery__item[data-reveal] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(14% 10% 14% 10%);
+  transition: clip-path 1.4s var(--ease);
+}
+
+.motion .phero__photo[data-reveal].is-in,
+.motion .gallery__item[data-reveal].is-in {
+  clip-path: inset(0 0 0 0);
+}
+
+.motion .phero__photo[data-reveal]:not(.is-in) > img,
+.motion .gallery__item[data-reveal]:not(.is-in) > img {
+  transform: scale(1.18);
+}
+
+.motion .phero__photo[data-reveal] > img,
+.motion .gallery__item[data-reveal] > img {
+  transition: opacity 0.7s ease, filter 0.8s ease, transform 1.8s var(--ease);
+}
+
+.motion .svc__frame {
+  clip-path: inset(10% 8% 10% 8%);
+  transition: clip-path 1.4s var(--ease);
+}
+
+.motion .svc.is-seen .svc__frame {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Buttons fill with the accent from the left. */
+
+.btn,
+.btn:hover {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.btn {
+  background-size: 0% 100%;
+  transition: background-size 0.55s var(--ease), color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--fg);
+  background-size: 100% 100%;
+}
+
+.btn--ghost,
+.btn--ghost:hover {
+  background-color: transparent;
+}
+
+.btn--ghost:hover {
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+/* Section labels slide their words in after the rule draws. */
+
+.motion .shead[data-reveal] > span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.7s ease 0.35s, transform 0.9s var(--ease) 0.35s;
+}
+
+.motion .shead[data-reveal] > span + span {
+  transition-delay: 0.5s;
+}
+
+.motion .shead[data-reveal].is-in > span {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 760px) {
+  .motion .shead[data-reveal] > span:last-child {
+    display: none;
+  }
+}
+
+
+/* 19. Smoothness ------------------------------------------------------------
+   Kept cheap on purpose: the notes around the hero window no longer blur
+   what moves behind them, the glow behind the brief stays at rest instead of
+   repainting a turning blur on every frame, and wheel scrolling is eased
+   (js/lenis.min.js, MIT, darkroom.engineering). */
+
+:root,
+.scheme-dark {
+  --tag-solid: rgba(26, 28, 34, 0.9);
+}
+
+[data-theme="light"],
+.scheme-light {
+  --tag-solid: rgba(246, 243, 237, 0.94);
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .peek__tag {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: var(--tag-solid);
+  }
+}
+
+/* The glow behind the brief holds still: turning a blurred layer costs a
+   full repaint on every frame, and it reads just as warm at rest. */
+@media (prefers-reduced-motion: no-preference) {
+  .glow {
+    animation: none;
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}

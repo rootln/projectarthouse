@@ -5,10 +5,11 @@ window.ARTHOUSE = {
   "instagram": "",
   "linkedin": "",
   "services": [
-    "Occasion websites",
-    "Branding",
-    "Websites",
-    "Social media"
+      "Social media",
+      "Ads",
+      "Websites",
+      "CRM and automation",
+      "Invitations"
   ],
   "currencies": [
     "INR",

@@ -1,20 +1,87 @@
 # Project Arthouse
 
-> Project Arthouse is a marketing studio from India. It makes occasion websites for birthdays, weddings and celebrations, brand identities and business websites, and manages social media pages.
+> Project Arthouse is a marketing studio from India. It runs social media and ads, builds websites and landing pages, and sets up CRM and follow-up automation, as one team working from one plan. It also makes invitations and occasion websites for birthdays, weddings and celebrations.
 
-Last updated: 2026-11-08. Prices are listed in Indian rupees (INR) and US dollars (USD); each is a price in its own right, not a conversion. Occasion websites have fixed prices. Websites, branding and social media are quoted in writing after a conversation.
+Last updated: 2026-11-28. Marketing services are quoted in writing after a conversation. Invitations and occasion websites have fixed prices, listed in Indian rupees (INR) and US dollars (USD); each is a price in its own right, not a conversion.
 
-## Services
+## Marketing services
 
-### [Occasion websites](https://www.projectarthouse.com/occasion-websites.html)
+Grouped along the customer journey: get seen (social media, ads), make the case (websites), follow up (CRM and automation). Take one or all four; they are planned together.
 
-A personal website made for one person or one day. It opens from a private link on any phone, so you can send it like a gift or an invitation.
+### [Social media](https://www.projectarthouse.com/social-media.html)
+
+Facebook, Instagram and YouTube, planned, designed and posted for you.
 
 Includes:
-- Birthday reveals: One-day, three-day and seven-day experiences with photos, letters and a final reveal.
-- Wedding invitations: Couple names, your story, the programme and a private link to share.
-- Grihapravesh and family invitations: Date, venue, timing and a family message for a housewarming, puja or gathering.
-- Father's Day and Valentine's: Tributes and love notes, from a single page to an eight-day Valentine's Week.
+- Facebook, Instagram and YouTube
+- Social media management
+- Post design
+- Video design
+
+Pricing: quoted in writing after a conversation, with scope and timeline attached.
+
+### [Ads](https://www.projectarthouse.com/ads.html)
+
+Meta, Google and YouTube campaigns, reported in plain numbers.
+
+Includes:
+- Meta ads
+- Google Search and YouTube
+- Ad creative
+- Landing pages
+- Tracking and reports
+
+Pricing: quoted in writing after a conversation, with scope and timeline attached.
+
+### [Websites](https://www.projectarthouse.com/websites.html)
+
+Fast, clear websites and landing pages, easy to update after launch.
+
+Includes:
+- Structure and copy
+- Design
+- Build
+- Domain, hosting and launch
+- Care after launch
+
+Pricing: quoted in writing after a conversation, with scope and timeline attached.
+
+### [CRM and automation](https://www.projectarthouse.com/crm.html)
+
+Every enquiry caught, followed up and remembered.
+
+Includes:
+- CRM setup
+- Lead capture
+- Pipelines
+- Email and WhatsApp follow-ups
+- Reports and training
+
+Pricing: quoted in writing after a conversation, with scope and timeline attached.
+
+## How the services fit together
+
+1. Spot who is ready: someone saves a post, clicks an ad or reads the prices twice (social media, ads).
+2. Say the right thing: a message written for that moment, on the channel they used (ads, social media).
+3. Make yes easy: a page that answers the question and asks for the enquiry (websites).
+4. Follow up, every time: the reply is caught, answered and remembered (CRM and automation).
+
+## Ways to work together
+
+- One project: a website, a campaign or a CRM setup, with a clear scope and date.
+- A launch: website, social and the first ads, planned together for one launch day.
+- A monthly team: social media, ads and the CRM run every month, with a report on what moved.
+
+## How a project runs
+
+1. Brief: tell us what you need and when.
+2. Plan: scope, timeline and cost in writing; a short plan first for bigger work.
+3. Make: design, build and write, with checkpoints.
+4. Launch and run: hand over files, links and logins, or keep running it monthly and report what moved.
+
+## Where it started: [Invitations and occasion websites](https://www.projectarthouse.com/occasion-websites.html)
+
+Before it became a marketing studio, Project Arthouse made personal websites for one person or one day: birthday reveals, wedding invitations, Grihapravesh and family invitations, Father's Day and Valentine's pages. They open from a private link on any phone. The studio still makes them.
 
 Plans and prices:
 - 1 Day Birthday: INR 1199 or USD 39.99. A personal one-day birthday website with photos, wishes, a heartfelt note, and a soft reveal experience. Includes: 1 custom birthday page; Photos + birthday message; Mobile-friendly design; Soft reveal animation; Private shareable link.
@@ -26,137 +93,77 @@ Plans and prices:
 - Valentine's Day (1 Day): INR 1199 or USD 39.99. A personal Valentine's Day website with photos, a love note, sweet memories, and a private reveal moment. Includes: 1 romantic reveal page; Photos + love message; Cute interactive flow; Mobile-friendly design; Private shareable link.
 - Valentine's Week (8 Days): INR 2099 or USD 79.99. An 8-day Valentine's Week experience with daily reveals, memories, notes, romantic prompts, and a final surprise. Includes: 8-day unlock journey; Daily love notes; Photos + memories; Premium animations; Final romantic reveal.
 
-### [Branding](https://www.projectarthouse.com/branding.html)
-
-A name, a mark and a set of rules, so everything you put out looks like it came from the same place.
-
-Includes:
-- Naming: Names that are distinct, sayable and available.
-- Logo and identity system: The mark, its variations and how they are used.
-- Colour and typography: A palette and typefaces chosen for where the brand will live.
-- Packaging and print: Boxes, labels, cards and the things people hold.
-- Brand guidelines: A short, practical guide for anyone who touches the brand.
-
-Pricing: no fixed price list. A brand is priced by what it needs: a logo alone, a full identity, packaging on top. Tell us where the brand stands today and we will reply with scope, timeline and a written quote.
-
-### [Websites](https://www.projectarthouse.com/websites.html)
-
-Full websites that load fast, read clearly and stay easy for you to update after launch.
-
-Includes:
-- Structure and copy: What pages you need and what each one has to say.
-- Design: A look that fits the brand and works on a phone first.
-- Build: Clean, fast pages, checked on real devices.
-- Domain, hosting and launch: Set up, connected and switched on.
-- Care after launch: Updates, fixes and small changes when you need them.
-
-Pricing: no fixed price list. No two websites are the same, so there is no price list here. Tell us what you have in mind, even if it is one line, and we will reply with scope, timeline and a written quote.
-
-### [Social media](https://www.projectarthouse.com/social-media.html)
-
-Your Facebook, Instagram and YouTube pages planned, designed and posted for you, so the brand shows up every week looking like itself.
-
-Includes:
-- Facebook, Instagram and YouTube: Pages set up, kept tidy and posted to on a schedule.
-- Social media management: A month planned ahead, with one person who knows the brand.
-- Post design: Single posts, carousels and stories in your brand's look.
-- Video design: Short videos and reels edited for each platform.
-
-Pricing: no fixed price list. How many platforms, how many posts a month, how much video: that decides the price. Tell us what your pages look like today and we will reply with a plan and a written quote.
-
-## How a project runs
-
-1. Brief: Tell us what you need and when you need it. A short call or a few lines is enough to start.
-2. Proposal: We reply with scope, timeline and cost in writing, before any work begins.
-3. Make: We design, build and write. You see progress at agreed checkpoints and can steer it.
-4. Hand over: You get the files, the links and the logins, with a short guide to using them.
-
 ## Frequently asked questions
 
 ### What is Project Arthouse?
 
-Project Arthouse is a marketing studio from India. It makes occasion websites for birthdays, weddings and celebrations, brand identities and business websites, and manages social media pages.
+Project Arthouse is a marketing studio from India. It runs social media and ads, builds websites and landing pages, and sets up CRM and follow-up automation, as one team working from one plan. It also makes invitations and occasion websites.
 
-### What is an occasion website?
+### Do I have to take every service?
 
-An occasion website is a small personal website made for one event or one person, such as a birthday reveal, a wedding invitation or a Grihapravesh invitation. It is shared as a private link and opens on any phone.
+No. Take one service or all four. They come from the same studio, so anything you add later fits with what is already there.
 
-### How much does an occasion website cost?
+### Which ad platforms and CRMs do you work with?
 
-Occasion websites have fixed prices, from ₹1,199 to ₹2,099, or $39.99 to $79.99 in US dollars: 1 Day Birthday ₹1,199 ($39.99), 3 Day Curated Reveal ₹1,399 ($59.99), 7 Day Unfolding Experience ₹1,699 ($69.99), Wedding Invitation ₹1,299 ($49.99), Grihapravesh ₹1,299 ($49.99), Father's Day ₹1,299 ($49.99), Valentine's Day (1 Day) ₹1,199 ($39.99) and Valentine's Week (8 Days) ₹2,099 ($79.99).
+For ads, Meta (Facebook and Instagram), Google Search and YouTube. For CRM, usually Zoho or HubSpot, or the tool you already pay for.
 
-### How much do websites, branding and social media cost?
+### How much does it cost?
 
-These are quoted after a conversation, because scope varies. Share your idea through the form, by WhatsApp or by email and we reply with scope, timeline and cost in writing.
+Marketing work is quoted after a conversation, because scope varies. You get scope, timeline and cost in writing before any work begins. Invitations have fixed prices, from ₹1,199 or $39.99.
 
-### Can I hire Project Arthouse for only one service?
+### Do you still make invitations?
 
-Yes. You can take one service or all four. Each comes from the same studio, so they fit together if you add more later.
+Yes. Birthday reveals, wedding invitations, Grihapravesh invitations, Father's Day and Valentine's pages, with fixed prices on the rate card.
 
 ### Do you work with clients outside India?
 
 Yes. The studio is based in India and works online with clients anywhere.
 
-### How do I start a project?
+### How do I start?
 
-Pick a plan on the rate card, or send a brief through the form, by WhatsApp or by email. We reply in writing before any work begins.
+Send a brief through the form, by WhatsApp or by email. A few lines is enough. We reply in writing before any work begins.
 
-### What goes on an occasion website?
+### Which ad platforms do you run?
 
-Your photos, your messages and the story in the order you want it told. An invitation also carries the date, venue and programme. All of it sits behind one private link that opens on any phone.
+Meta (Facebook and Instagram), Google Search and YouTube.
 
-### How is an occasion website delivered?
+### How much should I spend on ads?
 
-You receive a private link. Send it by WhatsApp, text or email and it opens in the browser. Nobody has to install an app or create an account.
+Enough to learn from in the first month. We suggest a starting budget in the proposal, based on your goal and market, and change it once real numbers come in.
 
-### Can I see one before I order?
+### Do I own the ad accounts?
 
-Yes. Open the sample birthday page made for a fictional Aarya, or the sample wedding invitation. Both are linked from the plans.
+Yes. Campaigns run in accounts in your name, and you keep them, with all their history, if we stop working together.
 
-### What does a branding project include?
+### How are ads priced?
 
-A branding project usually covers the name if needed, the logo and its variations, colours, typefaces and a short guideline, delivered as ready-to-use files. Packaging and print are added when you need them.
+A monthly fee for our work, quoted in writing after a conversation. The ad budget is separate.
 
-### Can you refresh a brand that already exists?
+### Which CRM do you use?
 
-Yes. We look at what you have, keep what works and redraw the rest, so customers still recognise you.
+The one that fits your size and budget: often Zoho or HubSpot, sometimes something simpler. If you already pay for a CRM, we set up that one.
 
-### How is branding priced?
+### Can it connect to WhatsApp?
+
+Yes. Through the WhatsApp Business platform and the CRM's own connectors, so chats and leads end up in the same place.
+
+### Will my team actually use it?
+
+We set it up around how your team already sells, keep it simple and train them. A CRM nobody opens is the most expensive kind.
+
+### How is CRM work priced?
 
 By scope. We talk first, then send a written quote before any work begins.
-
-### Do you design and build the website, or only design it?
-
-Both. Project Arthouse plans, writes, designs and builds the site, then sets up the domain and hosting and launches it.
-
-### Will I be able to update the site myself?
-
-Yes. We build so that routine changes such as text, photos and prices are easy, and we hand over a short guide.
-
-### How much does a website cost?
-
-It depends on the number of pages and what the site has to do, so we discuss it first. Share your idea and we send a written quote before any work begins.
-
-### Which platforms do you manage?
-
-Facebook, Instagram and YouTube. We plan the content, design the posts and videos, and publish them for you.
-
-### Do you design the posts and videos as well?
-
-Yes. Post design and video design are part of the service, in the same look as the rest of your brand.
-
-### How is social media management priced?
-
-By the number of platforms and how much goes out each month. We discuss it first and send a written quote before any work begins.
 
 ## Contact
 
 - Brief form: https://www.projectarthouse.com/#brief
 - Email: hello@projectarthouse.com
 - WhatsApp: +916370388502
-- Rate card: https://www.projectarthouse.com/rates.html
+- Pricing: https://www.projectarthouse.com/rates.html
 
 ## Samples
 
 - [Birthday surprise sample](https://www.projectarthouse.com/demo-birthday.html): a sample occasion website made for a fictional Aarya
-- [Wedding invitation sample](https://www.projectarthouse.com/demo-wedding.html): a sample traditional Hindu wedding invitation for a fictional Somya and Prateek, with ceremonies, a countdown, a venue map link and a 3D mandap
+- [Wedding invitation sample](https://www.projectarthouse.com/demo-wedding.html): a sample traditional Hindu wedding invitation for a fictional Somya and Prateek
+- The home page shows a sample marketing workspace for a fictional coffee brand, Bean and Banyan, and an animated crowd showing how the studio spots ready customers and brings their replies back; the CRM page shows a sample pipeline with made-up names.

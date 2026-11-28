@@ -196,6 +196,9 @@
 
     function frame(now) {
       if (!running) { return; }
+      /* The satin moves slowly, so 30 frames a second is plenty and leaves
+         the rest of each second for scrolling. */
+      if (last && now - last < 31) { raf = requestAnimationFrame(frame); return; }
       var dt = last ? Math.min(0.05, (now - last) / 1000) : 0;
       last = now;
       clock += dt * (opts.speed || 1);

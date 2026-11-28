@@ -16,6 +16,9 @@
   14. Questions and rate-card plans (accordion), plan links, hero countdown
   15. Process line
   16. Work section from js/work.js
+
+  The marketing studio pieces (hero board, services index, journey,
+  sample pipeline) live in js/studio.js.
   17. Brief form
   18. Header, menu, progress bar
   19. One scroll loop
@@ -309,7 +312,7 @@
     var handle = window.ArthouseField.mount(canvas, {
       look: look,
       theme: currentTheme(),
-      scale: window.innerWidth < 760 ? 0.5 : 0.62,
+      scale: window.innerWidth < 760 ? 0.4 : 0.5,
       still: !motion,
       time: look === "ribbon" ? 5 : 12,
       gain: look === "ribbon" ? 0.72 : 1,
@@ -414,7 +417,9 @@
       var soft = 5;
       g.spans.forEach(function (s, i) {
         var o = clamp((p * (n + soft) - i) / soft, 0, 1);
-        s.style.opacity = (0.16 + 0.84 * o).toFixed(3);
+        /* Only touch the words whose shade actually changes. */
+        var v = (0.16 + 0.84 * o).toFixed(2);
+        if (s.__o !== v) { s.__o = v; s.style.opacity = v; }
       });
     });
   }
@@ -747,8 +752,10 @@
   $$("[data-pick]").forEach(function (link) {
     link.addEventListener("click", function () {
       if (!form) { return; }
+      /* One link can tick several services: data-pick="Ads|CRM and automation". */
+      var picks = (link.getAttribute("data-pick") || "").split("|");
       $$('input[name="need"]', form).forEach(function (box) {
-        if (box.value === link.getAttribute("data-pick")) { box.checked = true; }
+        if (picks.indexOf(box.value) > -1) { box.checked = true; }
       });
       var plan = link.getAttribute("data-plan");
       var price = plan ? link.getAttribute("data-price-" + currentCurrency().toLowerCase()) : "";
